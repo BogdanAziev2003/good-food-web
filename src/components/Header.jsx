@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import LOGO from '../image/logo.png'
 
 const Header = () => {
+  const a = 0
   return (
     <header className="header">
       <div className="header__logo">
