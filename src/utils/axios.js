@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'http://localhost:8080/api/menu',
+  baseURL: 'http://94.241.141.165:8080/api/menu',
   validateStatus: () => true,
 })
 
