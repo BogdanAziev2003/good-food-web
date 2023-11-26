@@ -7,9 +7,9 @@ const initialState = {
   isLoading: false,
   itemInCard: [],
   price: 0,
-  deliveryType: null,
+  deliveryType: 'pickup',
   address: null,
-  payMethod: null,
+  payMethod: 'cash',
   phone: null,
   comment: null,
 }
