@@ -39,11 +39,15 @@ let ViewDropdown = ({ items, additive = null }) => {
         <div className="dropdown-content">
           {additive &&
             additive.map((add) => {
-              return (
-                <div className="dropdown-item dropdown-item-addictive">
-                  {add}
-                </div>
-              )
+              if (add) {
+                return (
+                  <div className="dropdown-item dropdown-item-addictive">
+                    {add}
+                  </div>
+                )
+              } else {
+                return <></>
+              }
             })}
           {items.map((item) => {
             if (item.amount !== 0) {

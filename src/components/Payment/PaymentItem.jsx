@@ -24,13 +24,11 @@ const PaymentItem = ({ item }) => {
         </div>
 
         <div className="item__supplements">
-          {item.sause && (
-            <ViewDropdown
-              // eslint-disable-next-line array-callback-return
-              items={item.modifiers}
-              additive={[item.sause, item.snack]}
-            />
-          )}
+          <ViewDropdown
+            // eslint-disable-next-line array-callback-return
+            items={item.modifiers}
+            additive={[item.sause, item.snack]}
+          />
         </div>
       </div>
     </div>

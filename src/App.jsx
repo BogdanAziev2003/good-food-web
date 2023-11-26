@@ -16,11 +16,29 @@ import Payment from './pages/PaymentPage/Payment'
 
 const App = () => {
   const dispatch = useDispatch()
-  const { items, isLoading } = useSelector((state) => state.items)
+  let { items, isLoading } = useSelector((state) => state.items)
 
   useEffect(() => {
     dispatch(getAllMenu())
   }, [dispatch])
+
+  const categoryOrder = [
+    'Бургеры',
+    'Хот-доги',
+    'Сэндвичи',
+    'Лонгеры',
+    'Снэки',
+    'Соусы',
+    'Напитки',
+  ]
+
+  items = items
+    .map((item) => ({ ...item })) // Создаем новые объекты, чтобы не изменять исходные
+    .sort(
+      (first, second) =>
+        categoryOrder.indexOf(first.category) -
+        categoryOrder.indexOf(second.category)
+    )
 
   return (
     <div>
