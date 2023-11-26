@@ -1,10 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 import LOGO from '../image/logo.png'
 
 const Header = () => {
   const [activeItem, setActiveItem] = useState('home')
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.pathname.endsWith('/payment')) {
+      setActiveItem('payment')
+    }
+  }, [location.pathname])
 
   return (
     <header className="header">
