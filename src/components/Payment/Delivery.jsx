@@ -5,16 +5,22 @@ import { setClientAddress } from '../../store/features/itemsSlice'
 const Delivery = () => {
   const dispatch = useDispatch()
 
-  const addressFromStore = useSelector((state) => state.items.address) // address from store
+  const addressFromStore = useSelector((state) => state.items.address)
+  const [address, setAddress] = useState('')
 
-  const [address, setAddress] = useState('') // adress set To store
+  const [errorMessage, setErrorMessage] = useState(false)
 
   const handleAddressChange = (event) => {
     setAddress(event.target.value)
   }
 
   const handlerAddressSend = (address) => {
-    dispatch(setClientAddress(address))
+    if (address !== '') {
+      dispatch(setClientAddress(address))
+      setErrorMessage(false)
+    } else {
+      setErrorMessage('Введите адресс доставки')
+    }
   }
   return (
     <div className="address">
@@ -56,6 +62,7 @@ const Delivery = () => {
           </button>
         </div>
       )}
+      <div className="address_error">{errorMessage ? errorMessage : <></>}</div>
     </div>
   )
 }

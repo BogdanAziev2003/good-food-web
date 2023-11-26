@@ -603,7 +603,6 @@ a {
     position: absolute;
     bottom: -15px;
     font-size: 12px;
-    // color: var(--second-color);
     color: rgb(252, 128, 128);
   }
 }
@@ -703,6 +702,11 @@ a {
       font-weight: 700;
       font-size: 14px;
     }
+  }
+
+  .address_error {
+    font-size: 12px;
+    color: rgb(252, 128, 128);
   }
 }
 
