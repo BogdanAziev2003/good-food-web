@@ -63,9 +63,9 @@ export const BasicModal = React.memo(({ item }) => {
     setActiveItem(item)
   }
 
-  useEffect(() => {
-    console.log(itemInCard)
-  }, [itemInCard])
+  // useEffect(() => {
+  //   console.log(itemInCard)
+  // }, [itemInCard])
 
   return (
     <div>
