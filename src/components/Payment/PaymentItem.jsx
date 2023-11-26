@@ -24,7 +24,8 @@ const PaymentItem = ({ item }) => {
         </div>
 
         <div className="item__supplements">
-          {item.sause && (
+          {(item.modifiers.some((modifier) => modifier.amount !== 0) ||
+            item.category === 'Сэндвичи') && (
             <ViewDropdown
               // eslint-disable-next-line array-callback-return
               items={item.modifiers}
