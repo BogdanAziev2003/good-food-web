@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'http://localhost:8000/api/menu',
+  baseURL: 'http://localhost:8080/api/menu',
   validateStatus: () => true,
 })
 

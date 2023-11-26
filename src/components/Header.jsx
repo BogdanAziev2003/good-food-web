@@ -1,51 +1,76 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import LOGO from '../image/logo.png'
 
 const Header = () => {
-  const a = 0
+  const [activeItem, setActiveItem] = useState('home')
+
   return (
     <header className="header">
-      <div className="header__logo">
-        <Link to="/">
+      <div className={`header__logo ${activeItem === 'home' ? 'active' : ''}`}>
+        <Link to="/" onClick={() => setActiveItem('home')}>
           <img src={LOGO} alt="" />
         </Link>
       </div>
       <div className="header__menu">
         <div className="menu">
-          <div className="menu__item">
-            <Link to="/">
+          <div
+            className={`menu__item ${activeItem === 'home' ? 'active' : ''}`}
+          >
+            <Link to="/" onClick={() => setActiveItem('home')}>
               <p>Главная</p>
             </Link>
           </div>
-          <div className="menu__item">
-            <Link to="/sandwich">
+
+          <div
+            className={`menu__item ${
+              activeItem === 'sandwich' ? 'active' : ''
+            }`}
+          >
+            <Link to="/sandwich" onClick={() => setActiveItem('sandwich')}>
               <p>Сендвичи</p>
             </Link>
           </div>
-          <div className="menu__item">
-            <Link to="/burger">
+          <div
+            className={`menu__item ${activeItem === 'burger' ? 'active' : ''}`}
+          >
+            <Link to="/burger" onClick={() => setActiveItem('burger')}>
               <p>Бургеры</p>
             </Link>
           </div>
-          <div className="menu__item hotdog">
-            <Link to="/hot-dog">
+          <div
+            className={`menu__item ${activeItem === 'hot-dog' ? 'active' : ''}`}
+          >
+            <Link to="/hot-dog" onClick={() => setActiveItem('hot-dog')}>
               <p>Хот-Доги</p>
             </Link>
           </div>
-          <div className="menu__item">
-            <Link to="/potato">
-              <p>Картошка</p>
+          <div
+            className={`menu__item ${activeItem === 'longer' ? 'active' : ''}`}
+          >
+            <Link to="/longer" onClick={() => setActiveItem('longer')}>
+              <p>Лонегры</p>
             </Link>
           </div>
-          <div className="menu__item">
-            <Link to="/sauces">
+          <div
+            className={`menu__item ${activeItem === 'potato' ? 'active' : ''}`}
+          >
+            <Link to="/potato" onClick={() => setActiveItem('potato')}>
+              <p>Снэки</p>
+            </Link>
+          </div>
+          <div
+            className={`menu__item ${activeItem === 'sauces' ? 'active' : ''}`}
+          >
+            <Link to="/sauces" onClick={() => setActiveItem('sauces')}>
               <p>Соусы</p>
             </Link>
           </div>
-          <div className="menu__item">
-            <Link to="/drinks">
+          <div
+            className={`menu__item ${activeItem === 'drinks' ? 'active' : ''}`}
+          >
+            <Link to="/drinks" onClick={() => setActiveItem('drinks')}>
               <p>Напитки</p>
             </Link>
           </div>

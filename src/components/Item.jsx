@@ -1,43 +1,43 @@
 import React from 'react'
-
 import { useDispatch, useSelector } from 'react-redux'
-
 import { addItem, removeItem } from '../store/features/itemsSlice'
+import BasicModal from './BasicModal'
 
-const Item = ({ item }) => {
+const Item = React.memo(({ item }) => {
   const dispatch = useDispatch()
-
   const { itemInCard } = useSelector((state) => state.items)
-
   const handleAddToCart = (item) => {
     dispatch(addItem(item))
   }
 
   const handleRemoveToCart = (item) => {
+    const item_id = item.id
     dispatch(removeItem(item))
+    item = itemInCard.find((el) => el.id === item_id)
   }
 
   return (
     <div className="item">
       <div className="item__photo">
-        <img src={'img/' + item.image} alt="" />
+        <img
+          src={'http://localhost:8080/api/menu/image/' + item.imageurl}
+          alt=""
+        />
       </div>
       <div className="item__info">
         <div className="item__info-block">
           <div className="item__name">
-            <p>{item.name}</p>
+            <p>{item.title}</p>
           </div>
           <div className="item__description">
-            <p>
-              <i>{item.contains + ''}</i>
-            </p>
+            <p>{item.contains + ''}</p>
           </div>
         </div>
 
-        {itemInCard.includes(item) ? (
+        {itemInCard.some((el) => el.id === item.id) ? (
           <div className="item__add item__add_click">
             <div className="item__add-block">
-              <div className="item__add-plus">
+              <div className="item__add-plus item__add-btn">
                 <p onClick={() => handleAddToCart(item)}>+</p>
               </div>
               <div className="item__add-amount">
@@ -48,19 +48,16 @@ const Item = ({ item }) => {
                   }
                 </p>
               </div>
-              <div className="item__add-minus">
+              <div className="item__add-minus item__add-btn">
                 <p onClick={() => handleRemoveToCart(item)}>-</p>
               </div>
             </div>
             <div className="item__add-modifier">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24"
-                viewBox="0 -960 960 960"
-                width="24"
-              >
-                <path d="M240-500v-220h220v220H240Zm0 260v-220h220v220H240Zm260-260v-220h220v220H500Zm0 260v-220h220v220H500ZM320-580h60v-60h-60v60Zm260 0h60v-60h-60v60ZM320-320h60v-60h-60v60Zm260 0h60v-60h-60v60ZM380-580Zm200 0Zm0 200Zm-200 0ZM200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Z" />
-              </svg>
+              {item.modifiers.length > 0 ? (
+                <BasicModal item={itemInCard.find((el) => el.id === item.id)} />
+              ) : (
+                ''
+              )}
             </div>
           </div>
         ) : (
@@ -81,6 +78,6 @@ const Item = ({ item }) => {
       </div>
     </div>
   )
-}
+})
 
 export default Item

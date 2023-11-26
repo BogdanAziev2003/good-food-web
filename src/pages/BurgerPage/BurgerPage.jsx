@@ -2,6 +2,7 @@ import React from 'react'
 import Item from '../../components/Item'
 
 const BurgerPage = ({ item }) => {
+  
   return (
     <div className="main">
       {item.map((el) => (

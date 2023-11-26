@@ -12,25 +12,32 @@ import PotatoPage from './pages/PotatoPage/PotatoPage'
 import DrinksPage from './pages/DrinksPage/DrinksPage'
 import SaucesPage from './pages/SaucesPage/SaucesPage'
 
+import Payment from './pages/PaymentPage/Payment'
+
 const App = () => {
   const dispatch = useDispatch()
+  const { items, isLoading } = useSelector((state) => state.items)
+
   useEffect(() => {
     dispatch(getAllMenu())
   }, [dispatch])
 
-  const { items } = useSelector((state) => state.items)
   return (
     <div>
-      <div className="wrapper">
-        <Layaout>
-          <Routes>
-            <Route>
+      {isLoading ? (
+        <div className="loading">
+          <h2>Загразка...</h2>
+        </div>
+      ) : (
+        <div className="wrapper">
+          <Layaout>
+            <Routes>
               <Route path="/" element={<HomePage item={items} />} />
               <Route
                 path="/sandwich"
                 element={
                   <SandwichPage
-                    item={items.filter((el) => el.category === 'sandwich')}
+                    item={items.filter((el) => el.category === 'Сэндвичи')}
                   />
                 }
               />
@@ -38,7 +45,7 @@ const App = () => {
                 path="/burger"
                 element={
                   <BurgerPage
-                    item={items.filter((el) => el.category === 'burger')}
+                    item={items.filter((el) => el.category === 'Бургеры')}
                   />
                 }
               />
@@ -46,7 +53,15 @@ const App = () => {
                 path="/hot-dog"
                 element={
                   <HotDogePage
-                    item={items.filter((el) => el.category === 'hot-dog')}
+                    item={items.filter((el) => el.category === 'Хот-доги')}
+                  />
+                }
+              />
+              <Route
+                path="/longer"
+                element={
+                  <HotDogePage
+                    item={items.filter((el) => el.category === 'Лонгеры')}
                   />
                 }
               />
@@ -54,7 +69,7 @@ const App = () => {
                 path="/potato"
                 element={
                   <PotatoPage
-                    item={items.filter((el) => el.category === 'snacks')}
+                    item={items.filter((el) => el.category === 'Снэки')}
                   />
                 }
               />
@@ -62,7 +77,7 @@ const App = () => {
                 path="/sauces"
                 element={
                   <SaucesPage
-                    item={items.filter((el) => el.category === 'sauces')}
+                    item={items.filter((el) => el.category === 'Соусы')}
                   />
                 }
               />
@@ -70,14 +85,15 @@ const App = () => {
                 path="/drinks"
                 element={
                   <DrinksPage
-                    item={items.filter((el) => el.category === 'drinks')}
+                    item={items.filter((el) => el.category === 'Напитки')}
                   />
                 }
               />
-            </Route>
-          </Routes>
-        </Layaout>
-      </div>
+              <Route path="/payment" element={<Payment />} />
+            </Routes>
+          </Layaout>
+        </div>
+      )}
     </div>
   )
 }
