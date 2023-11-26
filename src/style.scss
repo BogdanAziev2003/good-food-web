@@ -727,6 +727,11 @@ a {
     height: 150px;
     font-size: 16px;
   }
+
+  .comment__textarea::placeholder {
+    font-size: 12px;
+    color: rgba(250, 205, 57, 0.518);
+  }
 }
 
 .modal {
