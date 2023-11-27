@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'http://94.241.141.165:8080/api/menu',
+  baseURL: 'https://jsonplaceholder.typicode.com',
   validateStatus: () => true,
 })
 

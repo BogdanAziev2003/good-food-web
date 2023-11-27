@@ -16,7 +16,7 @@ const initialState = {
 
 export const getAllMenu = createAsyncThunk('items/getAllMenu', async () => {
   try {
-    const { data } = await axios.get('/getAll')
+    const { data } = await axios.get('/posts')
     return data
   } catch (error) {
     console.log(error)
