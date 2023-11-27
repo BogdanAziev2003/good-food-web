@@ -22,8 +22,6 @@ const App = () => {
 
   useEffect(() => {
     dispatch(getAllMenu())
-    console.log(items)
-    debugger
   }, [dispatch])
 
   const categoryOrder = [
