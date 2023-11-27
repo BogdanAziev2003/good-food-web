@@ -11,11 +11,13 @@ import HotDogePage from './pages/HotDogePage/HotDogePage'
 import PotatoPage from './pages/PotatoPage/PotatoPage'
 import DrinksPage from './pages/DrinksPage/DrinksPage'
 import SaucesPage from './pages/SaucesPage/SaucesPage'
-
 import Payment from './pages/PaymentPage/Payment'
+
+import { useTelegram } from './hooks/useTelegram'
 
 const App = () => {
   const dispatch = useDispatch()
+
   let { items, isLoading } = useSelector((state) => state.items)
 
   useEffect(() => {
@@ -39,6 +41,15 @@ const App = () => {
         categoryOrder.indexOf(first.category) -
         categoryOrder.indexOf(second.category)
     )
+
+  const { totalPriceButton, tg } = useTelegram()
+  useEffect(() => {
+    tg.ready()
+  }, [])
+  const { price } = useSelector((state) => state.items)
+  useEffect(() => {
+    totalPriceButton()
+  }, [price, window.location.pathname])
 
   return (
     <div>

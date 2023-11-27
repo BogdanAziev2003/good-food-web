@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useTelegram } from '../../hooks/useTelegram'
 
 import PaymentItem from '../../components/Payment/PaymentItem'
 import Phone from '../../components/Payment/Phone'
@@ -8,6 +9,12 @@ import PaymentComponent from '../../components/Payment/PaymentComponent'
 import Comment from '../../components/Payment/Comment'
 
 const Payment = () => {
+  const [errors, setErrors] = useState({
+    phone: false,
+    deliveryType: false,
+    payMethod: false,
+  })
+
   const { itemInCard } = useSelector((state) => {
     const itemsCount = state.items.itemInCard.reduce((acc, item) => {
       const existingItem = acc.find(
@@ -25,6 +32,72 @@ const Payment = () => {
 
     return { itemInCard: itemsCount }
   })
+
+  const { tg } = useTelegram()
+  const store = useSelector((state) => state.items)
+
+  const onSendData = useCallback(() => {
+    const data = {
+      price: store.price,
+      address: store.address,
+      phone: store.phone,
+      deliveryType: store.deliveryType,
+      payMethod: store.payMethod,
+      comment: store.comment,
+      itemInCard: store.itemInCard,
+    }
+    tg.sendData(JSON.stringify(data))
+  }, [
+    store.price,
+    store.address,
+    store.phone,
+    store.deliveryType,
+    store.payMethod,
+    store.itemInCard,
+    store.comment,
+  ])
+
+  useEffect(() => {
+    if (
+      !store.phone ||
+      !store.deliveryType ||
+      !store.payMethod ||
+      (store.deliveryType === 'delivery' && !store.address)
+    ) {
+      if (store.deliveryType === 'delivery' && !store.address) {
+        setErrors({
+          deliveryType: true,
+          address: true,
+        })
+      } else {
+        setErrors({
+          phone: !store.phone,
+          deliveryType: !store.deliveryType,
+          payMethod: !store.payMethod,
+          address: false,
+        })
+      }
+    } else {
+      setErrors({
+        phone: false,
+        deliveryType: false,
+        payMethod: false,
+        address: false,
+      })
+
+      tg.onEvent('mainButtonClicked', onSendData)
+    }
+    return () => {
+      tg.offEvent('mainButtonClicked', onSendData)
+    }
+  }, [
+    onSendData,
+    store.deliveryType,
+    store.payMethod,
+    store.phone,
+    store.address,
+    tg,
+  ])
 
   return (
     <div className="main">
