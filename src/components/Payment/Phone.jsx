@@ -6,6 +6,10 @@ const Phone = ({ phoneError }) => {
   const dispatch = useDispatch()
   const { phone } = useSelector((state) => state.items)
 
+  useEffect(() => {
+    phoneError = phoneError
+  }, [phoneError])
+
   const [phoneValue, setPhone] = useState('+7')
   const [errorMessage, setErrorMessage] = useState(false)
   const handlerPhoneChange = (event) => {
