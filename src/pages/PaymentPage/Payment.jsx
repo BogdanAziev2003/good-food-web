@@ -40,6 +40,9 @@ const Payment = () => {
   console.log(store.phone)
 
   const onSendData = useCallback(() => {
+    if (store.phone === null) {
+      setPhoneError(true)
+    }
     const data = {
       price: store.price,
       address: store.address,
@@ -91,9 +94,6 @@ const Payment = () => {
     }
     return () => {
       tg.offEvent('mainButtonClicked', onSendData)
-      if (store.phone === null) {
-        setPhoneError(true)
-      }
     }
   }, [
     onSendData,
