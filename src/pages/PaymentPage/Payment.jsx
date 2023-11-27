@@ -90,12 +90,11 @@ const Payment = () => {
         (store.deliveryType === 'delivery' && store.address !== null)
       ) {
         tg.onEvent('mainButtonClicked', onSendData)
-      } else {
         if (!store.phone) {
           errors.phone = true
         }
-        if (store.deliveryType === 'delivery' && !store.address) {
-        }
+      } else {
+        // if (store.deliveryType === 'delivery' && !store.address) {
       }
     }
     return () => {
