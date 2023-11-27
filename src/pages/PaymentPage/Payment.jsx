@@ -85,7 +85,7 @@ const Payment = () => {
         payMethod: false,
         address: false,
       })
-      if (!store.phone) {
+      if (store.phone !== null) {
         tg.onEvent('mainButtonClicked', onSendData)
       }
     }
