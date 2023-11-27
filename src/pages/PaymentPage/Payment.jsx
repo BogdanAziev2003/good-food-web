@@ -91,6 +91,11 @@ const Payment = () => {
       ) {
         tg.onEvent('mainButtonClicked', onSendData)
       } else {
+        if (!store.phone) {
+          errors.phone = true
+        }
+        if (store.deliveryType === 'delivery' && !store.address) {
+        }
       }
     }
     return () => {
@@ -116,7 +121,7 @@ const Payment = () => {
         </div>
       </div>
       {/* Номер телефона */}
-      <Phone />
+      <Phone errorPhone={errors.phone} />
       {/* Способ Оплаты */}
       <PayMethod />
       {/* Способ доставки */}
