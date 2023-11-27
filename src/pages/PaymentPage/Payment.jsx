@@ -37,6 +37,7 @@ const Payment = () => {
 
   const { tg } = useTelegram()
   const store = useSelector((state) => state.items)
+  console.log(store.phone)
 
   const onSendData = useCallback(() => {
     const data = {
@@ -93,9 +94,6 @@ const Payment = () => {
     }
     return () => {
       tg.offEvent('mainButtonClicked', onSendData)
-      if (store.phone === null) {
-        setPhoneError(true)
-      }
     }
   }, [
     onSendData,
