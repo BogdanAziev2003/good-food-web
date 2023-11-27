@@ -13,6 +13,7 @@ const Payment = () => {
     phone: false,
     deliveryType: false,
     payMethod: false,
+    address: false,
   })
 
   const { itemInCard } = useSelector((state) => {
@@ -84,7 +85,11 @@ const Payment = () => {
         payMethod: false,
         address: false,
       })
-      // tg.onEvent('mainButtonClicked', onSendData)
+      if (!errors.phone && !errors.address) {
+        tg.onEvent('mainButtonClicked', onSendData)
+      } else {
+        console.log('error')
+      }
     }
     return () => {
       tg.offEvent('mainButtonClicked', onSendData)
