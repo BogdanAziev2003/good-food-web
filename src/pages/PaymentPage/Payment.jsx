@@ -47,7 +47,9 @@ const Payment = () => {
       itemInCard: store.itemInCard,
     }
     tg.sendData(JSON.stringify(data))
+    debugger
   }, [
+    tg,
     store.price,
     store.address,
     store.phone,
