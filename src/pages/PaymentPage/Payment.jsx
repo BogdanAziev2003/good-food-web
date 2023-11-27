@@ -85,7 +85,9 @@ const Payment = () => {
         payMethod: false,
         address: false,
       })
-      tg.onEvent('mainButtonClicked', onSendData)
+      if (!errors.phone) {
+        tg.onEvent('mainButtonClicked', onSendData)
+      }
     }
     return () => {
       tg.offEvent('mainButtonClicked', onSendData)
