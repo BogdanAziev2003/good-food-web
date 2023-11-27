@@ -121,7 +121,8 @@ const Payment = () => {
         </div>
       </div>
       {/* Номер телефона */}
-      <Phone phoneError={phoneError} />
+      {phoneError && <Phone phoneError={phoneError} />}
+
       {/* Способ Оплаты */}
       <PayMethod />
       {/* Способ доставки */}
