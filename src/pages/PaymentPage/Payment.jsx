@@ -87,6 +87,9 @@ const Payment = () => {
         address: false,
       })
       tg.onEvent('mainButtonClicked', onSendData)
+      if (store.phone === null) {
+        setPhoneError(true)
+      }
     }
     return () => {
       tg.offEvent('mainButtonClicked', onSendData)
