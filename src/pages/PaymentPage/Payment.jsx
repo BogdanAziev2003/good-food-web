@@ -88,8 +88,7 @@ const Payment = () => {
       })
 
       tg.onEvent('mainButtonClicked', onSendData)
-      setTimeout(() => {}, 500)
-      if (store.phone === null) {
+      if (!store.phone) {
         setPhoneError(true)
       }
     }
