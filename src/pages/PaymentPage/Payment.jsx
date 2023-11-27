@@ -85,8 +85,13 @@ const Payment = () => {
         payMethod: false,
         address: false,
       })
-      if (store.phone !== null) {
+      if (
+        store.phone !== null &&
+        store.deliveryType === 'delivery' &&
+        store.address !== null
+      ) {
         tg.onEvent('mainButtonClicked', onSendData)
+      } else {
       }
     }
     return () => {
