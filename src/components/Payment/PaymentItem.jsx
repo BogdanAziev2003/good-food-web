@@ -6,7 +6,7 @@ const PaymentItem = ({ item }) => {
     <div className="item">
       <div className="item__image">
         <img
-          src={'http://94.241.141.165:8080/api/menu/image/' + item.imageurl}
+          src={'https://server.tg-delivery.ru/api/menu/image/' + item.imageurl}
           alt=""
         />
       </div>

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'http://94.241.141.165:8080/api/menu',
+  baseURL: 'https://server.tg-delivery.ru/api/menu',
   validateStatus: () => true,
 })
 
