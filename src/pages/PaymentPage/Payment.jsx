@@ -91,7 +91,7 @@ const Payment = () => {
         (store.deliveryType === 'delivery' && store.address !== null)
       ) {
         tg.onEvent('mainButtonClicked', onSendData)
-        if (tg.onEvent('mainButtonClicked')) {
+        if (!store.phone) {
           setPhoneError(true)
         }
       } else {
@@ -121,8 +121,7 @@ const Payment = () => {
         </div>
       </div>
       {/* Номер телефона */}
-      {phoneError && <Phone phoneError={phoneError} />}
-
+      <Phone phoneError={phoneError} />
       {/* Способ Оплаты */}
       <PayMethod />
       {/* Способ доставки */}

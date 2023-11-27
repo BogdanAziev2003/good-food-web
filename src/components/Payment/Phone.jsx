@@ -8,7 +8,7 @@ const Phone = ({ phoneError }) => {
 
   useEffect(() => {
     phoneError = phoneError
-  }, [])
+  }, [phoneError])
 
   const [phoneValue, setPhone] = useState('+7')
   const [errorMessage, setErrorMessage] = useState(false)
