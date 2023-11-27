@@ -86,9 +86,8 @@ const Payment = () => {
         address: false,
       })
       if (
-        store.phone !== null &&
-        store.deliveryType === 'delivery' &&
-        store.address !== null
+        store.phone !== null ||
+        (store.deliveryType === 'delivery' && store.address !== null)
       ) {
         tg.onEvent('mainButtonClicked', onSendData)
       } else {
