@@ -117,8 +117,8 @@ const Payment = () => {
         </div>
       </div>
       {/* Номер телефона */}
-      <Phone phoneError={phoneError} />
-      {phoneError && 'Введите номер телефона'}
+      <Phone />
+      {phoneError && <p>'Введите номер телефона'</p>}
       {/* Способ Оплаты */}
       <PayMethod />
       {/* Способ доставки */}
