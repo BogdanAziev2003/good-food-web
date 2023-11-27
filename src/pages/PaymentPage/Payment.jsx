@@ -90,7 +90,14 @@ const Payment = () => {
     return () => {
       tg.offEvent('mainButtonClicked', onSendData)
     }
-  }, [store.deliveryType, store.payMethod, store.phone, store.address])
+  }, [
+    onSendData,
+    store.deliveryType,
+    store.payMethod,
+    store.phone,
+    store.address,
+    tg,
+  ])
 
   return (
     <div className="main">
