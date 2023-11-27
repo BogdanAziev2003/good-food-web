@@ -15,6 +15,7 @@ const Payment = () => {
     payMethod: false,
     address: false,
   })
+  const [phoneError, setPhoneError] = useState(false)
 
   const { itemInCard } = useSelector((state) => {
     const itemsCount = state.items.itemInCard.reduce((acc, item) => {
@@ -91,7 +92,7 @@ const Payment = () => {
       ) {
         tg.onEvent('mainButtonClicked', onSendData)
         if (!store.phone) {
-          errors.phone = true
+          setPhoneError(true)
         }
       } else {
         // if (store.deliveryType === 'delivery' && !store.address) {
@@ -120,7 +121,7 @@ const Payment = () => {
         </div>
       </div>
       {/* Номер телефона */}
-      <Phone errorPhone={errors.phone} />
+      <Phone errorPhone={phoneError} />
       {/* Способ Оплаты */}
       <PayMethod />
       {/* Способ доставки */}
