@@ -58,7 +58,7 @@ const Header = () => {
             className={`menu__item ${activeItem === 'longer' ? 'active' : ''}`}
           >
             <Link to="/longer" onClick={() => setActiveItem('longer')}>
-              <p>Лонегры</p>
+              <p>Лонгеры</p>
             </Link>
           </div>
           <div

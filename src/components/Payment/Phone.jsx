@@ -41,13 +41,13 @@ const Phone = () => {
           </div>
           <div className="phone__block">
             <div className="phone__input phone__text-done">
-              {'+7 (' +
+              {'+7 ' +
                 phone.slice(2, 5) +
-                ')-' +
+                ' ' +
                 phone.slice(5, 8) +
-                '-' +
+                ' ' +
                 phone.slice(8, 10) +
-                '-' +
+                ' ' +
                 phone.slice(10, 12)}
             </div>
             <button
