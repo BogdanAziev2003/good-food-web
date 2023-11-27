@@ -90,8 +90,6 @@ const Payment = () => {
       tg.onEvent('mainButtonClicked', onSendData)
       if (store.phone === null) {
         setPhoneError(true)
-      } else {
-        setPhoneError(false)
       }
     }
     return () => {
