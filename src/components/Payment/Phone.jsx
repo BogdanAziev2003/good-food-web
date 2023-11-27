@@ -86,7 +86,7 @@ const Phone = ({ errorPhone }) => {
           </div>
           <div className="phone__error">{errorMessage && errorMessage}</div>
           <div className="phone__error">
-            {!!errorPhone && 'Введите номер телефона'}
+            {errorPhone && 'Введите номер телефона'}
           </div>
         </>
       )}
