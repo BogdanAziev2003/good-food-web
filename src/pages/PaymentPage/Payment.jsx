@@ -50,6 +50,10 @@ const Payment = () => {
       itemInCard: store.itemInCard.map((item) => ({
         title: item.title,
         price: item.price,
+        ...(item.category === 'Сэндвичи' && {
+          snack: item.snack,
+          sauces: item.sauces,
+        }),
       })),
     }
     tg.sendData(JSON.stringify(data))
