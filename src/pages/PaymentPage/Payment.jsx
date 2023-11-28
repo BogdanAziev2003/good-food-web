@@ -50,6 +50,7 @@ const Payment = () => {
       itemInCard: store.itemInCard.map((item) => ({
         title: item.title,
         price: item.price,
+        modifiers: item.modifiers,
         ...(item.category === 'Сэндвичи' && {
           snack: item.snack,
           sause: item.sause,
