@@ -15,7 +15,6 @@ const style = {
   padding: '0px 20px 20px 20px',
   bgcolor: '#33312d',
   borderRadius: '15px',
-  border: '4px solid red',
 }
 
 export const BasicModal = React.memo(({ item }) => {
