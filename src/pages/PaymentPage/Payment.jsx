@@ -54,18 +54,13 @@ const Payment = () => {
           newItem.sause = item.sause
         }
         if (item.modifiers && item.modifiers.length > 0) {
-          const filteredModifiers = item.modifiers.filter(
-            (modifier) => modifier.amount > 0
-          )
-          if (filteredModifiers.length > 0) {
-            newItem.modifiers = filteredModifiers.map((modifier) => ({
+          newItem.modifiers = item.modifiers
+            .filter((modifier) => modifier.amount > 0)
+            .map((modifier) => ({
               title: modifier.title,
               price: modifier.price,
               amount: modifier.amount,
             }))
-          } else {
-            newItem.modifiers = []
-          }
         } else {
           newItem.modifiers = []
         }
