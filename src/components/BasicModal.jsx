@@ -35,6 +35,10 @@ export const BasicModal = React.memo(({ item }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    console.log(itemInCard)
+  }, [itemInCard])
+
+  useEffect(() => {
     const updateItem = itemInCard.find(
       (el) => curItem?.idInCard === el.idInCard
     )

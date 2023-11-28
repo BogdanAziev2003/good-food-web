@@ -3,9 +3,7 @@ import { addSause, addSnack } from '../store/features/itemsSlice'
 import { useDispatch } from 'react-redux'
 
 const Dropdown = ({ selected, setSelected, items, curItem, isActiveDrop }) => {
-  useEffect(() => {
-    console.log(isActiveDrop)
-  }, [isActiveDrop])
+  useEffect(() => {}, [isActiveDrop])
   const dispatch = useDispatch()
   const [isActive, setIsActive] = useState(isActiveDrop)
 
