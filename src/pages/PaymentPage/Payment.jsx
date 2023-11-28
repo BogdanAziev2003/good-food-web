@@ -47,10 +47,7 @@ const Payment = () => {
       deliveryType: store.deliveryType,
       payMethod: store.payMethod,
       comment: store.comment,
-      itemInCard: store.itemInCard.map((item) => ({
-        title: item.title,
-        price: item.price,
-      })),
+      itemInCard: store.itemInCard,
     }
     tg.sendData(JSON.stringify(data))
   }, [
