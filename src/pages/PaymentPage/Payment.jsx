@@ -52,7 +52,7 @@ const Payment = () => {
         price: item.price,
         ...(item.category === 'Сэндвичи' && {
           snack: item.snack,
-          sauces: item.sauces,
+          sauce: item.sauce,
         }),
       })),
     }
