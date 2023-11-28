@@ -182,7 +182,7 @@ export const BasicModal = React.memo(({ item }) => {
                     >
                       +
                     </button>
-                    <p>{el.amount}</p>
+                    <p className="mod__el__amount">{el.amount}</p>
                     <button
                       className="mod__add-btn mod__add-btn-minus"
                       onClick={() => {
