@@ -61,34 +61,8 @@ const Payment = () => {
   ])
 
   useEffect(() => {
-    if (
-      !store.phone ||
-      !store.deliveryType ||
-      !store.payMethod ||
-      (store.deliveryType === 'delivery' && !store.address)
-    ) {
-      if (store.deliveryType === 'delivery' && !store.address) {
-        setErrors({
-          deliveryType: true,
-          address: true,
-        })
-      } else {
-        setErrors({
-          phone: !store.phone,
-          deliveryType: !store.deliveryType,
-          payMethod: !store.payMethod,
-          address: false,
-        })
-      }
-    } else {
-      setErrors({
-        phone: false,
-        deliveryType: false,
-        payMethod: false,
-        address: false,
-      })
-      tg.onEvent('mainButtonClicked', onSendData)
-    }
+    tg.onEvent('mainButtonClicked', onSendData)
+
     return () => {
       tg.offEvent('mainButtonClicked', onSendData)
     }
