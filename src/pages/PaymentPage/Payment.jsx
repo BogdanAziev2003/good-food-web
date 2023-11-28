@@ -39,6 +39,13 @@ const Payment = () => {
   const store = useSelector((state) => state.items)
   console.log(store.phone)
 
+  function formatBytes(bytes) {
+    if (bytes < 1024) return bytes + ' байт'
+    else if (bytes < 1048576) return (bytes / 1024).toFixed(2) + ' КБ'
+    else if (bytes < 1073741824) return (bytes / 1048576).toFixed(2) + ' МБ'
+    else return (bytes / 1073741824).toFixed(2) + ' ГБ'
+  }
+
   const onSendData = useCallback(() => {
     const data = {
       price: store.price,
@@ -50,6 +57,8 @@ const Payment = () => {
       itemInCard: store.itemInCard,
     }
     tg.sendData(JSON.stringify(data))
+    const dataSize = dataString.length
+    let formattedSize = formatBytes(dataSize)
   }, [
     store.price,
     store.address,
@@ -113,7 +122,7 @@ const Payment = () => {
       </div>
       {/* Номер телефона */}
       <Phone />
-      {phoneError && <p>'Введите номер телефона'</p>}
+      {formattedSize}
       {/* Способ Оплаты */}
       <PayMethod />
       {/* Способ доставки */}
