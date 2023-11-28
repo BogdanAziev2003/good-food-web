@@ -47,15 +47,25 @@ const Payment = () => {
       deliveryType: store.deliveryType,
       payMethod: store.payMethod,
       comment: store.comment,
-      itemInCard: store.itemInCard.map((item) => ({
-        title: item.title,
-        price: item.price,
-        modifiers: item.modifiers,
-        ...(item.category === 'Сэндвичи' && {
-          snack: item.snack,
-          sause: item.sause,
-        }),
-      })),
+      itemInCard: store.itemInCard.map((item) => {
+        const newItem = { title: item.title, price: item.price }
+        if (item.category === 'Сэндвичи') {
+          newItem.snack = item.snack
+          newItem.sause = item.sause
+        }
+        if (item.modifiers && item.modifiers.length > 0) {
+          newItem.modifiers = item.modifiers
+            .filter((modifier) => modifier.amount > 0)
+            .map((modifier) => ({
+              title: modifier.title,
+              price: modifier.price,
+              amount: modifier.amount,
+            }))
+        } else {
+          newItem.modifiers = []
+        }
+        return newItem
+      }),
     }
     tg.sendData(JSON.stringify(data))
   }, [
