@@ -1,5 +1,6 @@
+import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export function useTelegram() {
   const navigate = useNavigate()
@@ -18,9 +19,9 @@ export function useTelegram() {
   } catch (error) {}
 
   Telegram.WebApp.onEvent('mainButtonClicked', () => {
-    if (tg.MainButton.text === `Мой заказ: ${price} ₽`) {
-      return <Link to="/payment"></Link>
-    }
+    useEffect(() => {
+      if (tg.MainButton.text === `Мой заказ: ${price} ₽`) navigate('/payment')
+    }, [Telegram.WebApp.onEvent])
   })
 
   // if (window.location.pathname === '/') {
