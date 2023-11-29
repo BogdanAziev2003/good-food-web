@@ -1,9 +1,8 @@
 import { useSelector } from 'react-redux'
-import { useNavigate, useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export function useTelegram() {
   const navigate = useNavigate()
-  const history = useHistory()
 
   const { price } = useSelector((state) => state.items)
   const store = useSelector((state) => state.items)
@@ -21,7 +20,7 @@ export function useTelegram() {
 
   tg.MainButton.onClick(() => {
     if (tg.MainButton.text === `Мой заказ: ${price} ₽`) {
-      history.push('/payment', { replace: true })
+      navigate('/payment', { replace: true })
     }
   })
 
