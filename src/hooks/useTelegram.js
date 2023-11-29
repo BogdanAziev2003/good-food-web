@@ -30,7 +30,7 @@ export function useTelegram() {
     if (window.location.pathname === '/payment') {
       tg.BackButton.onClick(() => navigate('/'))
     } else {
-      tg.BackButton.onClick(() => navigate(-1))
+      tg.BackButton.onClick(() => window.history.back())
     }
   }
 
