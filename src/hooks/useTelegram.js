@@ -13,8 +13,7 @@ export function useTelegram() {
   tg.MainButton.textColor = '#333'
   tg.MainButton.color = '#ffdf2c'
   tg.backgroundColor = '#333'
-  tg.headerColor = '#333'
-  tg.setHeaderColor = '#F00'
+  tg.headerColor = '#ffdf2c'
 
   console.log(tg)
 
