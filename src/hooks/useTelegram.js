@@ -35,12 +35,7 @@ export function useTelegram() {
   //   tg.BackButton.onClick(() => window.history.back())
   // }
 
-  if (location.pathname === '/') {
-    tg.BackButton.hide()
-  } else {
-    tg.BackButton.show()
-    tg.BackButton.onClick(() => window.history.back())
-  }
+  tg.BackButton.onClick(() => window.history.back())
 
   const totalPriceButton = () => {
     if (window.location.pathname !== '/payment' && price !== 0) {
