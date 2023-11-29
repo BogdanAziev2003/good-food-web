@@ -8,7 +8,7 @@ import PayMethod from '../../components/Payment/PayMethod'
 import PaymentComponent from '../../components/Payment/PaymentComponent'
 import Comment from '../../components/Payment/Comment'
 
-const Payment = () => {
+const Payment = React.memo(() => {
   const [errors, setErrors] = useState({
     phone: false,
     deliveryType: false,
@@ -141,6 +141,6 @@ const Payment = () => {
       <Comment />
     </div>
   )
-}
+})
 
 export default Payment
