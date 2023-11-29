@@ -16,7 +16,7 @@ export function useTelegram() {
   try {
     tg.backgroundColor = '#2b2a28'
     tg.headerColor = '#2b2a28'
-    tg.textColor = '#ffdf2c'
+    tg.setHeaderColor('#ffdf2c')
   } catch (error) {}
 
   console.log(tg)
