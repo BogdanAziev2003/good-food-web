@@ -20,7 +20,7 @@ export function useTelegram() {
 
   tg.MainButton.onClick(() => {
     if (tg.MainButton.text === `Мой заказ: ${price} ₽`) {
-      navigate('/payment', { replace: true })
+      navigate('/payment', { replace: false })
     }
   })
 
