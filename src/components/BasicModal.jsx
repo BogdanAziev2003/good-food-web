@@ -103,8 +103,6 @@ export const BasicModal = React.memo(({ item }) => {
                         {count++}
                       </button>
                     )
-                  } else {
-                    return <></>
                   }
                 })}
               </div>
