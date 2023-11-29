@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
 export function useTelegram() {
   useEffect(() => {
@@ -8,6 +9,7 @@ export function useTelegram() {
   }, [window.location.pathname])
 
   const navigate = useNavigate()
+  const location = useLocation()
   const { price } = useSelector((state) => state.items)
   const store = useSelector((state) => state.items)
   const data = { ...store }
@@ -26,11 +28,17 @@ export function useTelegram() {
     if (tg.MainButton.text === `Мой заказ: ${price} ₽`) navigate('/payment')
   })
 
-  if (window.location.pathname === '/') {
+  // if (window.location.pathname === '/') {
+  //   tg.BackButton.hide()
+  // } else {
+  //   tg.BackButton.show()
+  //   tg.BackButton.onClick(() => window.history.back())
+  // }
+
+  if (location.pathname === '/') {
     tg.BackButton.hide()
   } else {
     tg.BackButton.show()
-
     tg.BackButton.onClick(() => window.history.back())
   }
 
