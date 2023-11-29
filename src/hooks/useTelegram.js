@@ -12,6 +12,7 @@ export function useTelegram() {
   tg.expand()
   tg.MainButton.textColor = '#333'
   tg.MainButton.color = '#ffdf2c'
+  tg.bg_color = '#f00'
   try {
     tg.backgroundColor = '#2b2a28'
     tg.headerColor = '#2b2a28'
@@ -26,7 +27,7 @@ export function useTelegram() {
   } else {
     tg.BackButton.show()
     if (window.location.pathname === '/payment') {
-      tg.BackButton.onClick(() => navigate(-1))
+      tg.BackButton.onClick(() => navigate('/'))
     } else {
       tg.BackButton.onClick(() => window.history.back())
     }
