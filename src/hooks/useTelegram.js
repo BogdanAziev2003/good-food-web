@@ -34,8 +34,14 @@ export function useTelegram() {
   //   tg.BackButton.show()
   //   tg.BackButton.onClick(() => window.history.back())
   // }
-  tg.BackButton.show()
-  tg.BackButton.onClick(() => window.history.back())
+  if (window.location.pathname === '/') {
+    tg.BackButton.hide()
+  } else {
+    tg.BackButton.show()
+    Telegram.WebApp.onEvent('backButtonClicked', () => {
+      window.history.back()
+    })
+  }
 
   const totalPriceButton = () => {
     if (window.location.pathname !== '/payment' && price !== 0) {
