@@ -17,8 +17,6 @@ export function useTelegram() {
     tg.headerColor = '#2b2a28'
   } catch (error) {}
 
-  console.log(tg)
-
   tg.MainButton.onClick(() => {
     if (tg.MainButton.text === `Мой заказ: ${price} ₽`) navigate('/payment')
   })
