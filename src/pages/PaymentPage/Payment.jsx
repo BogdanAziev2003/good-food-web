@@ -80,6 +80,7 @@ const Payment = React.memo(() => {
   ])
 
   useEffect(() => {
+    console.log(message)
     if (
       !store.phone ||
       !store.deliveryType ||
@@ -117,7 +118,6 @@ const Payment = React.memo(() => {
     store.payMethod,
     store.phone,
     store.address,
-    tg,
   ])
 
   return (
