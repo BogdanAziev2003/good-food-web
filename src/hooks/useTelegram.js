@@ -5,7 +5,6 @@ import { useLocation } from 'react-router-dom'
 
 export function useTelegram() {
   const navigate = useNavigate()
-  const location = useLocation()
   const { price } = useSelector((state) => state.items)
   const store = useSelector((state) => state.items)
   const data = { ...store }
@@ -40,15 +39,15 @@ export function useTelegram() {
   }
 
   const totalPriceButton = () => {
-    if (window.location.pathname !== '/payment' && price !== 0) {
-      tg.MainButton.show()
-      tg.MainButton.text = `Мой заказ: ${price} ₽`
-    }
-    if (window.location.pathname === '/payment' && price !== 0) {
-      tg.MainButton.text = `Оплатить: ${price} ₽`
-    } else if (price === 0) {
-      tg.MainButton.hide()
-    }
+    // if (window.location.pathname !== '/payment' && price !== 0) {
+    //   tg.MainButton.show()
+    //   tg.MainButton.text = `Мой заказ: ${price} ₽`
+    // }
+    // if (window.location.pathname === '/payment' && price !== 0) {
+    //   tg.MainButton.text = `Оплатить: ${price} ₽`
+    // } else if (price === 0) {
+    //   tg.MainButton.hide()
+    // }
   }
 
   return {
