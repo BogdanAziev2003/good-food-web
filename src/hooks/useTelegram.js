@@ -26,7 +26,7 @@ export function useTelegram() {
   } else {
     tg.BackButton.show()
     if (window.location.pathname === '/payment') {
-      tg.BackButton.onClick(() => window.history.back())
+      tg.BackButton.onClick(() => navigate(-1))
     } else {
       tg.BackButton.onClick(() => window.history.back())
     }
