@@ -1,8 +1,10 @@
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 export function useTelegram() {
   const navigate = useNavigate()
+  const [backUrl, setBackUrl] = useState()
 
   const { price } = useSelector((state) => state.items)
   const store = useSelector((state) => state.items)
@@ -20,7 +22,8 @@ export function useTelegram() {
 
   tg.MainButton.onClick(() => {
     if (tg.MainButton.text === `Мой заказ: ${price} ₽`) {
-      navigate('/payment', { replace: false })
+      setBackUrl(window.location.pathname)
+      navigate('/payment', { replace: true })
     }
   })
 
@@ -35,7 +38,12 @@ export function useTelegram() {
   else {
     tg.BackButton.show()
     Telegram.WebApp.onEvent('backButtonClicked', () => {
-      window.history.back()
+      if (backUrl) {
+        navigate(`${backUrl}`)
+      } else {
+        setBackUrl(false)
+        window.history.back()
+      }
     })
   }
 
