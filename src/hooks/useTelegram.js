@@ -8,7 +8,7 @@ export function useTelegram() {
   const store = useSelector((state) => state.items)
   const data = { ...store }
   delete data.items
-
+  let a = 0
   const tg = window.Telegram.WebApp
   tg.expand()
   tg.MainButton.textColor = '#333'
