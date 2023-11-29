@@ -41,9 +41,9 @@ const Dropdown = ({ selected, setSelected, items, curItem, isActiveDrop }) => {
       </div>
       {isActive && isActiveDrop && (
         <div className="dropdown-content">
-          {items.map((item) => (
+          {items.map((item, id) => (
             <div
-              key={item.idInCard}
+              key={id}
               onClick={() => {
                 handleAddSnack(item)
               }}
