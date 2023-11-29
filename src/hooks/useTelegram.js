@@ -4,10 +4,6 @@ import { useNavigate } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 
 export function useTelegram() {
-  useEffect(() => {
-    console.log(window.location.pathname)
-  }, [window.location.pathname])
-
   const navigate = useNavigate()
   const location = useLocation()
   const { price } = useSelector((state) => state.items)
