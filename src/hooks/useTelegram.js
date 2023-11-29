@@ -27,11 +27,13 @@ export function useTelegram() {
 
   if (window.location.pathname === '/') {
     tg.BackButton.hide()
-  } else if (window.location.pathname === '/payment') {
-    Telegram.WebApp.onEvent('backButtonClicked', () => {
-      navigate('/')
-    })
-  } else {
+  }
+  // else if (window.location.pathname === '/payment') {
+  //   Telegram.WebApp.onEvent('backButtonClicked', () => {
+  //     navigate('/')
+  //   })
+  // }
+  else {
     tg.BackButton.show()
     Telegram.WebApp.onEvent('backButtonClicked', () => {
       window.history.back()
