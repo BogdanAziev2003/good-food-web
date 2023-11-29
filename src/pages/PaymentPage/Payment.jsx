@@ -40,10 +40,6 @@ const Payment = () => {
 
   const { tg } = useTelegram()
   const store = useSelector((state) => state.items)
-  console.log(store.phone)
-  Telegram.WebApp.onEvent('backButtonClicked', () => {
-    window.history.back()
-  })
   const onSendData = useCallback(() => {
     const data = {
       price: store.price,

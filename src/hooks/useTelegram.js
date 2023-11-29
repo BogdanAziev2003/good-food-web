@@ -20,7 +20,7 @@ export function useTelegram() {
     tg.headerColor = '#2b2a28'
   } catch (error) {}
 
-  tg.MainButton.onClick(() => {
+  Telegram.WebApp.onEvent('mainButtonClicked', () => {
     if (tg.MainButton.text === `Мой заказ: ${price} ₽`) navigate('/payment')
   })
 
