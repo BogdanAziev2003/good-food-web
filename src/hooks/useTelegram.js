@@ -28,7 +28,7 @@ export function useTelegram() {
   if (window.location.pathname === '/payment') {
     tg.BackButton.show()
     Telegram.WebApp.onEvent('backButtonClicked', () => {
-      navigate('/', { replace: true })
+      navigate('/', { replace: false })
     })
   } else {
     tg.BackButton.show()
