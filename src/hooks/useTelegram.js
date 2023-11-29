@@ -1,12 +1,7 @@
-import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 export function useTelegram() {
-  useEffect(() => {
-    console.log(window.location.pathname)
-  }, [window.location.pathname])
-
   const navigate = useNavigate()
   const { price } = useSelector((state) => state.items)
   const store = useSelector((state) => state.items)
@@ -31,7 +26,7 @@ export function useTelegram() {
   } else {
     tg.BackButton.show()
     if (window.location.pathname === '/payment') {
-      tg.BackButton.onClick(() => navigate('/'))
+      tg.BackButton.onClick(() => window.history.back())
     } else {
       tg.BackButton.onClick(() => window.history.back())
     }
