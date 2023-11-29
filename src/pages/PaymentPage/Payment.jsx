@@ -22,9 +22,12 @@ const Payment = () => {
       const existingItem = acc.find(
         (i) =>
           i.id === item.id &&
+          i.sause === item.sause &&
+          i.snack === item.snack &&
           JSON.stringify(i.modifiers) === JSON.stringify(item.modifiers)
       )
       if (existingItem) {
+        console.log(item)
         existingItem.count += 1
       } else {
         acc.push({ ...item, count: 1 })
