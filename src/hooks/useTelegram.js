@@ -21,7 +21,7 @@ export function useTelegram() {
 
   tg.MainButton.onClick(() => {
     if (tg.MainButton.text === `Мой заказ: ${price} ₽`) {
-      history.push('/payment')
+      history.push('/payment', { replace: true })
     }
   })
 
