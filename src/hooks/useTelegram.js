@@ -14,12 +14,9 @@ export function useTelegram() {
   tg.MainButton.textColor = '#333'
   tg.MainButton.color = '#ffdf2c'
   try {
-    // tg.backgroundColor = '#2b2a28'
-    // tg.headerColor = '#2b2a28'
-    tg.postEvent('web_app_set_header_color', {
-      color_key: 'secondary_bg_color',
-    })
-    tg.postEvent('web_app_set_background_color', { color: '#ff0000' })
+    tg.backgroundColor = '#2b2a28'
+    tg.headerColor = '#2b2a28'
+    tg.footerColor = '#2b2a28'
   } catch (error) {}
 
   Telegram.WebApp.onEvent('mainButtonClicked', () => {
