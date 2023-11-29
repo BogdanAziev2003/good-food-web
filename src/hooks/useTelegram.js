@@ -10,7 +10,7 @@ export function useTelegram() {
 
   const tg = window.Telegram.WebApp
   tg.expand()
-  tg.setTheme('night')
+  tg.setTheme('dark')
   tg.MainButton.textColor = '#333'
   tg.MainButton.color = '#ffdf2c'
 
