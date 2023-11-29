@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
+import { useNavigate, useHistory } from 'react-router-dom'
 
 export function useTelegram() {
   const navigate = useNavigate()
-  const location = useLocation()
+  const history = useHistory()
+
   const { price } = useSelector((state) => state.items)
   const store = useSelector((state) => state.items)
   const data = { ...store }
@@ -20,7 +20,9 @@ export function useTelegram() {
   } catch (error) {}
 
   tg.MainButton.onClick(() => {
-    if (tg.MainButton.text === `Мой заказ: ${price} ₽`) navigate('/payment')
+    if (tg.MainButton.text === `Мой заказ: ${price} ₽`) {
+      history.push('/payment')
+    }
   })
 
   if (window.location.pathname === '/') {
