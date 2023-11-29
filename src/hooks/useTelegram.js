@@ -21,7 +21,7 @@ export function useTelegram() {
   Telegram.WebApp.onEvent('mainButtonClicked', () => {
     useEffect(() => {
       if (tg.MainButton.text === `Мой заказ: ${price} ₽`) navigate('/payment')
-    }, [Telegram.WebApp.onEvent])
+    }, [Telegram.WebApp.onEvent()])
   })
 
   // if (window.location.pathname === '/') {
