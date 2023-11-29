@@ -34,7 +34,11 @@ export function useTelegram() {
   //   tg.BackButton.show()
   //   tg.BackButton.onClick(() => window.history.back())
   // }
-
+  if (location.pathname === '/') {
+    tg.BackButton.hide()
+  } else {
+    tg.BackButton.show()
+  }
   tg.BackButton.onClick(() => window.history.back())
 
   const totalPriceButton = () => {
