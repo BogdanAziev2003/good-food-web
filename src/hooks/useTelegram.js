@@ -14,6 +14,7 @@ export function useTelegram() {
   tg.MainButton.textColor = '#333'
   tg.MainButton.color = '#ffdf2c'
   try {
+    tg.ThemeParams.secondary_bg_color = '#f00'
     tg.backgroundColor = '#2b2a28'
     tg.headerColor = '#2b2a28'
   } catch (error) {}
