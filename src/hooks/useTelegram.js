@@ -12,11 +12,10 @@ export function useTelegram() {
   tg.expand()
   tg.MainButton.textColor = '#333'
   tg.MainButton.color = '#ffdf2c'
-  tg.buttonColor = '#f00'
+  tg.MainButton.backgroundColor = 'red'
   try {
     tg.backgroundColor = '#2b2a28'
     tg.headerColor = '#2b2a28'
-    tg.setHeaderColor('#ffdf2c')
   } catch (error) {}
 
   console.log(tg)
