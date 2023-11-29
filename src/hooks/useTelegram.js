@@ -22,32 +22,20 @@ export function useTelegram() {
     if (tg.MainButton.text === `Мой заказ: ${price} ₽`) navigate('/payment')
   })
 
-  Telegram.WebApp.onEvent('backButtonClicked', () => {
-    if (window.location.pathname === '/') {
-      tg.BackButton.hide()
-    } else {
-      tg.BackButton.show()
-      if (window.location.pathname === '/payment') {
-        navigate('/')
-      } else {
-        window.history.back()
-      }
-    }
-  })
-
-  // if (window.location.pathname === '/') {
-  //   tg.BackButton.hide()
-  // } else if (window.location.pathname === '/payment') {
-  //   tg.BackButton.show()
-  //   Telegram.WebApp.onEvent('backButtonClicked', () => {
-  //     navigate('/')
-  //   })
-  // } else {
-  //   tg.BackButton.show()
-  //   Telegram.WebApp.onEvent('backButtonClicked', () => {
-  //     window.history.back()
-  //   })
-  // }
+  if (window.location.pathname === '/') {
+    tg.BackButton.hide()
+  }
+  if (window.location.pathname === '/payment') {
+    tg.BackButton.show()
+    Telegram.WebApp.onEvent('backButtonClicked', () => {
+      navigate('/', { replace: true })
+    })
+  } else {
+    tg.BackButton.show()
+    Telegram.WebApp.onEvent('backButtonClicked', () => {
+      window.history.back()
+    })
+  }
 
   const totalPriceButton = () => {
     if (window.location.pathname !== '/payment' && price !== 0) {
