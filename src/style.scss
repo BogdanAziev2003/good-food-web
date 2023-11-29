@@ -254,7 +254,6 @@ a {
   background-color: #33312d;
   z-index: 100;
   border-radius: 15px;
-  border: none;
 }
 
 .modal__header {
@@ -266,6 +265,7 @@ a {
   color: var(--second-color);
   margin-top: 15px;
   gap: 10px;
+  border: none;
 
   .modal__header-wrapper {
     overflow: auto;
