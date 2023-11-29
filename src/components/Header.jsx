@@ -7,7 +7,7 @@ import LOGO from '../image/logo.png'
 const Header = () => {
   const [activeItem, setActiveItem] = useState('home')
   useEffect(() => {
-    activeItem = activeItem
+    setActiveItem(activeItem)
   }, [activeItem])
   const location = useLocation()
 
