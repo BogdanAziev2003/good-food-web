@@ -38,26 +38,25 @@ let ViewDropdown = ({ items, additive = null }) => {
       {isActive && (
         <div className="dropdown-content">
           {additive &&
-            additive.map((add) => {
+            additive.map((add, id) => {
               if (add) {
                 return (
-                  <div className="dropdown-item dropdown-item-addictive">
+                  <div
+                    key={id}
+                    className="dropdown-item dropdown-item-addictive"
+                  >
                     {add}
                   </div>
                 )
-              } else {
-                return <></>
               }
             })}
-          {items.map((item) => {
+          {items.map((item, id) => {
             if (item.amount !== 0) {
               return (
-                <div className="dropdown-item">
+                <div key={id} className="dropdown-item">
                   {kitcut(item.title, 10)} x {item.amount}
                 </div>
               )
-            } else {
-              return <></>
             }
           })}
         </div>
