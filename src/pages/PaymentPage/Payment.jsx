@@ -15,7 +15,6 @@ const Payment = React.memo(() => {
     payMethod: false,
     address: false,
   })
-  const [phoneError, setPhoneError] = useState(false)
 
   const { itemInCard } = useSelector((state) => {
     const itemsCount = state.items.itemInCard.reduce((acc, item) => {
@@ -117,6 +116,7 @@ const Payment = React.memo(() => {
     store.payMethod,
     store.phone,
     store.address,
+    tg,
   ])
 
   return (
@@ -131,7 +131,6 @@ const Payment = React.memo(() => {
       </div>
       {/* Номер телефона */}
       <Phone />
-      {phoneError && <p>'Введите номер телефона'</p>}
       {/* Способ Оплаты */}
       <PayMethod />
       {/* Способ доставки */}
