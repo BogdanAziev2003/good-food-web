@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export function useTelegram() {
   const navigate = useNavigate()
@@ -32,7 +32,7 @@ export function useTelegram() {
   } else {
     tg.BackButton.show()
     Telegram.WebApp.onEvent('backButtonClicked', () => {
-      window.history.go(-1)
+      return <Link to="/payment"></Link>
     })
   }
 
