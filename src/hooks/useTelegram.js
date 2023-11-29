@@ -30,7 +30,11 @@ export function useTelegram() {
     tg.BackButton.hide()
   } else {
     tg.BackButton.show()
-    tg.BackButton.onClick(() => window.history.back())
+    if (window.location.pathname === '/payment') {
+      tg.BackButton.onClick(() => window.history.go('/'))
+    } else {
+      tg.BackButton.onClick(() => window.history.back())
+    }
   }
 
   const totalPriceButton = () => {
