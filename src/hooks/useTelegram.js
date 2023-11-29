@@ -1,10 +1,8 @@
-import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 export function useTelegram() {
   const navigate = useNavigate()
-  const [backUrl, setBackUrl] = useState(false)
 
   const { price } = useSelector((state) => state.items)
   const store = useSelector((state) => state.items)
@@ -19,24 +17,22 @@ export function useTelegram() {
     tg.backgroundColor = '#2b2a28'
     tg.headerColor = '#2b2a28'
   } catch (error) {}
-  tg.MainButton.onClick(() => {
-    if (tg.MainButton.text === `Мой заказ: ${price} ₽`) {
-      setBackUrl(window.location.pathname)
-      navigate('/payment')
-    }
+
+  Telegram.WebApp.onEvent('mainButtonClicked', () => {
+    if (tg.MainButton.text === `Мой заказ: ${price} ₽`) navigate('/payment')
   })
 
   if (window.location.pathname === '/') {
     tg.BackButton.hide()
+  } else if (window.location.pathname === '/payment') {
+    tg.BackButton.show()
+    Telegram.WebApp.onEvent('backButtonClicked', () => {
+      navigate('/')
+    })
   } else {
     tg.BackButton.show()
     Telegram.WebApp.onEvent('backButtonClicked', () => {
-      if (backUrl) {
-        navigate(`${backUrl}`)
-      } else {
-        setBackUrl(false)
-        window.history.back()
-      }
+      window.history.back()
     })
   }
 
