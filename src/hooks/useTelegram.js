@@ -18,7 +18,9 @@ export function useTelegram() {
   } catch (error) {}
 
   Telegram.WebApp.onEvent('mainButtonClicked', () => {
-    if (tg.MainButton.text === `Мой заказ: ${price} ₽`) navigate('/payment')
+    if (tg.MainButton.text === `Мой заказ: ${price} ₽`) {
+      return <Link to="/payment"></Link>
+    }
   })
 
   // if (window.location.pathname === '/') {
@@ -32,7 +34,7 @@ export function useTelegram() {
   } else {
     tg.BackButton.show()
     Telegram.WebApp.onEvent('backButtonClicked', () => {
-      return <Link to="/payment"></Link>
+      window.history.back()
     })
   }
 
