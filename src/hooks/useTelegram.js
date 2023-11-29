@@ -32,7 +32,7 @@ export function useTelegram() {
   } else {
     tg.BackButton.show()
     Telegram.WebApp.onEvent('backButtonClicked', () => {
-      window.history.back()
+      window.history.go(-1)
     })
   }
 
