@@ -1,7 +1,12 @@
+import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
 export function useTelegram() {
+  useEffect(() => {
+    console.log(window.location.pathname)
+  }, [window.location.pathname])
+
   const navigate = useNavigate()
   const { price } = useSelector((state) => state.items)
   const store = useSelector((state) => state.items)
@@ -12,7 +17,6 @@ export function useTelegram() {
   tg.expand()
   tg.MainButton.textColor = '#333'
   tg.MainButton.color = '#ffdf2c'
-  tg.bg_color = '#f00'
   try {
     tg.backgroundColor = '#2b2a28'
     tg.headerColor = '#2b2a28'
@@ -26,11 +30,8 @@ export function useTelegram() {
     tg.BackButton.hide()
   } else {
     tg.BackButton.show()
-    if (window.location.pathname === '/payment') {
-      tg.BackButton.onClick(() => navigate('/'))
-    } else {
-      tg.BackButton.onClick(() => window.history.back())
-    }
+
+    tg.BackButton.onClick(() => window.history.back())
   }
 
   const totalPriceButton = () => {
