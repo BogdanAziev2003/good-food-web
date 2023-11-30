@@ -39,6 +39,10 @@ const Payment = React.memo(() => {
   const { tg } = useTelegram()
   const store = useSelector((state) => state.items)
   const onSendData = useCallback(() => {
+    if (store.phone === null) {
+      setPhoneError(true)
+      return
+    }
     const data = {
       price: store.price,
       address: store.address,
@@ -118,6 +122,8 @@ const Payment = React.memo(() => {
     tg,
   ])
 
+  const [phoneError, setPhoneError] = useState(false)
+
   return (
     <div className="main">
       <div className="item-wrapper">
@@ -129,7 +135,7 @@ const Payment = React.memo(() => {
         </div>
       </div>
       {/* Номер телефона */}
-      <Phone />
+      <Phone phoneError={phoneError} />
       {/* Способ Оплаты */}
       <PayMethod />
       {/* Способ доставки */}
