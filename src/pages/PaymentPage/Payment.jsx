@@ -109,9 +109,17 @@ const Payment = React.memo(() => {
         payMethod: false,
         address: false,
       })
+      if (store.phone === null) {
+        setPhoneError(true)
+        return
+      }
       tg.onEvent('mainButtonClicked', onSendData)
     }
     return () => {
+      if (store.phone === null) {
+        setPhoneError(true)
+        return
+      }
       tg.offEvent('mainButtonClicked', onSendData)
     }
   }, [
