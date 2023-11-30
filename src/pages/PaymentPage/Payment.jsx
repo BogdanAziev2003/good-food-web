@@ -122,12 +122,18 @@ const Payment = React.memo(() => {
   const [addressError, setAddressError] = useState(false)
   useEffect(() => {
     tg.onEvent('mainButtonClicked', () => {
-      if (store.phone === null) setPhoneError(true)
+      if (store.phone === null) {
+        setPhoneError(true)
+      } else {
+        setPhoneError(false)
+      }
     })
   }, [tg.onEvent && store.phone])
   useEffect(() => {
     tg.onEvent('mainButtonClicked', () => {
       if (store.address === null && store.deliveryType === 'delivery') {
+        setAddressError(true)
+      } else {
         setAddressError(true)
       }
     })
