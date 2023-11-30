@@ -2,8 +2,21 @@ import React, { useEffect, useState } from 'react'
 import { addSause, addSnack } from '../store/features/itemsSlice'
 import { useDispatch } from 'react-redux'
 
-const Dropdown = ({ selected, setSelected, items, curItem, isActiveDrop }) => {
-  useEffect(() => {}, [isActiveDrop])
+const Dropdown = ({
+  selected,
+  setSelected,
+  items,
+  curItem,
+  isActiveDrop,
+  closeModal,
+  setIsActiveSnack,
+  setIsActiveSause,
+}) => {
+  useEffect(() => {
+    setIsActiveSause(false)
+    setIsActiveSnack(false)
+  }, [closeModal])
+
   const dispatch = useDispatch()
   const [isActive, setIsActive] = useState(isActiveDrop)
 

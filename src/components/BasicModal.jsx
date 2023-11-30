@@ -19,9 +19,16 @@ const style = {
 }
 
 export const BasicModal = React.memo(({ item }) => {
+  const [closeModal, setCloseModal] = useState(false)
   const [open, setOpen] = React.useState(false)
-  const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
+  const handleOpen = () => {
+    setCloseModal(true)
+    setOpen(true)
+  }
+  const handleClose = () => {
+    setCloseModal(false)
+    setOpen(false)
+  }
   let count = 1
   const [activeItem, setActiveItem] = useState(item)
   const { itemInCard } = useSelector((state) => state.items)
@@ -62,11 +69,9 @@ export const BasicModal = React.memo(({ item }) => {
     item = itemInCard.find((el) => el.idInCard === currItem.idInCard)
     setCurValue(item)
     setActiveItem(item)
+    setIsActiveSnack(false)
+    setIsActiveSause(false)
   }
-
-  // useEffect(() => {
-  //   console.log(itemInCard)
-  // }, [itemInCard])
 
   return (
     <div>
@@ -138,6 +143,9 @@ export const BasicModal = React.memo(({ item }) => {
                       setSelected={setSelectedSnack}
                       curItem={curItem}
                       isActiveDrop={isActiveSnack}
+                      closeModal={closeModal}
+                      setIsActiveSnack={setIsActiveSnack}
+                      setIsActiveSause={setIsActiveSause}
                     />
                   </div>
                 </div>
@@ -158,6 +166,9 @@ export const BasicModal = React.memo(({ item }) => {
                       setSelected={setSelectedSause}
                       curItem={curItem}
                       isActiveDrop={isActiveSause}
+                      closeModal={closeModal}
+                      setIsActiveSnack={setIsActiveSnack}
+                      setIsActiveSause={setIsActiveSause}
                     />
                   </div>
                 </div>
