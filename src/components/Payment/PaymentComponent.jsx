@@ -14,6 +14,7 @@ const PaymentComponent = ({ addressError, setAddressError }) => {
     dispatch(setSelectedOption(deliveryType))
     if (deliveryType === 'pickup') {
       dispatch(setClientAddress(null))
+      setAddressError(false)
     }
   }
 
