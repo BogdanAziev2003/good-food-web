@@ -21,7 +21,7 @@ const Comment = () => {
         id="comment"
         onChange={handlerCommentChange}
         placeholder="Укажите дополнительные пожелания или особенности вашего заказа здесь..."
-        maxlength="4"
+        maxlength="100"
       ></textarea>
     </div>
   )
