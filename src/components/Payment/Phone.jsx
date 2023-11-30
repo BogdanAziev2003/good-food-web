@@ -75,6 +75,9 @@ const Phone = () => {
                 name="phone"
                 id="phone"
                 inputMode="numeric"
+                onPaste={(e) => {
+                  e.preventDefault()
+                }}
               />
             </div>
             <button

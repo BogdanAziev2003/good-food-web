@@ -26,7 +26,6 @@ const Payment = React.memo(() => {
           JSON.stringify(i.modifiers) === JSON.stringify(item.modifiers)
       )
       if (existingItem) {
-        console.log(item)
         existingItem.count += 1
       } else {
         acc.push({ ...item, count: 1 })
