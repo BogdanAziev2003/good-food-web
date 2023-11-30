@@ -129,8 +129,7 @@ const Payment = React.memo(() => {
     tg.onEvent('mainButtonClicked', () => {
       if (store.address === null && store.deliveryType === 'delivery') {
         setAddressError(true)
-      }
-      if ((store.deliveryType = 'pickup')) {
+      } else {
         setAddressError(false)
       }
     })
