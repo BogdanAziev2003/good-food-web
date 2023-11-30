@@ -18,6 +18,7 @@ const Comment = () => {
         className="comment__textarea"
         onChange={handlerCommentChange}
         placeholder="Укажите дополнительные пожелания или особенности вашего заказа здесь..."
+        wrap="off"
       ></textarea>
     </div>
   )
