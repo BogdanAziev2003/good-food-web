@@ -42,7 +42,7 @@ export function useTelegram() {
       tg.MainButton.text = `Мой заказ: ${price} ₽`
     }
     if (window.location.pathname === '/payment' && price !== 0) {
-      tg.MainButton.text = `Оплатить: ${price} ₽`
+      tg.MainButton.text = `Заказать: ${price} ₽`
     } else if (price === 0) {
       tg.MainButton.hide()
     }
