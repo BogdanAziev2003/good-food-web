@@ -335,7 +335,7 @@ a {
   display: flex;
   background-color: var(--second-color);
   overflow: hidden;
-  border-radius: 10px 0;
+  border-radius: 14px 0;
   border: 1px solid var(--second-color);
 }
 
@@ -823,12 +823,12 @@ a {
 
   .mod__add-btn-minus {
     font-size: 24px;
-    padding-bottom: 3px;
+    padding-bottom: 4px;
   }
 
   p {
     width: 20px;
-    height: 20px;
+    height: 24px;
     display: flex;
     align-items: center;
     justify-content: center;
