@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setPhoneOption } from '../../store/features/itemsSlice'
 
-const Phone = ({ phoneError }) => {
+const Phone = () => {
   const dispatch = useDispatch()
   const { phone } = useSelector((state) => state.items)
 
@@ -64,12 +64,7 @@ const Phone = ({ phoneError }) => {
       ) : (
         <>
           <div className="phone__text">
-            <p>
-              Введите номер телефона:{' '}
-              {phoneError === false
-                ? 'phoneError = false'
-                : 'phoneError = true'}
-            </p>
+            <p>Введите номер телефона: </p>
           </div>
           <div className="phone__block">
             <div className="phone__input">

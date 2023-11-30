@@ -123,10 +123,6 @@ const Payment = React.memo(() => {
     tg,
   ])
 
-  useEffect(() => {
-    setPhoneError(phoneError)
-  }, [phoneError])
-
   return (
     <div className="main">
       <div className="item-wrapper">
@@ -139,6 +135,7 @@ const Payment = React.memo(() => {
       </div>
       {/* Номер телефона */}
       <Phone phoneError={phoneError} />
+      {phoneError ? <p>phoneErrorTrue</p> : <p>phoneErrorFalse</p>}
       {/* Способ Оплаты */}
       <PayMethod />
       {/* Способ доставки */}
