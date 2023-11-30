@@ -148,6 +148,7 @@ const Payment = React.memo(() => {
         adressError={adressError}
         setAdressError={setAdressError}
       />
+      {adressError ? 'adressError true' : 'adressError false'}
       {/* Комментарий */}
       <Comment />
     </div>

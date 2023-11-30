@@ -16,6 +16,7 @@ const Delivery = ({ addressError, setAdressError }) => {
   }
 
   const handlerAddressSend = (address) => {
+    setAdressError(false)
     if (address !== '') {
       dispatch(setClientAddress(address))
       setErrorMessage(false)
