@@ -123,6 +123,10 @@ const Payment = React.memo(() => {
     tg,
   ])
 
+  useEffect(() => {
+    setPhoneError(phoneError)
+  }, [phoneError])
+
   return (
     <div className="main">
       <div className="item-wrapper">
