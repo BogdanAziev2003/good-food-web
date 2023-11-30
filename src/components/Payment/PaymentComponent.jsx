@@ -67,9 +67,11 @@ const PaymentComponent = ({ addressError, setAddressError }) => {
           <div className="delivery__description">
             <p>Доставка</p>
           </div>
-          <p className="delivery__description__warning">
-            * Цена расчитывается без учета доставки
-          </p>
+          {deliveryType === 'delivery' && (
+            <p className="delivery__description__warning">
+              * Цена расчитывается без учета доставки
+            </p>
+          )}
         </div>
         {deliveryType === 'delivery' && (
           <Delivery
