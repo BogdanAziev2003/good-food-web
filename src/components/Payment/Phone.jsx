@@ -5,6 +5,7 @@ import { setPhoneOption } from '../../store/features/itemsSlice'
 const Phone = ({ phoneError }) => {
   const dispatch = useDispatch()
   const { phone } = useSelector((state) => state.items)
+  const [phoneErr, setPhoneErr] = useState(phoneError)
 
   const [phoneValue, setPhone] = useState('+7')
   const [errorMessage, setErrorMessage] = useState(false)
@@ -19,6 +20,7 @@ const Phone = ({ phoneError }) => {
   }
 
   const handlerPhoneSend = (phone) => {
+    setPhoneErr(false)
     if (phone.length === 12) {
       dispatch(setPhoneOption(phone))
       setPhone('')
@@ -90,9 +92,7 @@ const Phone = ({ phoneError }) => {
           <div className="phone__error">{errorMessage && errorMessage}</div>
         </>
       )}
-      {phoneError && !errorMessage && (
-        <p className="phone__error">Введите номер телефона</p>
-      )}
+      {phoneErr && <p className="phone__error">Введите номер телефона</p>}
     </div>
   )
 }
