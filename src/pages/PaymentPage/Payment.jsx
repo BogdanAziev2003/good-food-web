@@ -40,10 +40,6 @@ const Payment = React.memo(() => {
   const { tg } = useTelegram()
   const store = useSelector((state) => state.items)
   const onSendData = useCallback(() => {
-    if (store.phone === null) {
-      setPhoneError(true)
-      return
-    }
     const data = {
       price: store.price,
       address: store.address,
@@ -109,21 +105,9 @@ const Payment = React.memo(() => {
         payMethod: false,
         address: false,
       })
-      if (store.phone === null) {
-        setPhoneError(true)
-        return
-      }
-      if (store.phone === null) {
-        setPhoneError(true)
-        return
-      }
       tg.onEvent('mainButtonClicked', onSendData)
     }
     return () => {
-      if (store.phone === null) {
-        setPhoneError(true)
-        return
-      }
       tg.offEvent('mainButtonClicked', onSendData)
     }
   }, [
@@ -134,6 +118,12 @@ const Payment = React.memo(() => {
     store.address,
     tg,
   ])
+
+  useEffect(() => {
+    tg.onEvent('mainButtonClicked', () => {
+      if (store.phone === null) setPhoneError(true)
+    })
+  }, [tg.onEvent])
 
   return (
     <div className="main">
