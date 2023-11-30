@@ -20,6 +20,7 @@ const Phone = ({ phoneError, setPhoneError }) => {
   }
 
   const handlerPhoneSend = (phone) => {
+    setPhoneError(false)
     if (phone.length === 12) {
       dispatch(setPhoneOption(phone))
       setPhone('')
