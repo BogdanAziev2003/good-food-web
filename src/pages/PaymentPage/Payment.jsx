@@ -119,12 +119,12 @@ const Payment = React.memo(() => {
   ])
 
   const [phoneError, setPhoneError] = useState(false)
-  const [adressError, setAdressError] = useState(false)
+  const [addressError, setAddressError] = useState(false)
   useEffect(() => {
     tg.onEvent('mainButtonClicked', () => {
       if (store.phone === null) setPhoneError(true)
       if (store.address === null && store.deliveryType === 'delivery') {
-        setAdressError(true)
+        setAddressError(true)
       }
     })
   }, [tg.onEvent])
@@ -145,10 +145,10 @@ const Payment = React.memo(() => {
       <PayMethod />
       {/* Способ доставки */}
       <PaymentComponent
-        adressError={adressError}
-        setAdressError={setAdressError}
+        addressError={addressError}
+        setAddressError={setAddressError}
       />
-      {adressError ? 'adressError true' : 'adressError false'}
+      {addressError ? 'adressError true' : 'adressError false'}
       {/* Комментарий */}
       <Comment />
     </div>

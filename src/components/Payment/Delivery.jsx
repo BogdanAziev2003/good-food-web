@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setClientAddress } from '../../store/features/itemsSlice'
 
-const Delivery = ({ addressError, setAdressError }) => {
+const Delivery = ({ addressError, setAddressError }) => {
   const dispatch = useDispatch()
 
   const addressFromStore = useSelector((state) => state.items.address)

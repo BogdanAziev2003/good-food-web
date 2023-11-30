@@ -6,7 +6,7 @@ import {
 } from '../../store/features/itemsSlice'
 import Delivery from './Delivery'
 
-const PaymentComponent = ({ adressError, setAdressError }) => {
+const PaymentComponent = ({ addressError, setAddressError }) => {
   const dispatch = useDispatch()
   const { deliveryType } = useSelector((state) => state.items)
 
@@ -68,7 +68,10 @@ const PaymentComponent = ({ adressError, setAdressError }) => {
           </div>
         </div>
         {deliveryType === 'delivery' && (
-          <Delivery adressError={adressError} setAdressError={setAdressError} />
+          <Delivery
+            addressError={addressError}
+            setAddressError={setAddressError}
+          />
         )}
       </div>
     </div>
