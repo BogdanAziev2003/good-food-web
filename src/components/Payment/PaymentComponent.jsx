@@ -68,7 +68,10 @@ const PaymentComponent = ({ addressError, setAddressError }) => {
           </div>
         </div>
         {deliveryType === 'delivery' && (
-          <Delivery setAddressError={setAddressError} />
+          <Delivery
+            addressError={addressError}
+            setAddressError={setAddressError}
+          />
         )}
       </div>
     </div>
