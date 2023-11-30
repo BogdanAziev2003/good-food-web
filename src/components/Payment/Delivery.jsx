@@ -7,7 +7,6 @@ const Delivery = ({ addressError, setAddressError }) => {
 
   const addressFromStore = useSelector((state) => state.items.address)
   const [address, setAddress] = useState('')
-
   const [errorMessage, setErrorMessage] = useState(false)
 
   const handleAddressChange = (event) => {

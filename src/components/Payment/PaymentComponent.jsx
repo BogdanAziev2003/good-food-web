@@ -68,10 +68,7 @@ const PaymentComponent = ({ addressError, setAddressError }) => {
           </div>
         </div>
         {deliveryType === 'delivery' && (
-          <Delivery
-            addressError={addressError}
-            setAddressError={setAddressError}
-          />
+          <Delivery setAddressError={setAddressError} />
         )}
       </div>
     </div>
@@ -79,41 +76,3 @@ const PaymentComponent = ({ addressError, setAddressError }) => {
 }
 
 export default PaymentComponent
-
-// eslint-disable-next-line no-lone-blocks
-{
-  /* <div className="delivery">
-      <p className="delivery__text">Выберите способ получения заказа:</p>
-      <div className="delivery__types">
-        <div className="delivery__type">
-          <input
-            className="check"
-            type="radio"
-            id="pickup"
-            name="delivery"
-            value="pickup"
-            checked={deliveryType === 'pickup'}
-            onChange={handleOptionChange}
-          />
-          <label htmlFor="pickup">Самовывоз</label>
-        </div>
-        <div className="delivery__type">
-          <input
-            className="check"
-            type="radio"
-            id="delivery"
-            name="delivery"
-            value="delivery"
-            checked={deliveryType === 'delivery'}
-            onChange={handleOptionChange}
-          />
-          <label htmlFor="delivery">Доставка</label>
-        </div>
-        {deliveryType === 'delivery' && (
-          <>
-            <Delivery />
-          </>
-        )}
-      </div>
-    </div> */
-}
