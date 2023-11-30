@@ -282,8 +282,8 @@ a {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 25px;
-      height: 25px;
+      width: 35px;
+      height: 35px;
       border-radius: 50%;
       background-color: var(--second-color);
       color: var(--main-color);
@@ -308,7 +308,7 @@ a {
 .mod {
   width: 100%;
   display: flex;
-  /* border: 1px solid white; */
+  // border: 1px solid white;
   justify-content: space-between;
   align-items: center;
   /* border-bottom: 1px solid white; */
@@ -331,7 +331,7 @@ a {
 
 .mod__add {
   width: 60px;
-  height: 20px;
+  height: 25px;
   display: flex;
   background-color: var(--second-color);
   overflow: hidden;
@@ -340,8 +340,8 @@ a {
 }
 
 .mod__add-plus {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -882,9 +882,8 @@ a {
       justify-content: flex-start;
       padding: 2px 5px;
       border-bottom: 1px solid var(--main-color);
-      height: 22px;
+      height: 25px;
       width: 100%;
-
       padding-left: 5px;
     }
 

@@ -3,8 +3,6 @@ import { useDispatch } from 'react-redux'
 import { setCommentOption } from '../../store/features/itemsSlice'
 
 const Comment = () => {
-  const commentTextarea = document.getElementById('comment')
-
   const dispatch = useDispatch()
   const handlerCommentChange = (event) => {
     dispatch(setCommentOption(event.target.value))
@@ -18,7 +16,6 @@ const Comment = () => {
         cols="30"
         rows="10"
         className="comment__textarea"
-        id="comment"
         onChange={handlerCommentChange}
         placeholder="Укажите дополнительные пожелания или особенности вашего заказа здесь..."
         maxlength="100"
