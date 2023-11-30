@@ -9,7 +9,6 @@ import PaymentComponent from '../../components/Payment/PaymentComponent'
 import Comment from '../../components/Payment/Comment'
 
 const Payment = React.memo(() => {
-  const [phoneError, setPhoneError] = useState(false)
   const [errors, setErrors] = useState({
     phone: false,
     deliveryType: false,
@@ -119,6 +118,7 @@ const Payment = React.memo(() => {
     tg,
   ])
 
+  const [phoneError, setPhoneError] = useState(false)
   useEffect(() => {
     tg.onEvent('mainButtonClicked', () => {
       if (store.phone === null) setPhoneError(true)
@@ -137,7 +137,6 @@ const Payment = React.memo(() => {
       </div>
       {/* Номер телефона */}
       <Phone phoneError={phoneError} />
-      {phoneError ? <p>phoneErrorTrue</p> : <p>phoneErrorFalse</p>}
       {/* Способ Оплаты */}
       <PayMethod />
       {/* Способ доставки */}
