@@ -75,7 +75,9 @@ const Phone = ({ phoneError }) => {
       ) : (
         <>
           <div className="phone__text">
-            <p>Введите номер телефона: {phoneErr}</p>
+            <p>
+              Введите номер телефона: {phoneErr} + {phoneError}
+            </p>
           </div>
           <div className="phone__block">
             <div className="phone__input">
