@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setClientAddress } from '../../store/features/itemsSlice'
 
-const Delivery = () => {
+const Delivery = ({ addressError, setAdressError }) => {
   const dispatch = useDispatch()
 
   const addressFromStore = useSelector((state) => state.items.address)
@@ -11,6 +11,7 @@ const Delivery = () => {
   const [errorMessage, setErrorMessage] = useState(false)
 
   const handleAddressChange = (event) => {
+    setAdressError(false)
     setAddress(event.target.value)
   }
 
@@ -63,6 +64,7 @@ const Delivery = () => {
         </div>
       )}
       <div className="address_error">{errorMessage ? errorMessage : <></>}</div>
+      <div className="address_error">{addressError && 'Введите адресс'}</div>
     </div>
   )
 }

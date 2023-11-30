@@ -5,7 +5,6 @@ import { setPhoneOption } from '../../store/features/itemsSlice'
 const Phone = ({ phoneError, setPhoneError }) => {
   const dispatch = useDispatch()
   const { phone } = useSelector((state) => state.items)
-
   const [phoneValue, setPhone] = useState('+7')
   const [errorMessage, setErrorMessage] = useState(false)
 
