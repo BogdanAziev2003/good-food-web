@@ -119,7 +119,6 @@ const Payment = React.memo(() => {
   ])
 
   const { deliveryType } = useSelector((state) => state.items)
-
   const [phoneError, setPhoneError] = useState(false)
   const [addressError, setAddressError] = useState(false)
   useEffect(() => {
@@ -129,7 +128,7 @@ const Payment = React.memo(() => {
         setAddressError(true)
       }
     })
-  }, [tg.onEvent])
+  }, [tg.onEvent, deliveryType])
 
   return (
     <div className="main">
