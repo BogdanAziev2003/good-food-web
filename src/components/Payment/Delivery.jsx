@@ -65,7 +65,11 @@ const Delivery = ({ addressError, setAdressError }) => {
         </div>
       )}
       <div className="address_error">{errorMessage ? errorMessage : <></>}</div>
-      <div className="address_error">Введите адресс</div>
+      <div className="address_error">
+        {addressError && (
+          <p className="address_error">Введите номер телефона</p>
+        )}
+      </div>
     </div>
   )
 }
