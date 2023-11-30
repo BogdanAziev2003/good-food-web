@@ -9,6 +9,7 @@ import PaymentComponent from '../../components/Payment/PaymentComponent'
 import Comment from '../../components/Payment/Comment'
 
 const Payment = React.memo(() => {
+  const [phoneError, setPhoneError] = useState(false)
   const [errors, setErrors] = useState({
     phone: false,
     deliveryType: false,
@@ -121,8 +122,6 @@ const Payment = React.memo(() => {
     store.address,
     tg,
   ])
-
-  const [phoneError, setPhoneError] = useState(false)
 
   return (
     <div className="main">
