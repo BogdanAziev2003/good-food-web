@@ -118,12 +118,13 @@ const Payment = React.memo(() => {
     tg,
   ])
 
+  const { deliveryType } = useSelector((state) => state.items)
   const [phoneError, setPhoneError] = useState(false)
   const [addressError, setAddressError] = useState(false)
   useEffect(() => {
     tg.onEvent('mainButtonClicked', () => {
       if (store.phone === null) setPhoneError(true)
-      if (store.deliveryType !== 'pickup' && store.address === null) {
+      if (deliveryType !== 'pickup' && store.address === null) {
         setAddressError(true)
       }
     })
