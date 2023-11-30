@@ -92,7 +92,9 @@ const Phone = ({ phoneError, setPhoneError }) => {
           <div className="phone__error">{errorMessage && errorMessage}</div>
         </>
       )}
-      {phoneError && <p className="phone__error">Введите номер телефона</p>}
+      {phoneError && !errorMessage && (
+        <p className="phone__error">Введите номер телефона</p>
+      )}
     </div>
   )
 }
