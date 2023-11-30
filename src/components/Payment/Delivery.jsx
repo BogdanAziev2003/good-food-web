@@ -11,12 +11,12 @@ const Delivery = ({ addressError, setAddressError }) => {
   const [errorMessage, setErrorMessage] = useState(false)
 
   const handleAddressChange = (event) => {
-    setAdressError(false)
+    setAddressError(false)
     setAddress(event.target.value)
   }
 
   const handlerAddressSend = (address) => {
-    setAdressError(false)
+    setAddressError(false)
     if (address !== '') {
       dispatch(setClientAddress(address))
       setErrorMessage(false)
