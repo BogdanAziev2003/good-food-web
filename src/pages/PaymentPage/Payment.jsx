@@ -113,6 +113,10 @@ const Payment = React.memo(() => {
         setPhoneError(true)
         return
       }
+      if (store.phone === null) {
+        setPhoneError(true)
+        return
+      }
       tg.onEvent('mainButtonClicked', onSendData)
     }
     return () => {
