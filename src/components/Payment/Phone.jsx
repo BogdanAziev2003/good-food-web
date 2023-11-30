@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setPhoneOption } from '../../store/features/itemsSlice'
 
-const Phone = ({ phoneError }) => {
+const Phone = ({ phoneError, setPhoneError }) => {
   const dispatch = useDispatch()
   const { phone } = useSelector((state) => state.items)
-  const [phoneErr, setPhoneErr] = useState(phoneError)
 
   const [phoneValue, setPhone] = useState('+7')
   const [errorMessage, setErrorMessage] = useState(false)
+
   const handlerPhoneChange = (event) => {
+    setPhoneError(false)
     if (!event.target.value.startsWith('+7')) {
       event.target.value = '+7' + event.target.value.substring(2)
     }

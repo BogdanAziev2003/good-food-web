@@ -136,7 +136,7 @@ const Payment = React.memo(() => {
         </div>
       </div>
       {/* Номер телефона */}
-      <Phone phoneError={phoneError} />
+      <Phone phoneError={phoneError} setPhoneError={setPhoneError} />
       {/* Способ Оплаты */}
       <PayMethod />
       {/* Способ доставки */}
