@@ -19,7 +19,6 @@ const Phone = ({ phoneError }) => {
   }
 
   const handlerPhoneSend = (phone) => {
-    phoneError = false
     if (phone.length === 12) {
       dispatch(setPhoneOption(phone))
       setPhone('')
@@ -91,7 +90,9 @@ const Phone = ({ phoneError }) => {
           <div className="phone__error">{errorMessage && errorMessage}</div>
         </>
       )}
-      {phoneError && <p className="phone__error">Введите номер телефона</p>}
+      {phoneError && !errorMessage && (
+        <p className="phone__error">Введите номер телефона</p>
+      )}
     </div>
   )
 }
