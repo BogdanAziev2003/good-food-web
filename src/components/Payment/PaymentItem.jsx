@@ -16,7 +16,7 @@ const PaymentItem = ({ item }) => {
             {item.category !== 'Напитки' ? (
               <p>{item.title}</p>
             ) : (
-              <p>{item.modifier.find((m) => m.amount === 1).title}</p>
+              <p>{item.modifiers.find((m) => m.amount === 1).title}</p>
             )}
           </div>
           <div className="item__amount">
