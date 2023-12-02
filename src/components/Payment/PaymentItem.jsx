@@ -13,7 +13,11 @@ const PaymentItem = ({ item }) => {
       <div className="item__info">
         <div className="item__block">
           <div className="item__name">
-            <p>{item.title}</p>
+            {item.category !== 'Напитки' ? (
+              <p>{item.title}</p>
+            ) : (
+              <p>{item.modifier.find((m) => m.amount === 1).title}</p>
+            )}
           </div>
           <div className="item__amount">
             <p>Кол-во: {item ? item.count : 1}</p>

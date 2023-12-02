@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addItem, removeItem } from '../store/features/itemsSlice'
 import BasicModal from './BasicModal'
@@ -6,8 +6,23 @@ import BasicModal from './BasicModal'
 const Item = React.memo(({ item }) => {
   const dispatch = useDispatch()
   const { itemInCard } = useSelector((state) => state.items)
+
   const handleAddToCart = (item) => {
-    dispatch(addItem(item))
+    if (item.category !== 'Напитки') {
+      dispatch(addItem(item))
+    } else {
+      item = {
+        ...item,
+        modifiers: [
+          {
+            ...item.modifiers[0],
+            amount: 1,
+          },
+          ...item.modifiers.slice(1),
+        ],
+      }
+      dispatch(addItem(item))
+    }
   }
 
   const handleRemoveToCart = (item) => {

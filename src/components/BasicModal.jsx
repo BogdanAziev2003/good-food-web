@@ -74,7 +74,10 @@ export const BasicModal = React.memo(({ item }) => {
     setIsActiveSause(false)
   }
 
-  const handleOptionChange = (drink) => {
+  const handleOptionChange = (drink, types) => {
+    if (drink.amount === 1) {
+      return
+    }
     handleAddSupplement(drink)
   }
 
@@ -227,7 +230,7 @@ export const BasicModal = React.memo(({ item }) => {
                   <div>
                     <div
                       className="pay__type"
-                      onClick={() => handleOptionChange(el)}
+                      onClick={() => handleOptionChange(el, curItem.modifiers)}
                     >
                       <button
                         className={`check ${el.amount === 1 ? 'checked' : ''}`}

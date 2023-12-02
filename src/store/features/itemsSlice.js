@@ -174,7 +174,7 @@ export const itemsSlice = createSlice({
         state.isLoading = false
         state.items = action.payload
       })
-      .addCase(getAllMenu.rejected, (state, action) => {
+      .addCase(getAllMenu.rejected, (state) => {
         state.isLoading = false
       })
   },
