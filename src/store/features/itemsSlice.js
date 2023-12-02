@@ -75,13 +75,24 @@ export const itemsSlice = createSlice({
           const updateItem = {
             ...item,
             modifiers: item.modifiers.map((ell) => {
-              if (ell.id === action.payload.el.id) {
-                return {
-                  ...ell,
-                  amount: ell.amount + 1,
+              if (item.category !== 'Напитки') {
+                if (ell.id === action.payload.el.id) {
+                  return {
+                    ...ell,
+                    amount: ell.amount + 1,
+                  }
+                } else {
+                  return ell
                 }
               } else {
-                return ell
+                if (ell.id === action.payload.el.id) {
+                  return {
+                    ...ell,
+                    amount: ell.amount === 0 ? 1 : 0,
+                  }
+                } else {
+                  return { ...ell, amount: 0 }
+                }
               }
             }),
             price: item.price + action.payload.el.price,

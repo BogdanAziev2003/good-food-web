@@ -43,6 +43,7 @@ export const BasicModal = React.memo(({ item }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
+    console.log(itemInCard)
     const updateItem = itemInCard.find(
       (el) => curItem?.idInCard === el.idInCard
     )
@@ -71,6 +72,10 @@ export const BasicModal = React.memo(({ item }) => {
     setActiveItem(item)
     setIsActiveSnack(false)
     setIsActiveSause(false)
+  }
+
+  const handleOptionChange = (drink) => {
+    handleAddSupplement(drink)
   }
 
   return (
@@ -149,7 +154,6 @@ export const BasicModal = React.memo(({ item }) => {
                     />
                   </div>
                 </div>
-
                 <div className="mod">
                   <div className="mod__name">
                     <p>Соус на выбор</p>
@@ -181,39 +185,64 @@ export const BasicModal = React.memo(({ item }) => {
                   <p>{el.title}</p>
                 </div>
 
-                {el.amount !== 0 ? (
-                  <div className="mod__add mod__add_active">
-                    <button
-                      className="mod__add-btn"
+                {curItem.category !== 'Напитки' ? (
+                  el.amount !== 0 ? (
+                    <div className="mod__add mod__add_active">
+                      <button
+                        className="mod__add-btn"
+                        onClick={() => {
+                          handleAddSupplement(el)
+                        }}
+                      >
+                        +
+                      </button>
+                      <p className="mod__el__amount">{el.amount}</p>
+                      <button
+                        className="mod__add-btn mod__add-btn-minus"
+                        onClick={() => {
+                          handleRemoveSupplement(el)
+                        }}
+                      >
+                        -
+                      </button>
+                    </div>
+                  ) : (
+                    <div
+                      className="mod__add"
                       onClick={() => {
                         handleAddSupplement(el)
                       }}
                     >
-                      +
-                    </button>
-                    <p className="mod__el__amount">{el.amount}</p>
-                    <button
-                      className="mod__add-btn mod__add-btn-minus"
-                      onClick={() => {
-                        handleRemoveSupplement(el)
-                      }}
-                    >
-                      -
-                    </button>
-                  </div>
-                ) : (
-                  <div
-                    className="mod__add"
-                    onClick={() => {
-                      handleAddSupplement(el)
-                    }}
-                  >
-                    <div className="mod__add-plus">
-                      <p>+</p>
-                    </div>
+                      <div className="mod__add-plus">
+                        <p>+</p>
+                      </div>
 
-                    <div className="mod__add-price">
-                      <p>{el.price}₽</p>
+                      <div className="mod__add-price">
+                        <p>{el.price}₽</p>
+                      </div>
+                    </div>
+                  )
+                ) : (
+                  // Если напитки
+                  <div>
+                    <div
+                      className="pay__type"
+                      onClick={() => handleOptionChange(el)}
+                    >
+                      <button
+                        className={`check ${el.amount === 1 ? 'checked' : ''}`}
+                      >
+                        {el.amount === 1 && (
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="24"
+                            viewBox="0 -960 960 960"
+                            width="24"
+                          >
+                            <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
+                          </svg>
+                        )}
+                      </button>
                     </div>
                   </div>
                 )}
