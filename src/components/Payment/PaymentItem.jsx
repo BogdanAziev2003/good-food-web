@@ -17,7 +17,7 @@ const PaymentItem = ({ item }) => {
               <p>{item.title}</p>
             ) : (
               <>
-                {item.modifiers.find((m) => m.amount === 1) === true ? (
+                {item.modifiers.some((m) => m.amount) === true ? (
                   <p>{item.modifiers.find((m) => m.amount === 1).title}</p>
                 ) : (
                   <p>{item.title}</p>
