@@ -86,8 +86,10 @@ const Item = React.memo(({ item }) => {
               <div className="item__add-plus">
                 <p>+</p>
               </div>
+
               <div className="item__add-price">
-                <p>{item.price} ₽</p>
+                <p>{item.price * 0.9} ₽</p>
+                <p className="old-price">{item.price} ₽</p>
               </div>
             </div>
           </div>

@@ -32,7 +32,7 @@ export const itemsSlice = createSlice({
         ...action.payload,
       }
       state.itemInCard.push(newItem)
-      state.price += action.payload.price
+      state.price += action.payload.price * 0.9
     },
     removeItem: (state, action) => {
       const index = state.itemInCard
@@ -41,7 +41,7 @@ export const itemsSlice = createSlice({
         .findIndex((item) => item.id === action.payload.id)
       if (index !== -1) {
         const trueIndex = state.itemInCard.length - 1 - index
-        state.price -= state.itemInCard[trueIndex].price
+        state.price -= state.itemInCard[trueIndex].price * 0.9
         state.itemInCard.splice(trueIndex, 1)
       }
     },

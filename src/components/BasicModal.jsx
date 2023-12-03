@@ -4,6 +4,7 @@ import Modal from '@mui/material/Modal'
 import { useDispatch, useSelector } from 'react-redux'
 import { addSupplement, removeSupplement } from '../store/features/itemsSlice'
 import Dropdown from './Dropdown'
+import CloseModalBtn from './BasicModalComponent/CloseModalBtn'
 
 const style = {
   position: 'absolute',
@@ -120,16 +121,7 @@ export const BasicModal = React.memo(({ item }) => {
               </div>
             </div>
 
-            <div className="modal__close" onClick={handleClose}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24"
-                viewBox="0 -960 960 960"
-                width="24"
-              >
-                <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
-              </svg>
-            </div>
+            <CloseModalBtn handleClose={handleClose} />
           </div>
           <div className="modal__body">
             {curItem?.category === 'Сэндвичи' && (

@@ -229,6 +229,12 @@ a {
   justify-content: center;
   font-weight: 600;
   border-radius: 0 0 15px 0;
+
+  .old-price {
+    text-decoration: line-through;
+    color: red;
+    padding-left: 4px;
+  }
 }
 
 /*  ---------------------modal --------------------------- */
