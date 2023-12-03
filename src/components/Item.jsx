@@ -1,15 +1,15 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { addItem, removeItem } from '../store/features/itemsSlice'
-import BasicModal from './BasicModal'
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem, removeItem } from "../store/features/itemsSlice";
+import BasicModal from "./BasicModal";
 
 const Item = React.memo(({ item }) => {
-  const dispatch = useDispatch()
-  const { itemInCard } = useSelector((state) => state.items)
+  const dispatch = useDispatch();
+  const { itemInCard } = useSelector((state) => state.items);
 
   const handleAddToCart = (item) => {
-    if (item.category !== 'Напитки') {
-      dispatch(addItem(item))
+    if (item.category !== "Напитки") {
+      dispatch(addItem(item));
     } else {
       if (item.modifiers.length > 0) {
         item = {
@@ -21,23 +21,23 @@ const Item = React.memo(({ item }) => {
             },
             ...item.modifiers.slice(1),
           ],
-        }
+        };
       }
-      dispatch(addItem(item))
+      dispatch(addItem(item));
     }
-  }
+  };
 
   const handleRemoveToCart = (item) => {
-    const item_id = item.id
-    dispatch(removeItem(item))
-    item = itemInCard.find((el) => el.id === item_id)
-  }
+    const item_id = item.id;
+    dispatch(removeItem(item));
+    item = itemInCard.find((el) => el.id === item_id);
+  };
 
   return (
     <div className="item">
       <div className="item__photo">
         <img
-          src={'https://server.tg-delivery.ru/api/menu/image/' + item.imageurl}
+          src={"https://server.tg-delivery.ru/api/menu/image/" + item.imageurl}
           alt=""
         />
       </div>
@@ -47,7 +47,7 @@ const Item = React.memo(({ item }) => {
             <p>{item.title}</p>
           </div>
           <div className="item__description">
-            <p>{item.contains + ''}</p>
+            <p>{item.contains + ""}</p>
           </div>
         </div>
 
@@ -73,7 +73,7 @@ const Item = React.memo(({ item }) => {
               {item.modifiers.length > 0 ? (
                 <BasicModal item={itemInCard.find((el) => el.id === item.id)} />
               ) : (
-                ''
+                ""
               )}
             </div>
           </div>
@@ -88,15 +88,15 @@ const Item = React.memo(({ item }) => {
               </div>
 
               <div className="item__add-price">
-                <p>{item.price * 0.9} ₽</p>
-                <p className="old-price">{item.price} ₽</p>
+                <p>{item.price * 0.9}₽</p>
+                <p className="old-price">{item.price}₽</p>
               </div>
             </div>
           </div>
         )}
       </div>
     </div>
-  )
-})
+  );
+});
 
-export default Item
+export default Item;
