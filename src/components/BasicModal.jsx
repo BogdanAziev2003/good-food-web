@@ -228,7 +228,7 @@ export const BasicModal = React.memo(({ item }) => {
                   // Если напитки
                   <div>
                     <div
-                      className="pay__type"
+                      className="drink-type"
                       onClick={() => handleOptionChange(el, curItem.modifiers)}
                     >
                       <button

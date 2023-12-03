@@ -384,6 +384,24 @@ a {
   flex: 1;
 }
 
+.modal__item {
+  .drink-type {
+    .check {
+      width: 20px;
+      height: 20px;
+      background-color: transparent;
+      border: 1px solid var(--second-color);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .checked {
+      background-color: var(--second-color);
+    }
+  }
+}
+
 .pay {
   margin-top: 20px;
 }
