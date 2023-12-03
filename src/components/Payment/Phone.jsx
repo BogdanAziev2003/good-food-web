@@ -1,27 +1,45 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setPhoneOption } from '../../store/features/itemsSlice'
+import IMask from 'imask'
 
 const Phone = ({ phoneError, setPhoneError }) => {
   const dispatch = useDispatch()
   const { phone } = useSelector((state) => state.items)
   const [phoneValue, setPhone] = useState('+7')
   const [errorMessage, setErrorMessage] = useState(false)
+  const inputRef = useRef(null)
+
+  useEffect(() => {
+    console.log(phone)
+  }, [phone])
 
   const handlerPhoneChange = (event) => {
     setPhoneError(false)
     if (!event.target.value.startsWith('+7')) {
       event.target.value = '+7' + event.target.value.substring(2)
     }
-    if (event.target.value.length > 12) {
-      event.target.value = event.target.value.slice(0, 12)
+    if (event.target.value.length > 18) {
+      event.target.value = event.target.value.slice(0, 18)
     }
     setPhone(event.target.value)
   }
 
+  useEffect(() => {
+    if (inputRef.current) {
+      const phoneMask = IMask(inputRef.current, {
+        mask: '+{7} (000) 000-00-00',
+      })
+
+      return () => {
+        phoneMask.destroy()
+      }
+    }
+  }, [handlerPhoneChange])
+
   const handlerPhoneSend = (phone) => {
     setPhoneError(false)
-    if (phone.length === 12) {
+    if (phone.length === 18) {
       dispatch(setPhoneOption(phone))
       setPhone('')
       setErrorMessage(false)
@@ -42,16 +60,7 @@ const Phone = ({ phoneError, setPhoneError }) => {
             <p>Ваш номер телефона:</p>
           </div>
           <div className="phone__block">
-            <div className="phone__input phone__text-done">
-              {'+7 ' +
-                phone.slice(2, 5) +
-                ' ' +
-                phone.slice(5, 8) +
-                ' ' +
-                phone.slice(8, 10) +
-                ' ' +
-                phone.slice(10, 12)}
-            </div>
+            <div className="phone__input phone__text-done">{phone}</div>
             <button
               className="btn"
               onClick={() => {
@@ -71,6 +80,7 @@ const Phone = ({ phoneError, setPhoneError }) => {
           <div className="phone__block">
             <div className="phone__input">
               <input
+                ref={inputRef}
                 type="text"
                 value={phoneValue}
                 onChange={handlerPhoneChange}
