@@ -10,10 +10,6 @@ const Phone = ({ phoneError, setPhoneError }) => {
   const [errorMessage, setErrorMessage] = useState(false)
   const inputRef = useRef(null)
 
-  useEffect(() => {
-    console.log(phone)
-  }, [phone])
-
   const handlerPhoneChange = (event) => {
     setPhoneError(false)
     if (!event.target.value.startsWith('+7')) {

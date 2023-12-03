@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addItem, removeItem } from '../store/features/itemsSlice'
 import BasicModal from './BasicModal'
@@ -11,15 +11,17 @@ const Item = React.memo(({ item }) => {
     if (item.category !== 'Напитки') {
       dispatch(addItem(item))
     } else {
-      item = {
-        ...item,
-        modifiers: [
-          {
-            ...item.modifiers[0],
-            amount: 1,
-          },
-          ...item.modifiers.slice(1),
-        ],
+      if (item.modifiers.length > 0) {
+        item = {
+          ...item,
+          modifiers: [
+            {
+              ...item.modifiers[0],
+              amount: 1,
+            },
+            ...item.modifiers.slice(1),
+          ],
+        }
       }
       dispatch(addItem(item))
     }
