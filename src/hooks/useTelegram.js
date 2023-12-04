@@ -40,10 +40,10 @@ export function useTelegram() {
   const totalPriceButton = () => {
     if (window.location.pathname !== '/payment' && price !== 0) {
       tg.MainButton.show()
-      tg.MainButton.text = `Мой заказ: ${discountPrice} ₽ <s>${price} ₽</s>`
+      tg.MainButton.text = `Мой заказ: ${discountPrice} ₽ ~~${price} ₽~~`
     }
     if (window.location.pathname === '/payment' && price !== 0) {
-      tg.MainButton.text = `Заказать: ${discountPrice} ₽ <s>${price} ₽</s>`
+      tg.MainButton.text = `Заказать: ${discountPrice} ₽ ~~${price} ₽~~`
     } else if (price === 0) {
       tg.MainButton.hide()
     }
