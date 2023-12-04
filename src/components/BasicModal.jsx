@@ -3,9 +3,9 @@ import Box from '@mui/material/Box'
 import Modal from '@mui/material/Modal'
 import { useDispatch, useSelector } from 'react-redux'
 import { addSupplement, removeSupplement } from '../store/features/itemsSlice'
-import Dropdown from './Dropdown'
 import CloseModalBtn from './BasicModalComponent/CloseModalBtn'
 import NavigateItemModal from './BasicModalComponent/NavigateItemModal'
+import SandwichDropdown from './BasicModalComponent/SandwichDropdown'
 
 const style = {
   position: 'absolute',
@@ -35,10 +35,6 @@ export const BasicModal = React.memo(({ item }) => {
   const [activeItem, setActiveItem] = useState(item)
   const { itemInCard } = useSelector((state) => state.items)
   const [curItem, setCurValue] = useState(item)
-  const snacks = ['Фри', 'По деревенски']
-  const sause = ['Кетчуп', 'Кисло-сладкий', 'Сальса', 'Сырный', 'Чесночный']
-  const [selectedSnack, setSelectedSnack] = useState()
-  const [selectedSause, setSelectedSause] = useState()
   const [isActiveSnack, setIsActiveSnack] = useState(false)
   const [isActiveSause, setIsActiveSause] = useState(false)
 
@@ -108,52 +104,14 @@ export const BasicModal = React.memo(({ item }) => {
           </div>
           <div className="modal__body">
             {curItem?.category === 'Сэндвичи' && (
-              <>
-                <div className="mod">
-                  <div className="mod__name">
-                    <p>Снэки на выбор</p>
-                  </div>
-                  <div
-                    onClick={() => {
-                      setIsActiveSnack(true)
-                      setIsActiveSause(false)
-                    }}
-                  >
-                    <Dropdown
-                      items={snacks}
-                      selected={curItem.snack}
-                      setSelected={setSelectedSnack}
-                      curItem={curItem}
-                      isActiveDrop={isActiveSnack}
-                      closeModal={closeModal}
-                      setIsActiveSnack={setIsActiveSnack}
-                      setIsActiveSause={setIsActiveSause}
-                    />
-                  </div>
-                </div>
-                <div className="mod">
-                  <div className="mod__name">
-                    <p>Соус на выбор</p>
-                  </div>
-                  <div
-                    onClick={() => {
-                      setIsActiveSnack(false)
-                      setIsActiveSause(true)
-                    }}
-                  >
-                    <Dropdown
-                      items={sause}
-                      selected={curItem.sause}
-                      setSelected={setSelectedSause}
-                      curItem={curItem}
-                      isActiveDrop={isActiveSause}
-                      closeModal={closeModal}
-                      setIsActiveSnack={setIsActiveSnack}
-                      setIsActiveSause={setIsActiveSause}
-                    />
-                  </div>
-                </div>
-              </>
+              <SandwichDropdown
+                curItem={curItem}
+                isActiveSnack={isActiveSnack}
+                isActiveSause={isActiveSause}
+                setIsActiveSnack={setIsActiveSnack}
+                setIsActiveSause={setIsActiveSause}
+                closeModal={closeModal}
+              />
             )}
 
             {curItem?.modifiers.map((el) => (
