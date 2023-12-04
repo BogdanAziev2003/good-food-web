@@ -5,6 +5,7 @@ export function useTelegram() {
   const navigate = useNavigate()
 
   const { price } = useSelector((state) => state.items)
+  const { discountPrice } = useSelector((state) => state.items)
   const store = useSelector((state) => state.items)
   const data = { ...store }
   delete data.items
@@ -39,10 +40,10 @@ export function useTelegram() {
   const totalPriceButton = () => {
     if (window.location.pathname !== '/payment' && price !== 0) {
       tg.MainButton.show()
-      tg.MainButton.text = `Мой заказ: ${price} ₽`
+      tg.MainButton.text = `Мой заказ: ${discountPrice} ₽ <s>${price} ₽</s>`
     }
     if (window.location.pathname === '/payment' && price !== 0) {
-      tg.MainButton.text = `Заказать: ${price} ₽`
+      tg.MainButton.text = `Заказать: ${discountPrice} ₽ <s>${price} ₽</s>`
     } else if (price === 0) {
       tg.MainButton.hide()
     }
