@@ -71,7 +71,7 @@ const Delivery = ({ addressError, setAddressError }) => {
       </div>
       {addressError === false ? 'addressErrorFalse' : 'addressErrorTrue'}
       <br />
-      {addressError === false ? 'errorMessageFalse' : 'errorMessageTrue'}
+      {errorMessage === false ? 'errorMessageFalse' : 'errorMessageTrue'}
     </div>
   )
 }
