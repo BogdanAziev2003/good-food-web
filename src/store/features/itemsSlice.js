@@ -7,6 +7,7 @@ const initialState = {
   isLoading: false,
   itemInCard: [],
   price: 0,
+  discountPrice: 0,
   deliveryType: 'pickup',
   address: null,
   payMethod: 'cash',
@@ -32,7 +33,8 @@ export const itemsSlice = createSlice({
         ...action.payload,
       }
       state.itemInCard.push(newItem)
-      state.price += action.payload.price * 0.9
+      state.price += action.payload.price
+      state.discountPrice = state.price * 0.9
     },
     removeItem: (state, action) => {
       const index = state.itemInCard
@@ -41,8 +43,9 @@ export const itemsSlice = createSlice({
         .findIndex((item) => item.id === action.payload.id)
       if (index !== -1) {
         const trueIndex = state.itemInCard.length - 1 - index
-        state.price -= state.itemInCard[trueIndex].price * 0.9
+        state.price -= state.itemInCard[trueIndex].price
         state.itemInCard.splice(trueIndex, 1)
+        state.discountPrice = state.price * 0.9
       }
     },
 
@@ -98,6 +101,7 @@ export const itemsSlice = createSlice({
             price: item.price + action.payload.el.price,
           }
           state.price += action.payload.el.price
+          state.discountPrice = state.price * 0.9
           return updateItem
         } else {
           return item
@@ -126,6 +130,7 @@ export const itemsSlice = createSlice({
               price: item.price - action.payload.el.price,
             }
             state.price -= action.payload.el.price
+            state.discountPrice = state.price * 0.9
             return updateItem
           }
         }
