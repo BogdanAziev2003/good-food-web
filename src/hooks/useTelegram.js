@@ -9,7 +9,6 @@ export function useTelegram() {
   const store = useSelector((state) => state.items)
   const data = { ...store }
   delete data.items
-  let a = 0
   const tg = window.Telegram.WebApp
   tg.expand()
   tg.MainButton.textColor = '#333'
@@ -44,7 +43,7 @@ export function useTelegram() {
       tg.MainButton.text = `Мой заказ: ${discountPrice} ₽ ${price} ₽`
     }
     if (window.location.pathname === '/payment' && price !== 0) {
-      tg.MainButton.text = `Заказать: ${discountPrice} ₽ ${price} ₽`
+      tg.MainButton.text = `Заказать: ${discountPrice} ₽ ~~${price} ₽~~`
     } else if (price === 0) {
       tg.MainButton.hide()
     }
