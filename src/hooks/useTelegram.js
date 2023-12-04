@@ -38,7 +38,7 @@ export function useTelegram() {
   const totalPriceButton = () => {
     if (window.location.pathname !== '/payment' && price !== 0) {
       tg.MainButton.show()
-      tg.MainButton.text = '<del>strike</del>'
+      tg.MainButton.text = '~~strike~~'
     }
     if (window.location.pathname === '/payment' && price !== 0) {
       tg.MainButton.text = `Заказать: ${price} ₽`
