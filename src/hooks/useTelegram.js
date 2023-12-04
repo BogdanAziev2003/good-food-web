@@ -19,9 +19,7 @@ export function useTelegram() {
   } catch (error) {}
 
   Telegram.WebApp.onEvent('mainButtonClicked', () => {
-    if (
-      tg.MainButton.text === `Мой заказ: ${discountPrice} ₽ (Вместо ${price} ₽)`
-    )
+    if (tg.MainButton.text === `Мой заказ: ${discountPrice} ₽ (Скидка 10%)`)
       navigate('/payment')
   })
 
@@ -42,10 +40,10 @@ export function useTelegram() {
   const totalPriceButton = () => {
     if (window.location.pathname !== '/payment' && price !== 0) {
       tg.MainButton.show()
-      tg.MainButton.text = `Мой заказ: ${discountPrice} ₽ (Вместо ${price} ₽)`
+      tg.MainButton.text = `Мой заказ: ${discountPrice} ₽ (Скидка 10%)`
     }
     if (window.location.pathname === '/payment' && price !== 0) {
-      tg.MainButton.text = `Заказать: ${discountPrice} ₽ (Вместо ${price} ₽)`
+      tg.MainButton.text = `Заказать: ${discountPrice} ₽ (Скидка 10%)`
     } else if (price === 0) {
       tg.MainButton.hide()
     }
