@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 import CloseModalBtn from './BasicModalComponent/CloseModalBtn'
 import NavigateItemModal from './BasicModalComponent/NavigateItemModal'
 import SandwichDropdown from './BasicModalComponent/SandwichDropdown'
-import ItemModifiers from './BasicModalComponent/ItemModifiers'
+import ItemModifiers from './BasicModalComponent/ItemModifiers/ItemModifiers'
 
 const style = {
   position: 'absolute',
