@@ -44,7 +44,6 @@ const Delivery = ({ addressError, setAddressError }) => {
                 handlerAddressSend(address)
               }}
             >
-              Подтвердить{' '}
               {addressError === false
                 ? 'addressErrorfalse'
                 : 'addressErrortrue'}
