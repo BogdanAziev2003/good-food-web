@@ -21,12 +21,6 @@ const ItemModifiers = ({ el, item, curItem, itemInCard, setCurValue }) => {
     dispatch(removeSupplement({ el, item }))
   }
 
-  const handleOptionChange = (drink) => {
-    if (drink.amount === 1) {
-      return
-    }
-    handleAddSupplement(drink)
-  }
   return (
     <div className="modal__item mod">
       <div className="mod__name">
@@ -75,7 +69,7 @@ const ItemModifiers = ({ el, item, curItem, itemInCard, setCurValue }) => {
         <ItemDrink
           el={el}
           curItem={curItem}
-          handleOptionChange={handleOptionChange}
+          handleAddSupplement={handleAddSupplement}
         />
       )}
     </div>

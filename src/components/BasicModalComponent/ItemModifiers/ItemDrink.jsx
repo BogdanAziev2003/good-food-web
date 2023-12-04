@@ -1,6 +1,12 @@
 import React from 'react'
 
-const ItemDrink = ({ el, curItem, handleOptionChange }) => {
+const ItemDrink = ({ el, curItem, handleAddSupplement }) => {
+  const handleOptionChange = (drink) => {
+    if (drink.amount === 1) {
+      return
+    }
+    handleAddSupplement(drink)
+  }
   return (
     <div>
       <div
