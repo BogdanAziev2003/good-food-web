@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import Modal from '@mui/material/Modal'
-import { useDispatch, useSelector } from 'react-redux'
-import { addSupplement, removeSupplement } from '../store/features/itemsSlice'
+import { useSelector } from 'react-redux'
 import CloseModalBtn from './BasicModalComponent/CloseModalBtn'
 import NavigateItemModal from './BasicModalComponent/NavigateItemModal'
 import SandwichDropdown from './BasicModalComponent/SandwichDropdown'
+import ItemModifiers from './BasicModalComponent/ItemModifiers'
 
 const style = {
   position: 'absolute',
@@ -38,8 +38,6 @@ export const BasicModal = React.memo(({ item }) => {
   const [isActiveSnack, setIsActiveSnack] = useState(false)
   const [isActiveSause, setIsActiveSause] = useState(false)
 
-  const dispatch = useDispatch()
-
   useEffect(() => {
     const updateItem = itemInCard.find(
       (el) => curItem?.idInCard === el.idInCard
@@ -51,24 +49,6 @@ export const BasicModal = React.memo(({ item }) => {
       setCurValue(updateItem)
     }
   }, [itemInCard, curItem, item, setActiveItem])
-
-  const handleAddSupplement = (el) => {
-    item = curItem
-    dispatch(addSupplement({ el, item }))
-    item = itemInCard.find((el) => el.idInCard === curItem.idInCard)
-    setCurValue(item)
-  }
-  const handleRemoveSupplement = (el) => {
-    item = curItem
-    dispatch(removeSupplement({ el, item }))
-  }
-
-  const handleOptionChange = (drink) => {
-    if (drink.amount === 1) {
-      return
-    }
-    handleAddSupplement(drink)
-  }
 
   return (
     <div>
@@ -115,73 +95,14 @@ export const BasicModal = React.memo(({ item }) => {
             )}
 
             {curItem?.modifiers.map((el) => (
-              <div key={el.id} className="modal__item mod">
-                <div className="mod__name">
-                  <p>{el.title}</p>
-                </div>
-
-                {curItem.category !== 'Напитки' ? (
-                  el.amount !== 0 ? (
-                    <div className="mod__add mod__add_active">
-                      <button
-                        className="mod__add-btn"
-                        onClick={() => {
-                          handleAddSupplement(el)
-                        }}
-                      >
-                        +
-                      </button>
-                      <p className="mod__el__amount">{el.amount}</p>
-                      <button
-                        className="mod__add-btn mod__add-btn-minus"
-                        onClick={() => {
-                          handleRemoveSupplement(el)
-                        }}
-                      >
-                        -
-                      </button>
-                    </div>
-                  ) : (
-                    <div
-                      className="mod__add"
-                      onClick={() => {
-                        handleAddSupplement(el)
-                      }}
-                    >
-                      <div className="mod__add-plus">
-                        <p>+</p>
-                      </div>
-
-                      <div className="mod__add-price">
-                        <p>{el.price}₽</p>
-                      </div>
-                    </div>
-                  )
-                ) : (
-                  // Если напитки
-                  <div>
-                    <div
-                      className="drink-type"
-                      onClick={() => handleOptionChange(el, curItem.modifiers)}
-                    >
-                      <button
-                        className={`check ${el.amount === 1 ? 'checked' : ''}`}
-                      >
-                        {el.amount === 1 && (
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            height="24"
-                            viewBox="0 -960 960 960"
-                            width="24"
-                          >
-                            <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
-                          </svg>
-                        )}
-                      </button>
-                    </div>
-                  </div>
-                )}
-              </div>
+              <ItemModifiers
+                key={el.id}
+                el={el}
+                item={item}
+                itemInCard={itemInCard}
+                curItem={curItem}
+                setCurValue={setCurValue}
+              />
             ))}
           </div>
         </Box>
