@@ -41,6 +41,7 @@ const Payment = React.memo(() => {
   const onSendData = useCallback(() => {
     const data = {
       price: store.price,
+      discountPrice: store.discountPrice,
       address: store.address,
       phone: store.phone,
       deliveryType: store.deliveryType,
@@ -69,6 +70,7 @@ const Payment = React.memo(() => {
     tg.sendData(JSON.stringify(data))
   }, [
     store.price,
+    store.discountPrice,
     store.address,
     store.phone,
     store.deliveryType,
