@@ -22,6 +22,9 @@ const Phone = ({ phoneError, setPhoneError }) => {
   }
 
   useEffect(() => {
+    if (phoneValue.length === 18) {
+      dispatch(setPhoneOption(phoneValue))
+    }
     if (inputRef.current) {
       const phoneMask = IMask(inputRef.current, {
         mask: '+{7} (000) 000-00-00',
