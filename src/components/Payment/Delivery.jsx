@@ -44,12 +44,7 @@ const Delivery = ({ addressError, setAddressError }) => {
                 handlerAddressSend(address)
               }}
             >
-              {addressError === false
-                ? 'addressErrorfalse'
-                : 'addressErrortrue'}
-              {errorMessage === false
-                ? 'errorMessagefalse'
-                : 'errorMessagetrue'}
+              Подтвердить
             </button>
           </div>
         </div>
@@ -74,6 +69,9 @@ const Delivery = ({ addressError, setAddressError }) => {
           <p className="address_error">{errorMessage}</p>
         )}
       </div>
+      {addressError === false ? 'addressErrorFalse' : 'addressErrorTrue'}
+      <br />
+      {addressError === false ? 'errorMessageFalse' : 'errorMessageTrue'}
     </div>
   )
 }
