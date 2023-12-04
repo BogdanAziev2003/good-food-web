@@ -44,7 +44,13 @@ const Delivery = ({ addressError, setAddressError }) => {
                 handlerAddressSend(address)
               }}
             >
-              Подтвердить {addressError === false ? 'false' : 'true'}
+              Подтвердить{' '}
+              {addressError === false
+                ? 'addressErrorfalse'
+                : 'addressErrortrue'}
+              {errorMessage === false
+                ? 'errorMessagefalse'
+                : 'errorMessagetrue'}
             </button>
           </div>
         </div>
