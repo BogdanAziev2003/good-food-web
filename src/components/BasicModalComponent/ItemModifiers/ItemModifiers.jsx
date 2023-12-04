@@ -4,7 +4,8 @@ import {
   addSupplement,
   removeSupplement,
 } from '../../../store/features/itemsSlice'
-import ItemDrink from './ItemDrink'
+import DrinkModifiers from './DrinkModifiers'
+import Modifiers from './Modifiers'
 
 const ItemModifiers = ({ el, item, curItem, itemInCard, setCurValue }) => {
   const dispatch = useDispatch()
@@ -28,45 +29,14 @@ const ItemModifiers = ({ el, item, curItem, itemInCard, setCurValue }) => {
       </div>
 
       {curItem.category !== 'Напитки' ? (
-        el.amount !== 0 ? (
-          <div className="mod__add mod__add_active">
-            <button
-              className="mod__add-btn"
-              onClick={() => {
-                handleAddSupplement(el)
-              }}
-            >
-              +
-            </button>
-            <p className="mod__el__amount">{el.amount}</p>
-            <button
-              className="mod__add-btn mod__add-btn-minus"
-              onClick={() => {
-                handleRemoveSupplement(el)
-              }}
-            >
-              -
-            </button>
-          </div>
-        ) : (
-          <div
-            className="mod__add"
-            onClick={() => {
-              handleAddSupplement(el)
-            }}
-          >
-            <div className="mod__add-plus">
-              <p>+</p>
-            </div>
-
-            <div className="mod__add-price">
-              <p>{el.price}₽</p>
-            </div>
-          </div>
-        )
+        <Modifiers
+          el={el}
+          handleAddSupplement={handleAddSupplement}
+          handleRemoveSupplement={handleRemoveSupplement}
+        />
       ) : (
         // Если напитки
-        <ItemDrink
+        <DrinkModifiers
           el={el}
           curItem={curItem}
           handleAddSupplement={handleAddSupplement}
