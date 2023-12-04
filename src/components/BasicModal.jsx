@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addSupplement, removeSupplement } from '../store/features/itemsSlice'
 import Dropdown from './Dropdown'
 import CloseModalBtn from './BasicModalComponent/CloseModalBtn'
+import NavigateItemModal from './BasicModalComponent/NavigateItemModal'
 
 const style = {
   position: 'absolute',
@@ -30,7 +31,7 @@ export const BasicModal = React.memo(({ item }) => {
     setCloseModal(false)
     setOpen(false)
   }
-  let count = 1
+
   const [activeItem, setActiveItem] = useState(item)
   const { itemInCard } = useSelector((state) => state.items)
   const [curItem, setCurValue] = useState(item)
@@ -66,15 +67,7 @@ export const BasicModal = React.memo(({ item }) => {
     dispatch(removeSupplement({ el, item }))
   }
 
-  const handleCurrentItemClick = (currItem) => {
-    item = itemInCard.find((el) => el.idInCard === currItem.idInCard)
-    setCurValue(item)
-    setActiveItem(item)
-    setIsActiveSnack(false)
-    setIsActiveSause(false)
-  }
-
-  const handleOptionChange = (drink, types) => {
+  const handleOptionChange = (drink) => {
     if (drink.amount === 1) {
       return
     }
@@ -101,25 +94,15 @@ export const BasicModal = React.memo(({ item }) => {
       >
         <Box sx={style}>
           <div className="modal__header">
-            <div className="modal__header-wrapper">
-              <div className="navigate-modal-btn-list">
-                {itemInCard.map((itm) => {
-                  if (itm.id === item.id) {
-                    return (
-                      <button
-                        className={`navigate-modal-btn ${
-                          activeItem.idInCard === itm.idInCard ? 'active' : ''
-                        }`}
-                        key={itm.idInCard}
-                        onClick={() => handleCurrentItemClick(itm)}
-                      >
-                        {count++}
-                      </button>
-                    )
-                  }
-                })}
-              </div>
-            </div>
+            <NavigateItemModal // Навигация По Модальному Окну
+              item={item}
+              activeItem={activeItem}
+              itemInCard={itemInCard}
+              setCurValue={setCurValue}
+              setActiveItem={setActiveItem}
+              setIsActiveSnack={setIsActiveSnack}
+              setIsActiveSause={setIsActiveSause}
+            />
 
             <CloseModalBtn handleClose={handleClose} />
           </div>
