@@ -44,7 +44,7 @@ const Delivery = ({ addressError, setAddressError }) => {
                 handlerAddressSend(address)
               }}
             >
-              Подтвердить
+              Подтвердить {addressError === false ? 'false' : 'true'}
             </button>
           </div>
         </div>
@@ -65,7 +65,9 @@ const Delivery = ({ addressError, setAddressError }) => {
       )}
       <div className="address_error">{errorMessage ? errorMessage : <></>}</div>
       <div className="address_error">
-        {addressError && <p className="address_error">{errorMessage}</p>}
+        {addressError && !errorMessage && (
+          <p className="address_error">{errorMessage}</p>
+        )}
       </div>
     </div>
   )
