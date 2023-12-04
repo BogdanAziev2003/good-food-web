@@ -134,7 +134,7 @@ const Payment = React.memo(() => {
       if (store.address === null && store.deliveryType === 'delivery') {
         setAddressError(true)
       } else {
-        setAddressError(false)
+        setAddressError(true)
       }
     })
   }, [tg.onEvent && store.deliveryType && store.address])
