@@ -38,7 +38,6 @@ const PaymentItem = ({ item }) => {
             item.category === 'Сэндвичи') &&
             item.category !== 'Напитки' && (
               <ViewDropdown
-                // eslint-disable-next-line array-callback-return
                 items={item.modifiers}
                 additive={[item.sause, item.snack]}
               />

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import ItemDropdownContent from './Payment/ItemDropdownContent'
 
 let ViewDropdown = ({ items, additive = null }) => {
   const [isActive, setIsActive] = useState(false)
@@ -37,28 +38,11 @@ let ViewDropdown = ({ items, additive = null }) => {
       </div>
       {isActive && (
         <div className="dropdown-content">
-          {additive &&
-            additive.map((add, id) => {
-              if (add) {
-                return (
-                  <div
-                    key={id}
-                    className="dropdown-item dropdown-item-addictive"
-                  >
-                    {add}
-                  </div>
-                )
-              }
-            })}
-          {items.map((item, id) => {
-            if (item.amount !== 0) {
-              return (
-                <div key={id} className="dropdown-item">
-                  {kitcut(item.title, 10)} x {item.amount}
-                </div>
-              )
-            }
-          })}
+          <ItemDropdownContent
+            additive={additive}
+            items={items}
+            kitcut={kitcut}
+          />
         </div>
       )}
     </div>
