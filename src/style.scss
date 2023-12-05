@@ -981,3 +981,17 @@ a {
 .item__additive {
   font-size: 10px;
 }
+
+.discount {
+  margin-top: 15px;
+  background-color: var(--second-color);
+  border-radius: 5px;
+  padding: 25px 10px;
+  text-align: center;
+}
+
+.discount-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--main-color);
+}
