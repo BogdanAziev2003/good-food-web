@@ -30,7 +30,7 @@ a {
 .header {
   height: 100px;
   overflow-y: hidden;
-  border-bottom: 2px solid var(--second-color);
+  border-bottom: 2px solid var(--tt-color);
   background-color: var(--main-color);
 }
 
@@ -987,7 +987,7 @@ a {
 }
 
 .discount {
-  background-color: var(--second-color);
+  background-color: var(--tt-color);
   border-bottom-right-radius: 50%;
   border-bottom-left-radius: 50%;
   padding: 10px 10px;
@@ -998,4 +998,8 @@ a {
   font-size: 18px;
   font-weight: bold;
   color: var(--main-color);
+
+  .discount__text {
+    letter-spacing: 6px;
+  }
 }
