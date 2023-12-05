@@ -7,7 +7,7 @@ const Layaout = ({ children }) => {
   return (
     <React.Fragment>
       <Header />
-      <DiscountComponent />
+      {location.pathname !== '/payment' && <DiscountComponent />}
       {children}
     </React.Fragment>
   )
