@@ -992,14 +992,14 @@ a {
   border-bottom-left-radius: 50%;
   padding: 10px 10px;
   text-align: center;
-}
 
-.discount-text {
-  font-size: 18px;
-  font-weight: bold;
-  color: var(--main-color);
+  .discount-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--main-color);
 
-  .discount__text {
-    letter-spacing: 6px;
+    .discount__text {
+      letter-spacing: 6px;
+    }
   }
 }
