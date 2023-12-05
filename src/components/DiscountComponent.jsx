@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const DiscountComponent = () => {
   return (
@@ -7,7 +7,7 @@ const DiscountComponent = () => {
         <span className="discount__text">Скидка</span> 10%
       </span>
     </div>
-  )
-}
+  );
+};
 
-export default DiscountComponent
+export default DiscountComponent;

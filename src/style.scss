@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 :root {
   --main-color: #2b2a28;
@@ -15,7 +15,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 body {
@@ -30,8 +30,9 @@ a {
 .header {
   height: 100px;
   overflow-y: hidden;
-  // border-bottom: 2px solid var(--tt-color);
+  // border-bottom: 2px solid var(--second-color);
   background-color: var(--main-color);
+  position: sticky;
 }
 
 .header__logo {
@@ -240,7 +241,7 @@ a {
   }
 
   .old-price::after {
-    content: '';
+    content: "";
     display: block;
     border-radius: 50%;
     border: 1px solid red;
@@ -987,33 +988,24 @@ a {
 }
 
 .discount {
-  background: linear-gradient(45deg, rgba(250, 205, 57, 0.718), #ffff00);
-  border-bottom-right-radius: 35px;
-  border-bottom-left-radius: 35px;
-  padding: 10px 10px;
-  text-align: center;
-  background-size: 400% 400%;
-  animation: gradient 1.2s ease infinite;
-
-  @keyframes gradient {
-    0% {
-      background-position: 0 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0 50%;
-    }
-  }
+  background: transparent;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  justify-content: center;
+  width: calc(100% - 20px);
+  margin: 0 auto;
+  // margin-top: 10px;
+  border: 1px solid var(--second-color);
+  padding: 10px 0;
 
   .discount-text {
     font-size: 18px;
-    font-weight: bold;
-    color: var(--main-color);
+    font-weight: 500;
+    color: var(--second-color);
   }
 
   .discount__text {
-    letter-spacing: 6px;
+    letter-spacing: 2px;
   }
 }
