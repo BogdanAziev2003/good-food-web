@@ -4,7 +4,10 @@ const DiscountComponent = () => {
   return (
     <div className="discount">
       <span className="discount-text">
-        <span className="discount__text">Скидка</span> 10%
+        <span className="discount__text">
+          <i>Скидка</i>
+        </span>{' '}
+        <i>10 %</i>
       </span>
     </div>
   )
