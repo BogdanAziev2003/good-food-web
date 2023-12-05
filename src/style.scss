@@ -30,7 +30,7 @@ a {
 .header {
   height: 100px;
   overflow-y: hidden;
-  border-bottom: 2px solid var(--tt-color);
+  // border-bottom: 2px solid var(--tt-color);
   background-color: var(--main-color);
 }
 
@@ -987,19 +987,33 @@ a {
 }
 
 .discount {
-  background-color: var(--tt-color);
-  border-bottom-right-radius: 50%;
-  border-bottom-left-radius: 50%;
+  background: linear-gradient(45deg, var(--second-color), var(--tt-color));
+  border-bottom-right-radius: 35px;
+  border-bottom-left-radius: 35px;
   padding: 10px 10px;
   text-align: center;
+  background-size: 400% 400%;
+  animation: gradient 1.5s ease infinite;
+
+  @keyframes gradient {
+    0% {
+      background-position: 0 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0 50%;
+    }
+  }
 
   .discount-text {
     font-size: 18px;
     font-weight: bold;
     color: var(--main-color);
+  }
 
-    .discount__text {
-      letter-spacing: 6px;
-    }
+  .discount__text {
+    letter-spacing: 6px;
   }
 }
