@@ -987,13 +987,13 @@ a {
 }
 
 .discount {
-  background: linear-gradient(45deg, var(--second-color), var(--tt-color));
+  background: linear-gradient(45deg, rgba(250, 205, 57, 0.718), #ffff00);
   border-bottom-right-radius: 35px;
   border-bottom-left-radius: 35px;
   padding: 10px 10px;
   text-align: center;
   background-size: 400% 400%;
-  animation: gradient 1.5s ease infinite;
+  animation: gradient 1.2s ease infinite;
 
   @keyframes gradient {
     0% {
