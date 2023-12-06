@@ -8,7 +8,7 @@ const ItemDropdownContent = ({ additive, items, kitcut }) => {
           if (add) {
             return (
               <div key={id} className="dropdown-item dropdown-item-addictive">
-                {add}
+                {add}test
               </div>
             )
           }
