@@ -3,16 +3,6 @@ import React from 'react'
 const ItemDropdownContent = ({ additive, items, kitcut }) => {
   return (
     <>
-      {additive &&
-        additive.map((add, id) => {
-          if (add) {
-            return (
-              <div key={id} className="dropdown-item dropdown-item-addictive">
-                {add}test
-              </div>
-            )
-          }
-        })}
       {items.map((item, id) => {
         if (item.amount !== 0) {
           return (
@@ -22,6 +12,16 @@ const ItemDropdownContent = ({ additive, items, kitcut }) => {
           )
         }
       })}
+      {additive &&
+        additive.map((add, id) => {
+          if (add) {
+            return (
+              <div key={id} className="dropdown-item dropdown-item-addictive">
+                {add}
+              </div>
+            )
+          }
+        })}
     </>
   )
 }
