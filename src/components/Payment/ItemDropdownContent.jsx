@@ -1,7 +1,6 @@
 import React from 'react'
 
 const ItemDropdownContent = ({ additive, items, kitcut }) => {
-  additive.reverse()
   return (
     <>
       {items.map((item, id) => {
