@@ -39,7 +39,7 @@ const PaymentItem = ({ item }) => {
             item.category !== 'Напитки' && (
               <ViewDropdown
                 items={item.modifiers}
-                additive={[item.snack, item.sause]}
+                additive={[item.sause, item.snack]}
               />
             )}
         </div>
