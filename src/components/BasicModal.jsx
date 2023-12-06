@@ -83,7 +83,7 @@ export const BasicModal = React.memo(({ item }) => {
             <CloseModalBtn handleClose={handleClose} />
           </div>
           <div className="modal__body">
-            {curItem?.category === 'Сэндвичи' && (
+            {curItem?.category === 'Сэндвичи' && curItem.sause && (
               <SandwichDropdown
                 curItem={curItem}
                 isActiveSnack={isActiveSnack}
