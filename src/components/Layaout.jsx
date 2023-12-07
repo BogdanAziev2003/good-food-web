@@ -1,18 +1,17 @@
-import React from 'react'
+import React from "react";
 
-import Header from './Header'
-import Footer from './Footer'
-import DiscountComponent from './DiscountComponent'
+import Header from "./Header";
+import Footer from "./Footer";
+import DiscountComponent from "./DiscountComponent";
 
 const Layaout = ({ children }) => {
   return (
     <React.Fragment>
       <Header />
-      {location.pathname !== '/payment' && <DiscountComponent />}
+      {location.pathname !== "/payment" && <DiscountComponent />}
       {children}
-      <Footer />
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default Layaout
+export default Layaout;
