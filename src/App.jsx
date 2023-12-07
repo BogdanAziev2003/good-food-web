@@ -41,6 +41,48 @@ const App = () => {
         categoryOrder.indexOf(first.category) -
         categoryOrder.indexOf(second.category)
     )
+  // Актуальный соус
+  items = items.map((item) => {
+    if (item.category === 'Сэндвичи') {
+      const sauceItem = items.find((item) => item.category === 'Соусы')
+      if (sauceItem) {
+        return { ...item, sause: sauceItem.title }
+      }
+    }
+    return item
+  })
+  // Актуальный Snack
+  if (
+    items.findIndex((item) => item.id === 29) === -1 &&
+    items.findIndex((item) => item.id === 31) !== -1
+  ) {
+    items = items.map((item) => {
+      if (item.category === 'Сэндвичи') {
+        return { ...item, snack: 'По деревенски' }
+      }
+      return item
+    })
+  } else if (
+    items.findIndex((item) => item.id === 31) === -1 &&
+    items.findIndex((item) => item.id === 29) !== -1
+  ) {
+    items = items.map((item) => {
+      if (item.category === 'Сэндвичи') {
+        return { ...item, snack: 'Фри' }
+      }
+      return item
+    })
+  } else if (
+    items.findIndex((item) => item.id === 29) === -1 &&
+    items.findIndex((item) => item.id === 31) === -1
+  ) {
+    items = items.map((item) => {
+      if (item.category === 'Сэндвичи') {
+        delete item.snack
+      }
+      return item
+    })
+  }
 
   const { totalPriceButton, tg } = useTelegram()
   useEffect(() => {

@@ -39,6 +39,7 @@ export const BasicModal = React.memo(({ item }) => {
   const [isActiveSause, setIsActiveSause] = useState(false)
 
   useEffect(() => {
+    console.log(itemInCard)
     const updateItem = itemInCard.find(
       (el) => curItem?.idInCard === el.idInCard
     )
@@ -49,6 +50,8 @@ export const BasicModal = React.memo(({ item }) => {
       setCurValue(updateItem)
     }
   }, [itemInCard, curItem, item, setActiveItem])
+
+  console.log(curItem)
 
   return (
     <div>
@@ -83,7 +86,7 @@ export const BasicModal = React.memo(({ item }) => {
             <CloseModalBtn handleClose={handleClose} />
           </div>
           <div className="modal__body">
-            {curItem.sause && curItem.snack && (
+            {(curItem.sause || curItem.snack) && (
               <SandwichDropdown
                 curItem={curItem}
                 isActiveSnack={isActiveSnack}

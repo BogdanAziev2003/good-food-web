@@ -23,7 +23,7 @@ const Dropdown = ({
   const handleAddSnack = (snack) => {
     setSelected(snack)
     setIsActive(false)
-    if (items.length === 2) {
+    if (snack === 'Фри' || snack === 'По деревенски') {
       dispatch(addSnack({ snack, curItem }))
     } else {
       dispatch(addSause({ snack, curItem }))
@@ -42,7 +42,7 @@ const Dropdown = ({
           setIsActive(!isActive)
         }}
       >
-        <p>{selected}</p>
+        <p>{selected ? selected : 'Нет в наличии'}</p>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24"

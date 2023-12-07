@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Dropdown from '../Dropdown'
+import { useSelector } from 'react-redux'
 
 const SandwichDropdown = ({
   curItem,
@@ -9,10 +10,26 @@ const SandwichDropdown = ({
   setIsActiveSause,
   closeModal,
 }) => {
-  const snacks = ['Фри', 'По деревенски']
-  const sause = ['Кетчуп', 'Кисло-сладкий', 'Сальса', 'Сырный', 'Чесночный']
+  const { items } = useSelector((state) => state.items)
+  const snacks = items
+    .filter(
+      (item) =>
+        item.title === 'Картофель по деревенски 200 гр.' ||
+        item.title === 'Картофель Фри 200 гр.'
+    )
+    .map((item) => {
+      if (item.title === 'Картофель по деревенски 200 гр.')
+        return 'По деревенски'
+      if (item.title === 'Картофель Фри 200 гр.') return 'Фри'
+      return item.title
+    })
+  const sause = items
+    .filter((item) => item.category === 'Соусы')
+    .map((item) => item.title)
+
   const [selectedSnack, setSelectedSnack] = useState()
   const [selectedSause, setSelectedSause] = useState()
+
   return (
     <>
       <div className="mod">
@@ -43,8 +60,8 @@ const SandwichDropdown = ({
         </div>
         <div
           onClick={() => {
-            setIsActiveSnack(false)
             setIsActiveSause(true)
+            setIsActiveSnack(false)
           }}
         >
           <Dropdown
