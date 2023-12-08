@@ -67,7 +67,7 @@ const App = () => {
     items.findIndex((item) => item.id === 29) !== -1
   ) {
     items = items.map((item) => {
-      if (item.category === 'Сэндвичи') {
+      if (item.category === 'Сэндвичи' && !item.title.includes('mini')) {
         return { ...item, snack: 'Фри' }
       }
       return item
