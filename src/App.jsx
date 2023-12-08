@@ -43,7 +43,7 @@ const App = () => {
     )
   // Актуальный соус
   items = items.map((item) => {
-    if (item.category === 'Сэндвичи') {
+    if (item.category === 'Сэндвичи' && !item.title.includes('mini')) {
       const sauceItem = items.find((item) => item.category === 'Соусы')
       if (sauceItem) {
         return { ...item, sause: sauceItem.title }
@@ -57,7 +57,7 @@ const App = () => {
     items.findIndex((item) => item.id === 31) !== -1
   ) {
     items = items.map((item) => {
-      if (item.category === 'Сэндвичи') {
+      if (item.category === 'Сэндвичи' && !item.title.includes('mini')) {
         return { ...item, snack: 'По деревенски' }
       }
       return item
