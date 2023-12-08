@@ -1,57 +1,57 @@
-import React, { useEffect, useState } from "react";
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import { useSelector } from "react-redux";
-import CloseModalBtn from "./BasicModalComponent/CloseModalBtn";
-import NavigateItemModal from "./BasicModalComponent/NavigateItemModal";
-import SandwichDropdown from "./BasicModalComponent/SandwichDropdown";
-import ItemModifiers from "./BasicModalComponent/ItemModifiers/ItemModifiers";
+import React, { useEffect, useState } from 'react'
+import Box from '@mui/material/Box'
+import Modal from '@mui/material/Modal'
+import { useSelector } from 'react-redux'
+import CloseModalBtn from './BasicModalComponent/CloseModalBtn'
+import NavigateItemModal from './BasicModalComponent/NavigateItemModal'
+import SandwichDropdown from './BasicModalComponent/SandwichDropdown'
+import ItemModifiers from './BasicModalComponent/ItemModifiers/ItemModifiers'
 
 const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "calc(100% - 40px)",
-  height: "max-content",
-  padding: "0px 20px 20px 20px",
-  bgcolor: "#33312d",
-  borderRadius: "15px",
-  outline: "0",
-};
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 'calc(100% - 40px)',
+  height: 'max-content',
+  padding: '0px 20px 20px 20px',
+  bgcolor: '#33312d',
+  borderRadius: '15px',
+  outline: '0',
+}
 
 export const BasicModal = React.memo(({ item }) => {
-  const [closeModal, setCloseModal] = useState(false);
-  const [open, setOpen] = React.useState(false);
+  const [closeModal, setCloseModal] = useState(false)
+  const [open, setOpen] = React.useState(false)
   const handleOpen = () => {
-    setCloseModal(true);
-    setOpen(true);
-  };
+    setCloseModal(true)
+    setOpen(true)
+  }
   const handleClose = () => {
-    setCloseModal(false);
-    setOpen(false);
-  };
+    setCloseModal(false)
+    setOpen(false)
+  }
 
-  const [activeItem, setActiveItem] = useState(item);
-  const { itemInCard } = useSelector((state) => state.items);
-  const [curItem, setCurValue] = useState(item);
-  const [isActiveSnack, setIsActiveSnack] = useState(false);
-  const [isActiveSause, setIsActiveSause] = useState(false);
+  const [activeItem, setActiveItem] = useState(item)
+  const { itemInCard } = useSelector((state) => state.items)
+  const [curItem, setCurValue] = useState(item)
+  const [isActiveSnack, setIsActiveSnack] = useState(false)
+  const [isActiveSause, setIsActiveSause] = useState(false)
 
   useEffect(() => {
-    console.log(itemInCard);
+    console.log(itemInCard)
     const updateItem = itemInCard.find(
       (el) => curItem?.idInCard === el.idInCard
-    );
+    )
     if (!curItem) {
-      setCurValue(item);
-      setActiveItem(item);
+      setCurValue(item)
+      setActiveItem(item)
     } else {
-      setCurValue(updateItem);
+      setCurValue(updateItem)
     }
-  }, [itemInCard, curItem, item, setActiveItem]);
+  }, [itemInCard, curItem, item, setActiveItem])
 
-  console.log(curItem);
+  console.log(curItem)
 
   return (
     <div>
@@ -86,7 +86,7 @@ export const BasicModal = React.memo(({ item }) => {
             <CloseModalBtn handleClose={handleClose} />
           </div>
           <div className="modal__body">
-            {!curItem.title.includes("mini") && (
+            {!curItem.title.includes('mini') && (
               <SandwichDropdown
                 curItem={curItem}
                 isActiveSnack={isActiveSnack}
@@ -111,7 +111,7 @@ export const BasicModal = React.memo(({ item }) => {
         </Box>
       </Modal>
     </div>
-  );
-});
+  )
+})
 
-export default BasicModal;
+export default BasicModal

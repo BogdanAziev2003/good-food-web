@@ -35,7 +35,8 @@ const PaymentItem = ({ item }) => {
 
         <div className="item__supplements">
           {(item.modifiers.some((modifier) => modifier.amount !== 0) ||
-            item.snack) &&
+            item.snack ||
+            item.sause) &&
             item.category !== 'Напитки' && (
               <ViewDropdown
                 items={item.modifiers}
