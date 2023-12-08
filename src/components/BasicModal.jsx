@@ -86,16 +86,17 @@ export const BasicModal = React.memo(({ item }) => {
             <CloseModalBtn handleClose={handleClose} />
           </div>
           <div className="modal__body">
-            {!curItem.title.includes('mini') && (
-              <SandwichDropdown
-                curItem={curItem}
-                isActiveSnack={isActiveSnack}
-                isActiveSause={isActiveSause}
-                setIsActiveSnack={setIsActiveSnack}
-                setIsActiveSause={setIsActiveSause}
-                closeModal={closeModal}
-              />
-            )}
+            {!curItem.title.includes('mini') &&
+              curItem.category === 'Сэндвичи' && (
+                <SandwichDropdown
+                  curItem={curItem}
+                  isActiveSnack={isActiveSnack}
+                  isActiveSause={isActiveSause}
+                  setIsActiveSnack={setIsActiveSnack}
+                  setIsActiveSause={setIsActiveSause}
+                  closeModal={closeModal}
+                />
+              )}
 
             {curItem?.modifiers.map((el) => (
               <ItemModifiers
