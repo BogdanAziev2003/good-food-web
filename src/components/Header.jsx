@@ -33,7 +33,7 @@ const Header = () => {
         <div className="menu">
           <div className={`menu__item ${activeItem === '/' ? 'active' : ''}`}>
             <Link to="/" onClick={() => setActiveItem('/')}>
-              <p>Главная</p>
+              <p>Главнаяя</p>
             </Link>
           </div>
 
