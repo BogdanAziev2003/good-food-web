@@ -26,7 +26,7 @@ const PaymentComponent = ({ addressError, setAddressError }) => {
       <div className="delivery__types">
         <div
           className="delivery__type"
-          onTouchEnd={() => handleOptionChange("pickup")}
+          onTouchStart={() => handleOptionChange("pickup")}
         >
           <button
             className={`check ${deliveryType === "pickup" ? "checked" : ""}`}
@@ -48,7 +48,7 @@ const PaymentComponent = ({ addressError, setAddressError }) => {
         </div>
         <div
           className="delivery__type"
-          onTouchEnd={() => handleOptionChange("delivery")}
+          onTouchStart={() => handleOptionChange("delivery")}
         >
           <button
             className={`check ${deliveryType === "delivery" ? "checked" : ""}`}
