@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addItem, removeItem } from '../store/features/itemsSlice'
 import BasicModal from './BasicModal'
 
-const Item = React.memo(({ item }) => {
+const Item = ({ item }) => {
   const dispatch = useDispatch()
   const { itemInCard } = useSelector((state) => state.items)
 
@@ -96,6 +96,6 @@ const Item = React.memo(({ item }) => {
       </div>
     </div>
   )
-})
+}
 
 export default Item

@@ -20,7 +20,7 @@ const style = {
   outline: '0',
 }
 
-export const BasicModal = React.memo(({ item }) => {
+export const BasicModal = ({ item }) => {
   const [closeModal, setCloseModal] = useState(false)
   const [open, setOpen] = React.useState(false)
   const handleOpen = () => {
@@ -113,6 +113,6 @@ export const BasicModal = React.memo(({ item }) => {
       </Modal>
     </div>
   )
-})
+}
 
 export default BasicModal
