@@ -1,22 +1,22 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import {
   setClientAddress,
   setSelectedOption,
-} from '../../store/features/itemsSlice'
-import Delivery from './Delivery'
+} from "../../store/features/itemsSlice";
+import Delivery from "./Delivery";
 
 const PaymentComponent = ({ addressError, setAddressError }) => {
-  const dispatch = useDispatch()
-  const { deliveryType } = useSelector((state) => state.items)
+  const dispatch = useDispatch();
+  const { deliveryType } = useSelector((state) => state.items);
 
   const handleOptionChange = (deliveryType) => {
-    dispatch(setSelectedOption(deliveryType))
-    if (deliveryType === 'pickup') {
-      dispatch(setClientAddress(null))
-      setAddressError(false)
+    dispatch(setSelectedOption(deliveryType));
+    if (deliveryType === "pickup") {
+      dispatch(setClientAddress(null));
+      setAddressError(false);
     }
-  }
+  };
 
   return (
     <div className="delivery">
@@ -26,12 +26,12 @@ const PaymentComponent = ({ addressError, setAddressError }) => {
       <div className="delivery__types">
         <div
           className="delivery__type"
-          onClick={() => handleOptionChange('pickup')}
+          onTouchEnd={() => handleOptionChange("pickup")}
         >
           <button
-            className={`check ${deliveryType === 'pickup' ? 'checked' : ''}`}
+            className={`check ${deliveryType === "pickup" ? "checked" : ""}`}
           >
-            {deliveryType === 'pickup' && (
+            {deliveryType === "pickup" && (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="24"
@@ -48,12 +48,12 @@ const PaymentComponent = ({ addressError, setAddressError }) => {
         </div>
         <div
           className="delivery__type"
-          onClick={() => handleOptionChange('delivery')}
+          onTouchEnd={() => handleOptionChange("delivery")}
         >
           <button
-            className={`check ${deliveryType === 'delivery' ? 'checked' : ''}`}
+            className={`check ${deliveryType === "delivery" ? "checked" : ""}`}
           >
-            {deliveryType === 'delivery' && (
+            {deliveryType === "delivery" && (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="24"
@@ -67,13 +67,13 @@ const PaymentComponent = ({ addressError, setAddressError }) => {
           <div className="delivery__description">
             <p>Доставка</p>
           </div>
-          {deliveryType === 'delivery' && (
+          {deliveryType === "delivery" && (
             <p className="delivery__description__warning">
               * Цена расчитывается без учета доставки
             </p>
           )}
         </div>
-        {deliveryType === 'delivery' && (
+        {deliveryType === "delivery" && (
           <Delivery
             addressError={addressError}
             setAddressError={setAddressError}
@@ -81,7 +81,7 @@ const PaymentComponent = ({ addressError, setAddressError }) => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PaymentComponent
+export default PaymentComponent;

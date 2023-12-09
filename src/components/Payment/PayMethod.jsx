@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { useEffect } from "react";
 
-import { useDispatch, useSelector } from 'react-redux'
-import { setPayOption } from '../../store/features/itemsSlice'
+import { useDispatch, useSelector } from "react-redux";
+import { setPayOption } from "../../store/features/itemsSlice";
 
 const PayMethod = () => {
-  const dispatch = useDispatch()
-  const { payMethod } = useSelector((state) => state.items)
+  const dispatch = useDispatch();
+  const { payMethod } = useSelector((state) => state.items);
   const handleOptionChange = (payMethod) => {
-    dispatch(setPayOption(payMethod))
-  }
+    dispatch(setPayOption(payMethod));
+  };
 
   return (
     <div className="pay">
@@ -17,12 +17,12 @@ const PayMethod = () => {
         <div className="pay__type">
           <div
             className="pay__type__click"
-            onClick={() => handleOptionChange('cash')}
+            onTouchEnd={() => handleOptionChange("cash")}
           >
             <button
-              className={`check ${payMethod === 'cash' ? 'checked' : ''}`}
+              className={`check ${payMethod === "cash" ? "checked" : ""}`}
             >
-              {payMethod === 'cash' && (
+              {payMethod === "cash" && (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="24"
@@ -41,12 +41,12 @@ const PayMethod = () => {
         <div className="pay__type">
           <div
             className="pay__type__click"
-            onClick={() => handleOptionChange('card')}
+            onTouchEnd={() => handleOptionChange("card")}
           >
             <button
-              className={`check ${payMethod === 'card' ? 'checked' : ''}`}
+              className={`check ${payMethod === "card" ? "checked" : ""}`}
             >
-              {payMethod === 'card' && (
+              {payMethod === "card" && (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="24"
@@ -64,10 +64,10 @@ const PayMethod = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PayMethod
+export default PayMethod;
 
 // eslint-disable-next-line no-lone-blocks
 {
