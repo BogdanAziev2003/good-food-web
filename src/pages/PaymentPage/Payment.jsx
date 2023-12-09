@@ -79,67 +79,8 @@ const Payment = () => {
     store.comment,
   ])
 
-  useEffect(() => {
-    if (
-      !store.phone ||
-      !store.deliveryType ||
-      !store.payMethod ||
-      (store.deliveryType === 'delivery' && !store.address)
-    ) {
-      if (store.deliveryType === 'delivery' && !store.address) {
-        setErrors({
-          deliveryType: true,
-          address: true,
-        })
-      } else {
-        setErrors({
-          phone: !store.phone,
-          deliveryType: !store.deliveryType,
-          payMethod: !store.payMethod,
-          address: false,
-        })
-      }
-    } else {
-      setErrors({
-        phone: false,
-        deliveryType: false,
-        payMethod: false,
-        address: false,
-      })
-      tg.onEvent('mainButtonClicked', onSendData)
-    }
-    return () => {
-      tg.offEvent('mainButtonClicked', onSendData)
-    }
-  }, [
-    onSendData,
-    store.deliveryType,
-    store.payMethod,
-    store.phone,
-    store.address,
-    tg,
-  ])
-
   const [phoneError, setPhoneError] = useState(false)
   const [addressError, setAddressError] = useState(false)
-  // useEffect(() => {
-  //   tg.onEvent('mainButtonClicked', () => {
-  //     if (store.phone === null) {
-  //       setPhoneError(true)
-  //     } else {
-  //       setPhoneError(false)
-  //     }
-  //   })
-  // }, [tg.onEvent, store.phone])
-  // useEffect(() => {
-  //   tg.onEvent('mainButtonClicked', () => {
-  //     if (store.address === null && store.deliveryType === 'delivery') {
-  //       setAddressError(true)
-  //     } else {
-  //       setAddressError(false)
-  //     }
-  //   })
-  // }, [tg.onEvent, store.deliveryType, store.address])
 
   return (
     <div className="main">
