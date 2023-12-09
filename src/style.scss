@@ -541,8 +541,8 @@ a {
     overflow-y: visible;
     width: 100%;
     padding-bottom: 250px;
-    margin-bottom: -250px;
-
+    margin-bottom: -10px;
+    border: 1px solid red;
     .item-list {
       padding-bottom: 0px;
       display: flex;
