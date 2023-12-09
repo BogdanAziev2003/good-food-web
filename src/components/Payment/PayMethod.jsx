@@ -1,16 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { setPayOption } from '../../store/features/itemsSlice'
 
-const PayMethod = ({ payMethod }) => {
+const PayMethod = () => {
+  const [activeMod, setActiveMod] = useState('cash')
+
   const dispatch = useDispatch()
-  const handleOptionChange = (method) => {
-    if (method !== payMethod) {
-      dispatch(setPayOption(method))
-    }
-    return
+  const handleOptionChange = () => {
+    dispatch(setPayOption(activeMod))
   }
+
+  useEffect(() => {
+    handleOptionChange()
+  }, [activeMod])
 
   return (
     <div className="pay">
@@ -19,12 +22,12 @@ const PayMethod = ({ payMethod }) => {
         <div className="pay__type">
           <div
             className="pay__type__click"
-            onClick={() => handleOptionChange('cash')}
+            onClick={() => setActiveMod('cash')}
           >
             <button
-              className={`check ${payMethod === 'cash' ? 'checked' : ''}`}
+              className={`check ${activeMod === 'cash' ? 'checked' : ''}`}
             >
-              {payMethod === 'cash' && (
+              {activeMod === 'cash' && (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="24"
@@ -43,12 +46,12 @@ const PayMethod = ({ payMethod }) => {
         <div className="pay__type">
           <div
             className="pay__type__click"
-            onClick={() => handleOptionChange('card')}
+            onClick={() => setActiveMod('card')}
           >
             <button
-              className={`check ${payMethod === 'card' ? 'checked' : ''}`}
+              className={`check ${activeMod === 'card' ? 'checked' : ''}`}
             >
-              {payMethod === 'card' && (
+              {activeMod === 'card' && (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="24"

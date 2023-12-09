@@ -156,7 +156,7 @@ const Payment = () => {
       {/* Номер телефона */}
       <Phone phoneError={phoneError} setPhoneError={setPhoneError} />
       {/* Способ Оплаты */}
-      <PayMethod payMethod={store.payMethod} />
+      <PayMethod />
       {/* Способ доставки */}
       <PaymentComponent
         addressError={addressError}
