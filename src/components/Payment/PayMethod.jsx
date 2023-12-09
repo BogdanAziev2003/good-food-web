@@ -18,8 +18,6 @@ const PayMethod = () => {
           <div
             className="pay__type__click"
             onClick={() => handleOptionChange('cash')}
-            onKeyDown={() => handleOptionChange('cash')}
-            onTouchStart={() => handleOptionChange('cash')}
           >
             <button
               className={`check ${payMethod === 'cash' ? 'checked' : ''}`}
@@ -44,8 +42,6 @@ const PayMethod = () => {
           <div
             className="pay__type__click"
             onClick={() => handleOptionChange('card')}
-            onKeyDown={() => handleOptionChange('card')}
-            onTouchStart={() => handleOptionChange('card')}
           >
             <button
               className={`check ${payMethod === 'card' ? 'checked' : ''}`}

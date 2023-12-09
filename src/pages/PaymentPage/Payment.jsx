@@ -122,24 +122,24 @@ const Payment = () => {
 
   const [phoneError, setPhoneError] = useState(false)
   const [addressError, setAddressError] = useState(false)
-  useEffect(() => {
-    tg.onEvent('mainButtonClicked', () => {
-      if (store.phone === null) {
-        setPhoneError(true)
-      } else {
-        setPhoneError(false)
-      }
-    })
-  }, [tg.onEvent, store.phone])
-  useEffect(() => {
-    tg.onEvent('mainButtonClicked', () => {
-      if (store.address === null && store.deliveryType === 'delivery') {
-        setAddressError(true)
-      } else {
-        setAddressError(false)
-      }
-    })
-  }, [tg.onEvent, store.deliveryType, store.address])
+  // useEffect(() => {
+  //   tg.onEvent('mainButtonClicked', () => {
+  //     if (store.phone === null) {
+  //       setPhoneError(true)
+  //     } else {
+  //       setPhoneError(false)
+  //     }
+  //   })
+  // }, [tg.onEvent, store.phone])
+  // useEffect(() => {
+  //   tg.onEvent('mainButtonClicked', () => {
+  //     if (store.address === null && store.deliveryType === 'delivery') {
+  //       setAddressError(true)
+  //     } else {
+  //       setAddressError(false)
+  //     }
+  //   })
+  // }, [tg.onEvent, store.deliveryType, store.address])
 
   return (
     <div className="main">
