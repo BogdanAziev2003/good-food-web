@@ -7,9 +7,7 @@ const PayMethod = ({ payMethod }) => {
   const dispatch = useDispatch()
   const handleOptionChange = (method) => {
     if (method !== payMethod) {
-      console.log(payMethod)
       dispatch(setPayOption(method))
-      console.log(payMethod)
     }
     return
   }
