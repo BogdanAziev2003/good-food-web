@@ -3,11 +3,15 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setPayOption } from '../../store/features/itemsSlice'
 
-const PayMethod = () => {
+const PayMethod = ({ payMethod }) => {
   const dispatch = useDispatch()
-  const { payMethod } = useSelector((state) => state.items)
-  const handleOptionChange = (payMethod) => {
-    dispatch(setPayOption(payMethod))
+  const handleOptionChange = (method) => {
+    if (method !== payMethod) {
+      console.log(payMethod)
+      dispatch(setPayOption(method))
+      console.log(payMethod)
+    }
+    return
   }
 
   return (

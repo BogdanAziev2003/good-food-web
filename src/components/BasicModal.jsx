@@ -39,7 +39,6 @@ export const BasicModal = ({ item }) => {
   const [isActiveSause, setIsActiveSause] = useState(false)
 
   useEffect(() => {
-    console.log(itemInCard)
     const updateItem = itemInCard.find(
       (el) => curItem?.idInCard === el.idInCard
     )
@@ -50,8 +49,6 @@ export const BasicModal = ({ item }) => {
       setCurValue(updateItem)
     }
   }, [itemInCard, curItem, item, setActiveItem])
-
-  console.log(curItem)
 
   return (
     <div>

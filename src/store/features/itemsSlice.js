@@ -59,7 +59,9 @@ export const itemsSlice = createSlice({
     },
     // Тип Оплаты
     setPayOption: (state, action) => {
+      debugger
       state.payMethod = action.payload
+      debugger
     },
     // Номер телефона
     setPhoneOption: (state, action) => {
