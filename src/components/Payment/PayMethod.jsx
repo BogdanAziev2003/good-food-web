@@ -1,14 +1,14 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from 'react'
 
-import { useDispatch, useSelector } from "react-redux";
-import { setPayOption } from "../../store/features/itemsSlice";
+import { useDispatch, useSelector } from 'react-redux'
+import { setPayOption } from '../../store/features/itemsSlice'
 
 const PayMethod = () => {
-  const dispatch = useDispatch();
-  const { payMethod } = useSelector((state) => state.items);
+  const dispatch = useDispatch()
+  const { payMethod } = useSelector((state) => state.items)
   const handleOptionChange = (payMethod) => {
-    dispatch(setPayOption(payMethod));
-  };
+    dispatch(setPayOption(payMethod))
+  }
 
   return (
     <div className="pay">
@@ -17,12 +17,12 @@ const PayMethod = () => {
         <div className="pay__type">
           <div
             className="pay__type__click"
-            onTouchStart={() => handleOptionChange("cash")}
+            onClick={() => handleOptionChange('cash')}
           >
             <button
-              className={`check ${payMethod === "cash" ? "checked" : ""}`}
+              className={`check ${payMethod === 'cash' ? 'checked' : ''}`}
             >
-              {payMethod === "cash" && (
+              {payMethod === 'cash' && (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="24"
@@ -41,12 +41,12 @@ const PayMethod = () => {
         <div className="pay__type">
           <div
             className="pay__type__click"
-            onTouchStart={() => handleOptionChange("card")}
+            onClick={() => handleOptionChange('card')}
           >
             <button
-              className={`check ${payMethod === "card" ? "checked" : ""}`}
+              className={`check ${payMethod === 'card' ? 'checked' : ''}`}
             >
-              {payMethod === "card" && (
+              {payMethod === 'card' && (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   height="24"
@@ -64,37 +64,7 @@ const PayMethod = () => {
         </div>
       </div>
     </div>
-  );
-};
-
-export default PayMethod;
-
-// eslint-disable-next-line no-lone-blocks
-{
-  /* <div className="pay__types">
-        <div className="pay__type">
-          <input
-            className="check"
-            type="radio"
-            id="cash"
-            name="pay"
-            value="cash"
-            checked={payMethod === 'cash'}
-            onChange={handleOptionChange}
-          />
-          <label htmlFor="cash"> Наличными</label>
-        </div>
-        <div className="pay__type">
-          <input
-            className="check"
-            type="radio"
-            id="card"
-            name="pay"
-            value="card"
-            checked={payMethod === 'card'}
-            onChange={handleOptionChange}
-          />
-          <label htmlFor="card">Картой</label>
-        </div>
-      </div> */
+  )
 }
+
+export default PayMethod
