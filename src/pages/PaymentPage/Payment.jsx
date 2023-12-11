@@ -5,7 +5,7 @@ import { useTelegram } from '../../hooks/useTelegram'
 import PaymentItem from '../../components/Payment/PaymentItem'
 import Phone from '../../components/Payment/Phone'
 import PayMethod from '../../components/Payment/PayMethod'
-import PaymentComponent from '../../components/Payment/PaymentComponent'
+import DeliveryType from '../../components/Payment/DeliveryType'
 import Comment from '../../components/Payment/Comment'
 
 const Payment = () => {
@@ -158,7 +158,7 @@ const Payment = () => {
       {/* Способ Оплаты */}
       <PayMethod />
       {/* Способ доставки */}
-      <PaymentComponent
+      <DeliveryType
         addressError={addressError}
         setAddressError={setAddressError}
       />

@@ -6,7 +6,7 @@ import {
 } from '../../store/features/itemsSlice'
 import Delivery from './Delivery'
 
-const PaymentComponent = ({ addressError, setAddressError }) => {
+const DeliveryType = ({ addressError, setAddressError }) => {
   const dispatch = useDispatch()
   const { deliveryType } = useSelector((state) => state.items)
 
@@ -84,4 +84,4 @@ const PaymentComponent = ({ addressError, setAddressError }) => {
   )
 }
 
-export default PaymentComponent
+export default DeliveryType
