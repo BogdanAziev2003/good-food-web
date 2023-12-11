@@ -112,7 +112,7 @@ const App = () => {
         <div>
           {isLoading ? (
             <div className="loading">
-              <h2>Загразка...</h2>
+              <h2>Загрузка...</h2>
             </div>
           ) : (
             <div className="wrapper">
@@ -183,7 +183,11 @@ const App = () => {
         </div>
       ) : (
         <div className="loading">
-          <h2>Кафе Закрыто 😪</h2>
+          <h2>
+            Кафе Закрыто 😊
+            <br />
+            <h6>10.00 - 21.50</h6>
+          </h2>
         </div>
       )}
     </>
