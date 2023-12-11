@@ -25,7 +25,7 @@ const Delivery = ({ addressError, setAddressError }) => {
   }
   return (
     <div className="address">
-      <p className="address__text">Адрес доставки:</p>
+      <p className="address__text">Адресс доставки:</p>
       {addressFromStore === null ? (
         <div className="address__block">
           <div className="address__input">
