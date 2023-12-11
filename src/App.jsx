@@ -48,7 +48,7 @@ const App = () => {
   ]
 
   items = items
-    .map((item) => ({ ...item })) // Создаем новые объекты, чтобы не изменять исходные
+    .map((item) => ({ ...item }))
     .sort(
       (first, second) =>
         categoryOrder.indexOf(first.category) -
