@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setClientAddress } from '../../store/features/itemsSlice'
-import DelMap from './DelMap'
 
 const Delivery = ({ addressError, setAddressError }) => {
   const dispatch = useDispatch()
 
   const addressFromStore = useSelector((state) => state.items.address)
-  const { deliveryPrice } = useSelector((state) => state.items)
   const [address, setAddress] = useState('')
   const [errorMessage, setErrorMessage] = useState(false)
 
@@ -27,34 +25,50 @@ const Delivery = ({ addressError, setAddressError }) => {
   }
   return (
     <div className="address">
-      <p className="address__text">Выберите адресс доставки:</p>
-      {addressFromStore ? (
-        <>
-          <div className="address__block">
-            <div className="address__input address__text-done">
-              {addressFromStore}
-            </div>
+      <p className="address__text">Адресс доставки:</p>
+      {addressFromStore === null ? (
+        <div className="address__block">
+          <div className="address__input">
+            <input
+              className="paymant-input"
+              type="text"
+              id="address"
+              value={address}
+              onChange={handleAddressChange}
+            />
+          </div>
+          <div>
             <button
               className="btn"
               onClick={() => {
-                handlerAddressSend(null)
+                handlerAddressSend(address)
               }}
             >
-              Изменить
+              Подтвердить
             </button>
           </div>
-          {deliveryPrice && (
-            <div className="address__text-done">
-              <p>
-                Цена доставки:
-                <span className="delivery-price"> {deliveryPrice}</span> ₽
-              </p>
-            </div>
-          )}
-        </>
+        </div>
       ) : (
-        <DelMap handlerAddressSend={handlerAddressSend} />
+        <div className="address__block">
+          <div className="address__input address__text-done">
+            {addressFromStore}
+          </div>
+          <button
+            className="btn"
+            onClick={() => {
+              handlerAddressSend(null)
+            }}
+          >
+            Изменить
+          </button>
+        </div>
       )}
+      <div className="address_error">{errorMessage ? errorMessage : <></>}</div>
+      <div className="address_error">
+        {addressError && !errorMessage && (
+          <p className="address_error">Введите адресс доставки</p>
+        )}
+      </div>
     </div>
   )
 }

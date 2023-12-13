@@ -27,7 +27,7 @@ const App = () => {
     if (currentTime >= '10:00' && currentTime <= '21:50') {
       setCafeOpen(true)
     } else {
-      setCafeOpen(true)
+      setCafeOpen(false)
     }
   }, [])
 
