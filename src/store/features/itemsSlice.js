@@ -10,6 +10,7 @@ const initialState = {
   discountPrice: 0,
   deliveryType: 'pickup',
   address: null,
+  deliveryPrice: 0,
   payMethod: 'cash',
   phone: null,
   comment: null,
@@ -169,6 +170,9 @@ export const itemsSlice = createSlice({
         }
       })
     },
+    deliveryPrice: (state, action) => {
+      state.deliveryPrice = action.payload
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -197,6 +201,7 @@ export const {
   removeSupplement,
   addSnack,
   addSause,
+  deliveryPrice,
 } = itemsSlice.actions
 
 export default itemsSlice.reducer

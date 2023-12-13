@@ -67,11 +67,11 @@ const DeliveryType = ({ addressError, setAddressError }) => {
           <div className="delivery__description">
             <p>Доставка</p>
           </div>
-          {deliveryType === 'delivery' && (
+          {/* {deliveryType === 'delivery' && (
             <p className="delivery__description__warning">
               * Цена расчитывается без учета доставки
             </p>
-          )}
+          )} */}
         </div>
         {deliveryType === 'delivery' && (
           <Delivery

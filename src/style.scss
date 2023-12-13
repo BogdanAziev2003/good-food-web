@@ -718,6 +718,11 @@ a {
     display: flex;
     align-items: center;
     padding-left: 10px;
+
+    .delivery-price {
+      color: rgb(255, 136, 0);
+      font-weight: 600;
+    }
   }
 
   .address__block {
@@ -1015,5 +1020,32 @@ a {
 
   .discount__text {
     letter-spacing: 2px;
+  }
+}
+
+.map {
+  width: calc(100% - 20px);
+  margin: 20px auto;
+  height: 300px;
+}
+
+.map_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .btn_map {
+    width: 150px;
+    height: 36px;
+    border-radius: 8px;
+    background-color: var(--second-color);
+    outline: none;
+    box-shadow: none;
+    border: 2px solid var(--main-color);
+    color: var(--main-color);
+    font-weight: 700;
+    font-size: 14px;
+    justify-content: center;
   }
 }
