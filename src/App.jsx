@@ -18,6 +18,7 @@ import { useTelegram } from './hooks/useTelegram'
 
 const App = () => {
   const dispatch = useDispatch()
+  const clearApp = true
 
   const [cafeIsOpen, setCafeOpen] = useState(false)
   const localTimestamp = moment.tz('Europe/Moscow')
@@ -25,7 +26,7 @@ const App = () => {
 
   useEffect(() => {
     if (currentTime >= '10:00' && currentTime <= '21:50') {
-      setCafeOpen(true)
+      setCafeOpen(false)
     } else {
       setCafeOpen(false)
     }
@@ -183,8 +184,8 @@ const App = () => {
         </div>
       ) : (
         <div className="loading">
-          <h2>Кафе Закрыто 😊</h2>
-          <h6>10.00 - 21.50</h6>
+          <h2>Кафе закрыто до 14:00</h2>
+          {/* <h6>10.00 - 21.50</h6> */}
         </div>
       )}
     </>
