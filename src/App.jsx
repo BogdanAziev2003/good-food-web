@@ -24,13 +24,13 @@ const App = () => {
   const localTimestamp = moment.tz('Europe/Moscow')
   const currentTime = localTimestamp.format('HH:mm')
 
-  useEffect(() => {
-    if (currentTime >= '10:00' && currentTime <= '21:50') {
-      setCafeOpen(false)
-    } else {
-      setCafeOpen(false)
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (currentTime >= '10:00' && currentTime <= '21:50') {
+  //     setCafeOpen(false)
+  //   } else {
+  //     setCafeOpen(false)
+  //   }
+  // }, [])
 
   let { items, isLoading } = useSelector((state) => state.items)
 
