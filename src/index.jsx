@@ -8,19 +8,10 @@ import { store } from './store/store'
 
 import './style.scss'
 
-const isOpenFalse = true
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Provider store={store}>
-      {isOpenFalse ? (
-        <div className="loading">
-          <h2>Мы закрыты до 3 числа</h2>
-          <h6>С наступающим 🎄</h6>
-        </div>
-      ) : (
-        <App />
-      )}
+      <App />
     </Provider>
   </BrowserRouter>
 )

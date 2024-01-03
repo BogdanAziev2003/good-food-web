@@ -41,7 +41,7 @@ const Payment = () => {
   const onSendData = useCallback(() => {
     const data = {
       price: store.price,
-      discountPrice: store.discountPrice,
+      discountPrice: store.price,
       address: store.address,
       phone: store.phone,
       deliveryType: store.deliveryType,
@@ -70,7 +70,6 @@ const Payment = () => {
     tg.sendData(JSON.stringify(data))
   }, [
     store.price,
-    store.discountPrice,
     store.address,
     store.phone,
     store.deliveryType,
