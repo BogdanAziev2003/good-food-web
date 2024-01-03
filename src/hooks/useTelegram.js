@@ -38,10 +38,10 @@ export function useTelegram() {
   const totalPriceButton = () => {
     if (window.location.pathname !== '/payment' && price !== 0) {
       tg.MainButton.show()
-      tg.MainButton.text = `Мой заказ: ${price} ₽ (Скидка 10%)`
+      tg.MainButton.text = `Мой заказ: ${price} ₽`
     }
     if (window.location.pathname === '/payment' && price !== 0) {
-      tg.MainButton.text = `Заказать: ${price} ₽ (Скидка 10%)`
+      tg.MainButton.text = `Заказать: ${price} ₽`
     } else if (price === 0) {
       tg.MainButton.hide()
     }
