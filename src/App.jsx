@@ -1,38 +1,38 @@
-import React, { useEffect, useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
-import { getAllMenu } from './store/features/itemsSlice'
-import { useDispatch, useSelector } from 'react-redux'
-import moment from 'moment-timezone'
+import React, { useEffect, useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { getAllMenu } from './store/features/itemsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import moment from 'moment-timezone';
 
-import Layaout from './components/Layaout'
-import HomePage from './pages/HomePage/HomePage'
-import SandwichPage from './pages/SandwichPage/SandwichPage'
-import BurgerPage from './pages/BurgerPage/BurgerPage'
-import HotDogePage from './pages/HotDogePage/HotDogePage'
-import PotatoPage from './pages/PotatoPage/PotatoPage'
-import DrinksPage from './pages/DrinksPage/DrinksPage'
-import SaucesPage from './pages/SaucesPage/SaucesPage'
-import Payment from './pages/PaymentPage/Payment'
+import Layaout from './components/Layaout';
+import HomePage from './pages/HomePage/HomePage';
+import SandwichPage from './pages/SandwichPage/SandwichPage';
+import BurgerPage from './pages/BurgerPage/BurgerPage';
+import HotDogePage from './pages/HotDogePage/HotDogePage';
+import PotatoPage from './pages/PotatoPage/PotatoPage';
+import DrinksPage from './pages/DrinksPage/DrinksPage';
+import SaucesPage from './pages/SaucesPage/SaucesPage';
+import Payment from './pages/PaymentPage/Payment';
 
-import { useTelegram } from './hooks/useTelegram'
+import { useTelegram } from './hooks/useTelegram';
 
 const App = () => {
-  const dispatch = useDispatch()
-  const clearApp = true
-  const [cafeIsOpen, setCafeOpen] = useState(false)
-  const localTimestamp = moment.tz('Europe/Moscow')
-  const currentTime = localTimestamp.format('HH:mm')
+  const dispatch = useDispatch();
+  const clearApp = true;
+  const [cafeIsOpen, setCafeOpen] = useState(false);
+  const localTimestamp = moment.tz('Europe/Moscow');
+  const currentTime = localTimestamp.format('HH:mm');
   useEffect(() => {
     if (currentTime >= '10:00' && currentTime <= '21:50') {
-      setCafeOpen(true)
+      setCafeOpen(true);
     } else {
-      setCafeOpen(false)
+      setCafeOpen(false);
     }
-  }, [])
-  let { items, isLoading } = useSelector((state) => state.items)
+  }, []);
+  let { items, isLoading } = useSelector((state) => state.items);
   useEffect(() => {
-    dispatch(getAllMenu())
-  }, [dispatch])
+    dispatch(getAllMenu());
+  }, [dispatch]);
   const categoryOrder = [
     'Бургеры',
     'Хот-доги',
@@ -41,24 +41,24 @@ const App = () => {
     'Снэки',
     'Соусы',
     'Напитки',
-  ]
+  ];
   items = items
     .map((item) => ({ ...item }))
     .sort(
       (first, second) =>
         categoryOrder.indexOf(first.category) -
         categoryOrder.indexOf(second.category)
-    )
+    );
   // Актуальный соус
   items = items.map((item) => {
     if (item.category === 'Сэндвичи' && !item.title.includes('mini')) {
-      const sauceItem = items.find((item) => item.category === 'Соусы')
+      const sauceItem = items.find((item) => item.category === 'Соусы');
       if (sauceItem) {
-        return { ...item, sause: sauceItem.title }
+        return { ...item, sause: sauceItem.title };
       }
     }
-    return item
-  })
+    return item;
+  });
   // Актуальный Snack
   if (
     items.findIndex((item) => item.id === 29) === -1 &&
@@ -66,39 +66,39 @@ const App = () => {
   ) {
     items = items.map((item) => {
       if (item.category === 'Сэндвичи' && !item.title.includes('mini')) {
-        return { ...item, snack: 'По деревенски' }
+        return { ...item, snack: 'По деревенски' };
       }
-      return item
-    })
+      return item;
+    });
   } else if (
     items.findIndex((item) => item.id === 31) === -1 &&
     items.findIndex((item) => item.id === 29) !== -1
   ) {
     items = items.map((item) => {
       if (item.category === 'Сэндвичи' && !item.title.includes('mini')) {
-        return { ...item, snack: 'Фри' }
+        return { ...item, snack: 'Фри' };
       }
-      return item
-    })
+      return item;
+    });
   } else if (
     items.findIndex((item) => item.id === 29) === -1 &&
     items.findIndex((item) => item.id === 31) === -1
   ) {
     items = items.map((item) => {
       if (item.category === 'Сэндвичи') {
-        delete item.snack
+        delete item.snack;
       }
-      return item
-    })
+      return item;
+    });
   }
-  const { totalPriceButton, tg } = useTelegram()
+  const { totalPriceButton, tg } = useTelegram();
   useEffect(() => {
-    tg.ready()
-  }, [])
-  const { price } = useSelector((state) => state.items)
+    tg.ready();
+  }, []);
+  const { price } = useSelector((state) => state.items);
   useEffect(() => {
-    totalPriceButton()
-  }, [price, window.location.pathname])
+    totalPriceButton();
+  }, [price, window.location.pathname]);
   return (
     <>
       {cafeIsOpen ? (
@@ -181,7 +181,7 @@ const App = () => {
         </div>
       )}
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
