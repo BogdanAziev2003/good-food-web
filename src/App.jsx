@@ -23,7 +23,7 @@ const App = () => {
   const localTimestamp = moment.tz('Europe/Moscow');
   const currentTime = localTimestamp.format('HH:mm');
   useEffect(() => {
-    if (currentTime >= '10:00' && currentTime <= '21:50') {
+    if (currentTime >= '10:00' && currentTime <= '22:00') {
       setCafeOpen(true);
     } else {
       setCafeOpen(false);
@@ -177,7 +177,7 @@ const App = () => {
       ) : (
         <div className="loading">
           <h2>Кафе Закрыто</h2>
-          <h6>10.00 - 21.50</h6>
+          <h6>10.00 - 22.00</h6>
         </div>
       )}
     </>
