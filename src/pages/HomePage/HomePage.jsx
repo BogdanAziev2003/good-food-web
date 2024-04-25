@@ -1,14 +1,19 @@
-import React from 'react'
-import Item from '../../components/Item'
+import React from 'react';
+import Item from '../../components/Item';
 
 const HomePage = ({ item }) => {
   return (
     <div className="main">
+      <div className="action">
+        <h2 className="action__text">Акция</h2>
+        <Item item={item.find((el) => el.id === 1)} />
+      </div>
+
       {item.map((el) => (
         <Item key={el.id} item={el} />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

@@ -90,6 +90,21 @@ a {
       padding: 0 10px;
     }
   }
+
+  h2 {
+    color: #ffdf2c;
+    background: linear-gradient(45deg, #ffdf2c, #e74c3c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.action {
+  padding-bottom: 10px;
+}
+
+.action__text {
+  text-align: center;
 }
 
 .item {
