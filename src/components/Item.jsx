@@ -1,15 +1,19 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { addItem, removeItem } from '../store/features/itemsSlice'
-import BasicModal from './BasicModal'
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem, removeItem } from '../store/features/itemsSlice';
+import BasicModal from './BasicModal';
 
 const Item = ({ item }) => {
-  const dispatch = useDispatch()
-  const { itemInCard } = useSelector((state) => state.items)
+  if (item.id === 84) {
+    item.contains =
+      'Чикенбургер, картофель по деревенски, соус, coca-cola, сырные палочки';
+  }
+  const dispatch = useDispatch();
+  const { itemInCard } = useSelector((state) => state.items);
 
   const handleAddToCart = (item) => {
     if (item.category !== 'Напитки') {
-      dispatch(addItem(item))
+      dispatch(addItem(item));
     } else {
       if (item.modifiers.length > 0) {
         item = {
@@ -21,17 +25,17 @@ const Item = ({ item }) => {
             },
             ...item.modifiers.slice(1),
           ],
-        }
+        };
       }
-      dispatch(addItem(item))
+      dispatch(addItem(item));
     }
-  }
+  };
 
   const handleRemoveToCart = (item) => {
-    const item_id = item.id
-    dispatch(removeItem(item))
-    item = itemInCard.find((el) => el.id === item_id)
-  }
+    const item_id = item.id;
+    dispatch(removeItem(item));
+    item = itemInCard.find((el) => el.id === item_id);
+  };
 
   return (
     <div className="item">
@@ -95,7 +99,7 @@ const Item = ({ item }) => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Item
+export default Item;

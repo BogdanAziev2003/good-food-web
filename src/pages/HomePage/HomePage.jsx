@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Item from '../../components/Item';
 
 const HomePage = ({ item }) => {
@@ -8,6 +8,7 @@ const HomePage = ({ item }) => {
       <div className="action">
         <h2 className="action__text">Акция</h2>
         <Item item={item.find((el) => el.id === 84)} />
+
         <Item item={item.find((el) => el.id === 1)} />
       </div>
 
