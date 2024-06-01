@@ -867,11 +867,21 @@ a {
   align-items: center;
   height: 90vh;
   flex-direction: column;
+  text-align: center;
+  font-size: 15px;
 
-  h6 {
+  h2 {
+    padding: 0 20px;
     margin-top: 10px;
     display: flex;
     justify-content: center;
+  }
+
+  h3 {
+    margin-top: 20px;
+    span {
+      color: #fefc07;
+    }
   }
 }
 

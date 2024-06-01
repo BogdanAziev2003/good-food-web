@@ -8,14 +8,17 @@ import { store } from './store/store';
 
 import './style.scss';
 
-const isOpenFalse = false;
+const isOpenFalse = true;
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Provider store={store}>
       {isOpenFalse ? (
         <div className="loading">
-          <h2>Мы закрыты до 15:00</h2>
+          <h2>Сайт временно недоступен из-за технических работ</h2>
+          <h3>
+            <span>8 (989) 037-68-83</span>
+          </h3>
         </div>
       ) : (
         <App />
