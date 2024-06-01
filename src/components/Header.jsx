@@ -1,26 +1,26 @@
-import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
-import LOGO from '../image/logo.png'
+import LOGO from '../image/logo.png';
 
 const Header = () => {
-  const [activeItem, setActiveItem] = useState('/')
-  const location = useLocation()
+  const [activeItem, setActiveItem] = useState('/');
+  const location = useLocation();
 
   useEffect(() => {
     if (location.pathname === '/') {
-      setActiveItem('/')
+      setActiveItem('/');
     } else {
-      setActiveItem(location.pathname)
+      setActiveItem(location.pathname);
     }
-  }, [location.pathname])
+  }, [location.pathname]);
 
   useEffect(() => {
     if (location.pathname.endsWith('/payment')) {
-      setActiveItem('payment')
+      setActiveItem('payment');
     }
-  }, [location.pathname])
+  }, [location.pathname]);
 
   return (
     <header className="header">
@@ -51,6 +51,25 @@ const Header = () => {
           >
             <Link to="/burger" onClick={() => setActiveItem('/burger')}>
               <p>Бургеры</p>
+            </Link>
+          </div>
+          <div
+            className={`menu__item ${
+              activeItem === '/mini-burger' ? 'active' : ''
+            }`}
+          >
+            <Link
+              to="/mini-burger"
+              onClick={() => setActiveItem('/mini-burger')}
+            >
+              <p>Лайт бургеры</p>
+            </Link>
+          </div>
+          <div
+            className={`menu__item ${activeItem === '/salat' ? 'active' : ''}`}
+          >
+            <Link to="/salat" onClick={() => setActiveItem('/salat')}>
+              <p>Салаты</p>
             </Link>
           </div>
           <div
@@ -93,7 +112,7 @@ const Header = () => {
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
