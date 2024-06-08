@@ -47,6 +47,18 @@ const Header = () => {
             </Link>
           </div>
           <div
+            className={`menu__item ${
+              activeItem === '/mini-sandwich' ? 'active' : ''
+            }`}
+          >
+            <Link
+              to="/mini-sandwich"
+              onClick={() => setActiveItem('/mini-sandwich')}
+            >
+              <p>Мини сэндвичи</p>
+            </Link>
+          </div>
+          <div
             className={`menu__item ${activeItem === '/burger' ? 'active' : ''}`}
           >
             <Link to="/burger" onClick={() => setActiveItem('/burger')}>
