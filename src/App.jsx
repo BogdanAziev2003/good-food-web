@@ -121,6 +121,16 @@ const App = () => {
                     }
                   />
                   <Route
+                    path="/mini-sandwich"
+                    element={
+                      <SandwichPage
+                        item={items.filter(
+                          (el) => el.category === 'Мини сэндвичи'
+                        )}
+                      />
+                    }
+                  />
+                  <Route
                     path="/salat"
                     element={
                       <SandwichPage
