@@ -1,11 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Item from '../../components/Item';
 
 const HomePage = ({ item }) => {
-  useEffect(() => {
-    console.log(item);
-  }, []);
-  console.log(item);
   return (
     <div className="main">
       <div className="action">

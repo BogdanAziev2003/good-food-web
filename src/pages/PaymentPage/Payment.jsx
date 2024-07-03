@@ -36,10 +36,6 @@ const Payment = () => {
     return { itemInCard: itemsCount };
   });
 
-  useEffect(() => {
-    console.log(itemInCard);
-  }, itemInCard);
-
   const { tg } = useTelegram();
   const store = useSelector((state) => state.items);
   const onSendData = useCallback(() => {
