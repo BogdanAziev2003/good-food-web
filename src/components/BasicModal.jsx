@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import Box from '@mui/material/Box'
-import Modal from '@mui/material/Modal'
-import { useSelector } from 'react-redux'
-import CloseModalBtn from './BasicModalComponent/CloseModalBtn'
-import NavigateItemModal from './BasicModalComponent/NavigateItemModal'
-import SandwichDropdown from './BasicModalComponent/SandwichDropdown'
-import ItemModifiers from './BasicModalComponent/ItemModifiers/ItemModifiers'
+import React, { useEffect, useState } from 'react';
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
+import { useSelector } from 'react-redux';
+import CloseModalBtn from './BasicModalComponent/CloseModalBtn';
+import NavigateItemModal from './BasicModalComponent/NavigateItemModal';
+import SandwichDropdown from './BasicModalComponent/SandwichDropdown';
+import ItemModifiers from './BasicModalComponent/ItemModifiers/ItemModifiers';
 
 const style = {
   position: 'absolute',
@@ -18,37 +18,38 @@ const style = {
   bgcolor: '#33312d',
   borderRadius: '15px',
   outline: '0',
-}
+};
 
 export const BasicModal = ({ item }) => {
-  const [closeModal, setCloseModal] = useState(false)
-  const [open, setOpen] = React.useState(false)
+  const [closeModal, setCloseModal] = useState(false);
+  const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
-    setCloseModal(true)
-    setOpen(true)
-  }
+    setCloseModal(true);
+    setOpen(true);
+  };
   const handleClose = () => {
-    setCloseModal(false)
-    setOpen(false)
-  }
+    setCloseModal(false);
+    setOpen(false);
+  };
 
-  const [activeItem, setActiveItem] = useState(item)
-  const { itemInCard } = useSelector((state) => state.items)
-  const [curItem, setCurValue] = useState(item)
-  const [isActiveSnack, setIsActiveSnack] = useState(false)
-  const [isActiveSause, setIsActiveSause] = useState(false)
+  const [activeItem, setActiveItem] = useState(item);
+  const { itemInCard } = useSelector((state) => state.items);
+  const [curItem, setCurValue] = useState(item);
+  const [isActiveSnack, setIsActiveSnack] = useState(false);
+  const [isActiveSause, setIsActiveSause] = useState(false);
 
   useEffect(() => {
+    console.log(itemInCard);
     const updateItem = itemInCard.find(
       (el) => curItem?.idInCard === el.idInCard
-    )
+    );
     if (!curItem) {
-      setCurValue(item)
-      setActiveItem(item)
+      setCurValue(item);
+      setActiveItem(item);
     } else {
-      setCurValue(updateItem)
+      setCurValue(updateItem);
     }
-  }, [itemInCard, curItem, item, setActiveItem])
+  }, [itemInCard, curItem, item, setActiveItem]);
 
   return (
     <div>
@@ -94,6 +95,16 @@ export const BasicModal = ({ item }) => {
                   closeModal={closeModal}
                 />
               )}
+            {(curItem.id === 1 || curItem.id === 84) && (
+              <SandwichDropdown
+                curItem={curItem}
+                isActiveSnack={isActiveSnack}
+                isActiveSause={isActiveSause}
+                setIsActiveSnack={setIsActiveSnack}
+                setIsActiveSause={setIsActiveSause}
+                closeModal={closeModal}
+              />
+            )}
 
             {curItem?.modifiers.map((el) => (
               <ItemModifiers
@@ -109,7 +120,7 @@ export const BasicModal = ({ item }) => {
         </Box>
       </Modal>
     </div>
-  )
-}
+  );
+};
 
-export default BasicModal
+export default BasicModal;

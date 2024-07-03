@@ -74,7 +74,7 @@ const Item = ({ item }) => {
               </div>
             </div>
             <div className="item__add-modifier">
-              {item.modifiers.length > 0 ? (
+              {item.modifiers.length > 0 || item.id === 1 || item.id === 84 ? (
                 <BasicModal item={itemInCard.find((el) => el.id === item.id)} />
               ) : (
                 ''

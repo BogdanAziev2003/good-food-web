@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import Dropdown from '../Dropdown'
-import { useSelector } from 'react-redux'
+import React, { useEffect, useState } from 'react';
+import Dropdown from '../Dropdown';
+import { useSelector } from 'react-redux';
 
 const SandwichDropdown = ({
   curItem,
@@ -10,7 +10,7 @@ const SandwichDropdown = ({
   setIsActiveSause,
   closeModal,
 }) => {
-  const { items } = useSelector((state) => state.items)
+  const { items } = useSelector((state) => state.items);
   const snacks = items
     .filter(
       (item) =>
@@ -19,49 +19,52 @@ const SandwichDropdown = ({
     )
     .map((item) => {
       if (item.title === 'Картофель по деревенски 200 гр.')
-        return 'По деревенски'
-      if (item.title === 'Картофель Фри 200 гр.') return 'Фри'
-      return item.title
-    })
+        return 'По деревенски';
+      if (item.title === 'Картофель Фри 200 гр.') return 'Фри';
+      return item.title;
+    });
   const sause = items
     .filter((item) => item.category === 'Соусы')
-    .map((item) => item.title)
+    .map((item) => item.title);
 
-  const [selectedSnack, setSelectedSnack] = useState()
-  const [selectedSause, setSelectedSause] = useState()
+  const [selectedSnack, setSelectedSnack] = useState();
+  const [selectedSause, setSelectedSause] = useState();
 
   return (
     <>
-      <div className="mod">
-        <div className="mod__name">
-          <p>Снэки на выбор</p>
+      {curItem.id !== 1 && curItem.id !== 84 && (
+        <div className="mod">
+          <div className="mod__name">
+            <p>Снэки на выбор</p>
+          </div>
+          <div
+            onClick={() => {
+              setIsActiveSnack(true);
+              setIsActiveSause(false);
+            }}
+          >
+            <Dropdown
+              items={snacks}
+              selected={curItem.snack}
+              setSelected={setSelectedSnack}
+              curItem={curItem}
+              isActiveDrop={isActiveSnack}
+              closeModal={closeModal}
+              setIsActiveSnack={setIsActiveSnack}
+              setIsActiveSause={setIsActiveSause}
+            />
+          </div>
         </div>
-        <div
-          onClick={() => {
-            setIsActiveSnack(true)
-            setIsActiveSause(false)
-          }}
-        >
-          <Dropdown
-            items={snacks}
-            selected={curItem.snack}
-            setSelected={setSelectedSnack}
-            curItem={curItem}
-            isActiveDrop={isActiveSnack}
-            closeModal={closeModal}
-            setIsActiveSnack={setIsActiveSnack}
-            setIsActiveSause={setIsActiveSause}
-          />
-        </div>
-      </div>
+      )}
+
       <div className="mod">
         <div className="mod__name">
           <p>Соус на выбор</p>
         </div>
         <div
           onClick={() => {
-            setIsActiveSause(true)
-            setIsActiveSnack(false)
+            setIsActiveSause(true);
+            setIsActiveSnack(false);
           }}
         >
           <Dropdown
@@ -77,7 +80,7 @@ const SandwichDropdown = ({
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default SandwichDropdown
+export default SandwichDropdown;

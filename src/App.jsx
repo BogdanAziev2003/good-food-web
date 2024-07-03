@@ -57,6 +57,9 @@ const App = () => {
         return { ...item, sause: sauceItem.title };
       }
     }
+    if (item.id === 1 || item.id === 84) {
+      item.sause = 'Сырный';
+    }
     return item;
   });
   // Актуальный Snack
