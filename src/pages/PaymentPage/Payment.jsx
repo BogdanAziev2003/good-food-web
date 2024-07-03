@@ -1,12 +1,12 @@
-import React, { useCallback, useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { useTelegram } from '../../hooks/useTelegram'
+import React, { useCallback, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useTelegram } from '../../hooks/useTelegram';
 
-import PaymentItem from '../../components/Payment/PaymentItem'
-import Phone from '../../components/Payment/Phone'
-import PayMethod from '../../components/Payment/PayMethod'
-import DeliveryType from '../../components/Payment/DeliveryType'
-import Comment from '../../components/Payment/Comment'
+import PaymentItem from '../../components/Payment/PaymentItem';
+import Phone from '../../components/Payment/Phone';
+import PayMethod from '../../components/Payment/PayMethod';
+import DeliveryType from '../../components/Payment/DeliveryType';
+import Comment from '../../components/Payment/Comment';
 
 const Payment = () => {
   const [errors, setErrors] = useState({
@@ -14,7 +14,7 @@ const Payment = () => {
     deliveryType: false,
     payMethod: false,
     address: false,
-  })
+  });
 
   const { itemInCard } = useSelector((state) => {
     const itemsCount = state.items.itemInCard.reduce((acc, item) => {
@@ -24,20 +24,24 @@ const Payment = () => {
           i.sause === item.sause &&
           i.snack === item.snack &&
           JSON.stringify(i.modifiers) === JSON.stringify(item.modifiers)
-      )
+      );
       if (existingItem) {
-        existingItem.count += 1
+        existingItem.count += 1;
       } else {
-        acc.push({ ...item, count: 1 })
+        acc.push({ ...item, count: 1 });
       }
-      return acc
-    }, [])
+      return acc;
+    }, []);
 
-    return { itemInCard: itemsCount }
-  })
+    return { itemInCard: itemsCount };
+  });
 
-  const { tg } = useTelegram()
-  const store = useSelector((state) => state.items)
+  useEffect(() => {
+    console.log(itemInCard);
+  }, itemInCard);
+
+  const { tg } = useTelegram();
+  const store = useSelector((state) => state.items);
   const onSendData = useCallback(() => {
     const data = {
       price: store.price,
@@ -48,10 +52,13 @@ const Payment = () => {
       payMethod: store.payMethod,
       comment: store.comment,
       itemInCard: store.itemInCard.map((item) => {
-        const newItem = { title: item.title, price: item.price }
+        const newItem = { title: item.title, price: item.price };
         if (item.category === 'Сэндвичи') {
-          newItem.snack = item.snack
-          newItem.sause = item.sause
+          newItem.snack = item.snack;
+          newItem.sause = item.sause;
+        }
+        if (item.id === 1 || item.id === 84) {
+          newItem.sause = item.sause;
         }
         if (item.modifiers && item.modifiers.length > 0) {
           newItem.modifiers = item.modifiers
@@ -60,14 +67,14 @@ const Payment = () => {
               title: modifier.title,
               price: modifier.price,
               amount: modifier.amount,
-            }))
+            }));
         } else {
-          newItem.modifiers = []
+          newItem.modifiers = [];
         }
-        return newItem
+        return newItem;
       }),
-    }
-    tg.sendData(JSON.stringify(data))
+    };
+    tg.sendData(JSON.stringify(data));
   }, [
     store.price,
     store.address,
@@ -76,7 +83,7 @@ const Payment = () => {
     store.payMethod,
     store.itemInCard,
     store.comment,
-  ])
+  ]);
 
   useEffect(() => {
     if (
@@ -89,14 +96,14 @@ const Payment = () => {
         setErrors({
           deliveryType: true,
           address: true,
-        })
+        });
       } else {
         setErrors({
           phone: !store.phone,
           deliveryType: !store.deliveryType,
           payMethod: !store.payMethod,
           address: false,
-        })
+        });
       }
     } else {
       setErrors({
@@ -104,12 +111,12 @@ const Payment = () => {
         deliveryType: false,
         payMethod: false,
         address: false,
-      })
-      tg.onEvent('mainButtonClicked', onSendData)
+      });
+      tg.onEvent('mainButtonClicked', onSendData);
     }
     return () => {
-      tg.offEvent('mainButtonClicked', onSendData)
-    }
+      tg.offEvent('mainButtonClicked', onSendData);
+    };
   }, [
     onSendData,
     store.deliveryType,
@@ -117,30 +124,30 @@ const Payment = () => {
     store.phone,
     store.address,
     tg,
-  ])
+  ]);
 
-  const [phoneError, setPhoneError] = useState(false)
-  const [addressError, setAddressError] = useState(false)
+  const [phoneError, setPhoneError] = useState(false);
+  const [addressError, setAddressError] = useState(false);
   useEffect(() => {
     tg.onEvent('mainButtonClicked', () => {
       if (store.phone === null) {
-        setPhoneError(true)
+        setPhoneError(true);
       } else {
-        setPhoneError(false)
+        setPhoneError(false);
       }
-    })
-  }, [tg.onEvent, store.phone])
+    });
+  }, [tg.onEvent, store.phone]);
   useEffect(() => {
     tg.onEvent('mainButtonClicked', () => {
       if (store.address === null && store.deliveryType === 'delivery') {
-        setAddressError(true)
+        setAddressError(true);
       } else {
-        setAddressError(false)
+        setAddressError(false);
       }
-    })
-  }, [tg.onEvent, store.deliveryType, store.address])
+    });
+  }, [tg.onEvent, store.deliveryType, store.address]);
 
-  const { payMethod } = useSelector((state) => state.items)
+  const { payMethod } = useSelector((state) => state.items);
 
   return (
     <div className="main">
@@ -164,7 +171,7 @@ const Payment = () => {
       {/* Комментарий */}
       <Comment />
     </div>
-  )
-}
+  );
+};
 
-export default Payment
+export default Payment;
