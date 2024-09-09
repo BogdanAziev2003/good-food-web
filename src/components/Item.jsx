@@ -4,10 +4,11 @@ import { addItem, removeItem } from '../store/features/itemsSlice';
 import BasicModal from './BasicModal';
 
 const Item = ({ item }) => {
-  if (item.id === 84) {
-    item.contains =
-      'Чикенбургер, картофель по деревенски, соус, coca-cola, сырные палочки';
-  }
+  console.log(item);
+  // if (item?.id === 84) {
+  //   item.contains =
+  //     'Чикенбургер, картофель по деревенски, соус, coca-cola, сырные палочки';
+  // }
   const dispatch = useDispatch();
   const { itemInCard } = useSelector((state) => state.items);
 
@@ -41,17 +42,17 @@ const Item = ({ item }) => {
     <div className="item">
       <div className="item__photo">
         <img
-          src={'https://server.tg-delivery.ru/api/menu/image/' + item.imageurl}
+          src={'https://server.tg-delivery.ru/api/menu/image/' + item?.imageurl}
           alt=""
         />
       </div>
       <div className="item__info">
         <div className="item__info-block">
           <div className="item__name">
-            <p>{item.title}</p>
+            <p>{item?.title}</p>
           </div>
           <div className="item__description">
-            <p>{item.contains + ''}</p>
+            <p>{item?.contains + ''}</p>
           </div>
         </div>
 
@@ -92,7 +93,7 @@ const Item = ({ item }) => {
               </div>
 
               <div className="item__add-price">
-                <p>{item.price}₽</p>
+                <p>{item?.price}₽</p>
               </div>
             </div>
           </div>
