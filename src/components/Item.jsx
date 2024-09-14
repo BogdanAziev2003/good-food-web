@@ -5,10 +5,10 @@ import BasicModal from './BasicModal';
 
 const Item = ({ item }) => {
   console.log(item);
-  // if (item?.id === 84) {
-  //   item.contains =
-  //     'Чикенбургер, картофель по деревенски, соус, coca-cola, сырные палочки';
-  // }
+  if (item?.id === 84) {
+    item.contains =
+      'Чикенбургер, картофель по деревенски, соус, coca-cola, сырные палочки';
+  }
   const dispatch = useDispatch();
   const { itemInCard } = useSelector((state) => state.items);
 
