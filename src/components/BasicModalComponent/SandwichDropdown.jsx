@@ -12,14 +12,8 @@ const SandwichDropdown = ({
 }) => {
   const { items } = useSelector((state) => state.items);
   const snacks = items
-    .filter(
-      (item) =>
-        item.title === 'Картофель по деревенски 200 гр.' ||
-        item.title === 'Картофель Фри 200 гр.'
-    )
+    .filter((item) => item.title === 'Картофель Фри 200 гр.')
     .map((item) => {
-      if (item.title === 'Картофель по деревенски 200 гр.')
-        return 'По деревенски';
       if (item.title === 'Картофель Фри 200 гр.') return 'Фри';
       return item.title;
     });

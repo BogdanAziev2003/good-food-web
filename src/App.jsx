@@ -71,9 +71,6 @@ const App = () => {
     items.findIndex((item) => item.id === 31) !== -1
   ) {
     items = items.map((item) => {
-      if (item.category === 'Сэндвичи' && !item.title.includes('mini')) {
-        return { ...item, snack: 'По деревенски' };
-      }
       return item;
     });
   } else if (

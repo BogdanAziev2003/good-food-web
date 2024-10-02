@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { addSause, addSnack } from '../store/features/itemsSlice'
-import { useDispatch } from 'react-redux'
+import React, { useEffect, useState } from 'react';
+import { addSause, addSnack } from '../store/features/itemsSlice';
+import { useDispatch } from 'react-redux';
 
 const Dropdown = ({
   selected,
@@ -13,33 +13,33 @@ const Dropdown = ({
   setIsActiveSause,
 }) => {
   useEffect(() => {
-    setIsActiveSause(false)
-    setIsActiveSnack(false)
-  }, [closeModal])
+    setIsActiveSause(false);
+    setIsActiveSnack(false);
+  }, [closeModal]);
 
-  const dispatch = useDispatch()
-  const [isActive, setIsActive] = useState(isActiveDrop)
+  const dispatch = useDispatch();
+  const [isActive, setIsActive] = useState(isActiveDrop);
 
   const handleAddSnack = (snack) => {
-    setSelected(snack)
-    setIsActive(false)
-    if (snack === 'Фри' || snack === 'По деревенски') {
-      dispatch(addSnack({ snack, curItem }))
+    setSelected(snack);
+    setIsActive(false);
+    if (snack === 'Фри') {
+      dispatch(addSnack({ snack, curItem }));
     } else {
-      dispatch(addSause({ snack, curItem }))
+      dispatch(addSause({ snack, curItem }));
     }
-  }
+  };
 
   useEffect(() => {
-    setIsActive(isActiveDrop)
-  }, [isActiveDrop])
+    setIsActive(isActiveDrop);
+  }, [isActiveDrop]);
 
   return (
     <div className="dropdown">
       <div
         className="dropdown-btn"
         onClick={() => {
-          setIsActive(!isActive)
+          setIsActive(!isActive);
         }}
       >
         <p>{selected ? selected : 'Нет в наличии'}</p>
@@ -58,7 +58,7 @@ const Dropdown = ({
             <div
               key={id}
               onClick={() => {
-                handleAddSnack(item)
+                handleAddSnack(item);
               }}
               className="dropdown-item"
             >
@@ -68,7 +68,7 @@ const Dropdown = ({
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default Dropdown
+export default Dropdown;
