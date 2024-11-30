@@ -4,6 +4,11 @@ import { addItem, removeItem } from '../store/features/itemsSlice';
 import BasicModal from './BasicModal';
 
 const Item = ({ item }) => {
+  console.log(item);
+  if (item?.id === 84) {
+    item.contains = 'Гамбургер, картошка фри, наггетсы, кока-кола, соус';
+  }
+
   const dispatch = useDispatch();
   const { itemInCard } = useSelector((state) => state.items);
 
