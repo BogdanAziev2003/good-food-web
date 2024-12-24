@@ -8,7 +8,7 @@ import { store } from './store/store';
 
 import './style.scss';
 
-const isOpenFalse = false;
+const isOpenFalse = true;
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter>
